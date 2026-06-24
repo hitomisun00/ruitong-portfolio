@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUS Healthcare Projects — Sun Rui Tong</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --white: #FAFAF8;
+  --ink: #1C1B19;
+  --ink-soft: #6B6860;
+  --ink-faint: #C8C5BF;
+  --accent: #E8845A;
+  --accent-light: rgba(232,132,90,0.08);
+  --accent-mid: rgba(232,132,90,0.2);
+  --surface: #F3F2EE;
+  --border: #E5E3DC;
+  --r: 4px;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--ink); font-family: 'Geist Mono', monospace; font-weight: 300; overflow-x: hidden; cursor: none; }
+
+#cur { position: fixed; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .25s, height .25s; mix-blend-mode: multiply; }
+#cur-ring { position: fixed; width: 32px; height: 32px; border: 1.5px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); opacity: .35; transition: width .3s, height .3s, opacity .3s; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 24px 56px; background: rgba(250,250,248,.92); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+nav.scrolled { border-color: var(--border); }
+.nav-logo { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 400; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-back { display: flex; align-items: center; gap: 10px; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--white); background: var(--ink); padding: 9px 18px; border-radius: var(--r); text-decoration: none; transition: background .2s, gap .25s; }
+.nav-back:hover { background: var(--accent); gap: 14px; }
+
+/* PAGE HEADER */
+.page-header { padding: 160px 56px 100px; background: var(--white); position: relative; overflow: hidden; }
+.page-header::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, var(--ink-faint) 1px, transparent 1px); background-size: 28px 28px; opacity: .25; pointer-events: none; }
+.page-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, var(--white)); pointer-events: none; }
+.ph-inner { position: relative; z-index: 2; }
+.ph-top { display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: end; margin-bottom: 56px; }
+.ph-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; opacity: 0; animation: fadeUp .7s ease .2s forwards; }
+.ph-eyebrow::before { content: ''; display: block; width: 22px; height: 1.5px; background: var(--accent); }
+.ph-title { font-family: 'Fraunces', serif; font-size: clamp(2.6rem, 5.5vw, 5rem); font-weight: 300; line-height: 1.04; letter-spacing: -.025em; margin-bottom: 0; opacity: 0; animation: fadeUp .8s ease .35s forwards; }
+.ph-title em { font-style: italic; color: var(--accent); }
+.ph-right { opacity: 0; animation: fadeUp .8s ease .5s forwards; }
+.ph-sub { font-size: .73rem; line-height: 1.95; color: var(--ink-soft); margin-bottom: 28px; }
+.ph-sub b { color: var(--ink); font-weight: 500; }
+.ph-scroll-hint { display: flex; align-items: center; gap: 10px; font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); }
+.ph-scroll-hint::before { content: ''; display: block; width: 1px; height: 32px; background: var(--accent); opacity: .4; }
+.ph-bottom { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; opacity: 0; animation: fadeUp .8s ease .65s forwards; }
+.ph-stat { padding: 28px 32px; border-right: 1px solid var(--border); }
+.ph-stat:last-child { border-right: none; }
+.ph-stat-n { font-family: 'Fraunces', serif; font-size: 2.4rem; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+.ph-stat-n em { color: var(--accent); font-style: normal; }
+.ph-stat-l { font-size: .52rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.ph-stat-desc { font-size: .63rem; color: var(--ink-faint); margin-top: 4px; line-height: 1.6; }
+.ph-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 16px 32px; background: var(--surface); border-top: 1px solid var(--border); }
+.ph-tag { font-size: .5rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); border: 1px solid var(--border); background: var(--white); padding: 3px 9px; border-radius: var(--r); }
+
+/* TOC */
+.proj-toc { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0 56px; display: flex; align-items: center; gap: 0; position: sticky; top: 73px; z-index: 100; }
+.toc-label { font-size: .54rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); padding: 20px 28px 20px 0; border-right: 1px solid var(--border); margin-right: 28px; white-space: nowrap; }
+.toc-item { font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; padding: 20px 16px; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; white-space: nowrap; }
+.toc-item:hover, .toc-item.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Sections */
+.proj-section { padding: 100px 56px; border-top: 1px solid var(--border); }
+.section-tag { display: flex; align-items: center; gap: 12px; font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.section-tag::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); }
+.section-h2 { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.1; letter-spacing: -.015em; margin-bottom: 16px; }
+.section-h2 em { font-style: italic; color: var(--accent); }
+.section-sub { font-size: .72rem; line-height: 1.95; color: var(--ink-soft); max-width: 640px; margin-bottom: 52px; }
+
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.on { opacity: 1; transform: none; }
+
+/* Story layout */
+.story-block { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 12px; }
+.story-block.flip { direction: rtl; }
+.story-block.flip > * { direction: ltr; }
+.story-text { padding: 48px 44px; background: var(--white); display: flex; flex-direction: column; justify-content: center; }
+.story-text.surface { background: var(--surface); }
+.story-eyebrow { font-size: .52rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.story-eyebrow::before { content: ''; width: 14px; height: 1px; background: var(--accent); }
+.story-h3 { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-bottom: 14px; line-height: 1.2; }
+.story-h3 em { font-style: italic; color: var(--accent); }
+.story-body { font-size: .69rem; line-height: 1.95; color: var(--ink-soft); }
+.story-body + .story-body { margin-top: 12px; }
+.story-body b { color: var(--ink); font-weight: 500; }
+
+/* Admin two-up images */
+.admin-img-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.admin-img-card { border-radius: var(--r); overflow: hidden; background: var(--white); }
+.admin-img-label { padding: 10px 14px; background: var(--surface); border-top: 1px solid var(--border); font-size: .54rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+
+.divider-label { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; margin-top: 52px; }
+.divider-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.dl-text { font-size: .54rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); white-space: nowrap; }
+
+/* Role callout */
+.role-callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--r); padding: 24px 28px; font-size: .72rem; line-height: 1.88; color: var(--ink-soft); margin-bottom: 48px; }
+.role-callout b { color: var(--ink); font-weight: 500; }
+.role-callout strong { color: var(--ink); font-weight: 500; display: block; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 8px; }
+
+/* Think chips */
+.thinking-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 44px; }
+.think-chip { display: flex; align-items: flex-start; gap: 10px; background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 18px; flex: 1; min-width: 200px; transition: border-color .2s, background .2s; }
+.think-chip:hover { border-color: var(--accent-mid); background: var(--accent-light); }
+.think-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.think-text { font-size: .66rem; line-height: 1.82; color: var(--ink-soft); }
+.think-text strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 3px; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; }
+
+/* Module / flow row */
+.flow { display: flex; align-items: stretch; flex-wrap: wrap; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 44px; }
+.flow-step { flex: 1; min-width: 150px; padding: 24px 22px; border-right: 1px solid var(--border); background: var(--white); position: relative; transition: background .2s; }
+.flow-step:last-child { border-right: none; }
+.flow-step:hover { background: var(--accent-light); }
+.flow-n { font-size: .5rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.flow-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 400; color: var(--ink); margin-bottom: 6px; line-height: 1.25; }
+.flow-desc { font-size: .63rem; line-height: 1.7; color: var(--ink-soft); }
+
+/* ── Media placeholder (drop real assets in here) ── */
+.media-ph { border: 1.5px dashed var(--ink-faint); border-radius: var(--r); background-color: var(--surface); background-image: repeating-linear-gradient(45deg, rgba(0,0,0,.018) 0, rgba(0,0,0,.018) 1px, transparent 1px, transparent 12px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 28px; min-height: 230px; transition: border-color .25s, background-color .25s; }
+.media-ph:hover { border-color: var(--accent); background-color: var(--accent-light); }
+.media-ph-icon { font-size: 1.6rem; margin-bottom: 12px; opacity: .5; }
+.media-ph-type { font-size: .5rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; font-weight: 500; }
+.media-ph-label { font-size: .66rem; line-height: 1.7; color: var(--ink-soft); max-width: 320px; }
+.media-ph-dim { font-size: .5rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin-top: 10px; }
+.media-ph.fill { height: 100%; border: none; border-left: 1.5px dashed var(--ink-faint); border-radius: 0; }
+.story-block.flip .media-ph.fill { border-left: none; border-right: 1.5px dashed var(--ink-faint); }
+.media-ph.wide { min-height: 400px; }
+.media-ph.short { min-height: 160px; }
+
+/* ── Real app-screen galleries ── */
+.screens-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 24px; margin-bottom: 8px; }
+.screen-card { border: 1px solid var(--border); border-radius: 18px; overflow: hidden; background: var(--white); transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+.screen-card:hover { transform: translateY(-5px); border-color: var(--accent-mid); box-shadow: 0 24px 48px -26px rgba(28,27,25,.38); }
+.screen-card img { display: block; width: 100%; height: auto; background: var(--surface); }
+.screen-cap { padding: 16px 18px; font-size: .72rem; letter-spacing: .02em; line-height: 1.6; color: var(--ink-soft); border-top: 1px solid var(--border); text-align: center; }
+.screen-cap b { color: var(--ink); font-weight: 500; }
+/* landscape variant for wider tablet/content screens */
+.screens-grid.land { grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); }
+
+footer { padding: 30px 56px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--white); }
+.f-name { font-family: 'Fraunces', serif; font-weight: 300; font-size: .9rem; color: var(--ink-soft); }
+.f-links { display: flex; gap: 24px; }
+.f-links a { font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
+.f-links a:hover { color: var(--accent); }
+.f-copy { font-size: .56rem; letter-spacing: .1em; color: var(--ink-faint); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .page-header { padding: 110px 24px 72px; }
+  .proj-section { padding: 72px 24px; }
+  .proj-toc { padding: 0 24px; overflow-x: auto; }
+  .ph-top { grid-template-columns: 1fr; gap: 36px; }
+  .ph-bottom { grid-template-columns: 1fr 1fr; }
+  .story-block { grid-template-columns: 1fr; }
+  .media-ph.fill { border: 1.5px dashed var(--ink-faint); border-radius: var(--r); }
+  .story-block.flip .media-ph.fill { border: 1.5px dashed var(--ink-faint); }
+  .admin-img-row { grid-template-columns: 1fr; }
+  .flow-step { border-right: none; border-bottom: 1px solid var(--border); }
+  .flow-step:last-child { border-bottom: none; }
+  footer { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<nav id="nav">
+  <a href="portfolio_7.html" class="nav-logo">Sun Rui Tong<span>.</span></a>
+  <a href="portfolio_7.html" class="nav-back">← Back to portfolio</a>
+</nav>
+
+<!-- ═══════ PAGE HEADER ═══════ -->
+<section class="page-header">
+  <div class="ph-inner">
+    <div class="ph-top">
+      <div>
+        <div class="ph-eyebrow">Dec 2024 – Present · Healthcare · NUS ISA</div>
+        <h1 class="ph-title">Designing for<br>health, clarity<br><em>&amp; trust.</em></h1>
+      </div>
+      <div class="ph-right">
+        <p class="ph-sub">Three concurrent healthcare projects under NUS's Dept. of <b>Information Systems &amp; Analytics</b> — each covering the full lifecycle from research and accessibility decisions to high-fidelity prototypes across mobile and desktop.</p>
+        <div class="ph-scroll-hint">
+          <span>Scroll to see the work</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ph-bottom reveal">
+      <div class="ph-stat">
+        <div class="ph-stat-n">3</div>
+        <div class="ph-stat-l">Projects</div>
+        <div class="ph-stat-desc">BrainCare SG · Engage · Cognify</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-n">Elderly</div>
+        <div class="ph-stat-l">Primary users</div>
+        <div class="ph-stat-desc">Accessibility-first design throughout</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-n">Full</div>
+        <div class="ph-stat-l">Design lifecycle</div>
+        <div class="ph-stat-desc">Research → wireframes → hi-fi prototypes</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-n">2<em>↕</em></div>
+        <div class="ph-stat-l">Platforms</div>
+        <div class="ph-stat-desc">Mobile &amp; desktop</div>
+      </div>
+    </div>
+
+    <div class="ph-tags reveal" style="transition-delay:.1s">
+      <span class="ph-tag">UX Research</span>
+      <span class="ph-tag">Accessibility Design</span>
+      <span class="ph-tag">Design Systems</span>
+      <span class="ph-tag">Hi-Fi Prototyping</span>
+      <span class="ph-tag">Healthcare UX</span>
+      <span class="ph-tag">Mobile + Desktop</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<nav class="proj-toc" id="proj-toc">
+  <span class="toc-label">Projects</span>
+  <a href="#braincare" class="toc-item active">01 — BrainCare SG</a>
+  <a href="#engage" class="toc-item">02 — Engage</a>
+  <a href="#cognify" class="toc-item">03 — Cognify</a>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PROJECT 01: BRAINCARE SG
+═══════════════════════════════════════════════════ -->
+<section class="proj-section" id="braincare" style="background: var(--white)">
+
+  <div class="section-tag reveal">Project 01 · Healthcare · NUS ISA</div>
+  <h2 class="section-h2 reveal" style="transition-delay:.08s">BrainCare <em>SG</em></h2>
+  <p class="section-sub reveal" style="transition-delay:.14s">A brain-health assessment platform. Users complete a structured evaluation, then track their brain-health over time with clear insights. I covered research, the assessment framework, and the tracking dashboard.</p>
+
+  <div class="role-callout reveal" style="transition-delay:.18s">
+    <strong>My scope</strong>
+    User research, the <b>assessment framework &amp; evaluation logic</b>, and the <b>tracking and insights</b> experience — translated into high-fidelity screens.
+  </div>
+
+  <!-- Onboarding & login -->
+  <div class="divider-label reveal"><span class="dl-text">Onboarding &amp; login</span></div>
+  <div class="screens-grid reveal">
+    <div class="screen-card"><img src="braincare-assets/login-1.jpg" alt="BrainCare SG welcome screen" loading="lazy"><div class="screen-cap"><b>Welcome</b> — large, friendly entry point</div></div>
+    <div class="screen-card"><img src="braincare-assets/login-2.jpg" alt="BrainCare SG login screen" loading="lazy"><div class="screen-cap"><b>Sign in</b> — oversized fields &amp; buttons</div></div>
+    <div class="screen-card"><img src="braincare-assets/login-3.jpg" alt="BrainCare SG account setup screen" loading="lazy"><div class="screen-cap"><b>Account setup</b> — minimal steps to start</div></div>
+  </div>
+
+  <!-- Brain-health assessment -->
+  <div class="divider-label reveal"><span class="dl-text">Brain-health assessment</span></div>
+  <div class="screens-grid reveal">
+    <div class="screen-card"><img src="braincare-assets/question-1.jpg" alt="BrainCare SG assessment question screen 1" loading="lazy"><div class="screen-cap"><b>Question 01</b></div></div>
+    <div class="screen-card"><img src="braincare-assets/question-2.jpg" alt="BrainCare SG assessment question screen 2" loading="lazy"><div class="screen-cap"><b>Question 02</b></div></div>
+    <div class="screen-card"><img src="braincare-assets/question-3.jpg" alt="BrainCare SG assessment question screen 3" loading="lazy"><div class="screen-cap"><b>Question 03</b></div></div>
+    <div class="screen-card"><img src="braincare-assets/question-4.jpg" alt="BrainCare SG assessment question screen 4" loading="lazy"><div class="screen-cap"><b>Question 04</b></div></div>
+    <div class="screen-card"><img src="braincare-assets/question-5.jpg" alt="BrainCare SG assessment question screen 5" loading="lazy"><div class="screen-cap"><b>Question 05</b></div></div>
+    <div class="screen-card"><img src="braincare-assets/question-6.jpg" alt="BrainCare SG assessment question screen 6" loading="lazy"><div class="screen-cap"><b>Question 06</b></div></div>
+    <div class="screen-card"><img src="braincare-assets/question-7.jpg" alt="BrainCare SG assessment question screen 7" loading="lazy"><div class="screen-cap"><b>Question 07</b></div></div>
+    <div class="screen-card"><img src="braincare-assets/question-8.jpg" alt="BrainCare SG assessment question screen 8" loading="lazy"><div class="screen-cap"><b>Question 08</b></div></div>
+  </div>
+
+  <!-- Content & results -->
+  <div class="divider-label reveal"><span class="dl-text">Content &amp; results</span></div>
+  <div class="screens-grid reveal">
+    <div class="screen-card"><img src="braincare-assets/content.jpg" alt="BrainCare SG content and results screen" loading="lazy"><div class="screen-cap"><b>Results &amp; content</b> — clear, readable summary</div></div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PROJECT 02: ENGAGE
+═══════════════════════════════════════════════════ -->
+<section class="proj-section" id="engage" style="background: var(--surface)">
+
+  <div class="section-tag reveal">Project 02 · Healthcare · NUS ISA</div>
+  <h2 class="section-h2 reveal" style="transition-delay:.08s"><em>Engage</em></h2>
+  <p class="section-sub reveal" style="transition-delay:.14s">A self-assessment platform for elderly users. Accessibility led every decision — from typography to interaction. Three guided testing modules feed into a healthcare workflow that shares results with clinicians.</p>
+
+  <div class="role-callout reveal" style="transition-delay:.18s">
+    <strong>My scope</strong>
+    <b>Accessibility-first UI</b>, the three self-assessment modules, and the <b>healthcare data-sharing workflow</b> between users and doctors.
+  </div>
+
+  <!-- Accessibility principles -->
+  <div class="divider-label reveal"><span class="dl-text">Accessibility-first principles</span></div>
+  <div class="thinking-row reveal">
+    <div class="think-chip">
+      <div class="think-icon">🔠</div>
+      <div class="think-text"><strong>Typography</strong>Large, high-contrast type and generous spacing for ageing eyes.</div>
+    </div>
+    <div class="think-chip">
+      <div class="think-icon">👆</div>
+      <div class="think-text"><strong>Touch targets</strong>Oversized, forgiving controls that reduce mis-taps and cognitive load.</div>
+    </div>
+    <div class="think-chip">
+      <div class="think-icon">♿</div>
+      <div class="think-text"><strong>Consistency</strong>One clear, predictable pattern applied across every screen.</div>
+    </div>
+  </div>
+
+  <!-- Onboarding & login -->
+  <div class="divider-label reveal"><span class="dl-text">Onboarding &amp; login</span></div>
+  <div class="screens-grid reveal">
+    <div class="screen-card"><img src="engage-assets/login-1.jpg" alt="Engage login screen" loading="lazy"><div class="screen-cap"><b>Sign in</b> — simple, large entry</div></div>
+    <div class="screen-card"><img src="engage-assets/login-2.jpg" alt="Engage login confirmation screen" loading="lazy"><div class="screen-cap"><b>Sign in</b> — confirmation step</div></div>
+  </div>
+
+  <!-- Home & daily tasks -->
+  <div class="divider-label reveal"><span class="dl-text">Home &amp; daily tasks</span></div>
+  <div class="screens-grid reveal">
+    <div class="screen-card"><img src="engage-assets/home-1.jpg" alt="Engage home landing screen" loading="lazy"><div class="screen-cap"><b>Home</b> — landing &amp; daily focus</div></div>
+    <div class="screen-card"><img src="engage-assets/home-2.jpg" alt="Engage ranked tasks screen" loading="lazy"><div class="screen-cap"><b>Tasks</b> — clear, prioritised list</div></div>
+    <div class="screen-card"><img src="engage-assets/home-3.jpg" alt="Engage daily progress screen" loading="lazy"><div class="screen-cap"><b>Progress</b> — day view</div></div>
+    <div class="screen-card"><img src="engage-assets/home-4.jpg" alt="Engage weekly progress screen" loading="lazy"><div class="screen-cap"><b>Progress</b> — week view</div></div>
+    <div class="screen-card"><img src="engage-assets/settings.jpg" alt="Engage settings screen" loading="lazy"><div class="screen-cap"><b>Settings</b> — easy to read &amp; adjust</div></div>
+  </div>
+
+  <!-- Self-assessment modules -->
+  <div class="divider-label reveal"><span class="dl-text">Self-assessment modules</span></div>
+  <div class="flow reveal">
+    <div class="flow-step"><div class="flow-n">Module 01</div><div class="flow-title">Cognitive</div><div class="flow-desc">Guided cognitive self-assessment.</div></div>
+    <div class="flow-step"><div class="flow-n">Module 02</div><div class="flow-title">Memory</div><div class="flow-desc">Short-term memory check.</div></div>
+    <div class="flow-step"><div class="flow-n">Module 03</div><div class="flow-title">Sit-to-Stand</div><div class="flow-desc">Mobility / physical test.</div></div>
+  </div>
+  <div class="screens-grid reveal">
+    <div class="screen-card"><img src="engage-assets/cognitive-1.jpg" alt="Engage cognitive assessment screen 1" loading="lazy"><div class="screen-cap"><b>Cognitive</b> — instructions</div></div>
+    <div class="screen-card"><img src="engage-assets/cognitive-2.jpg" alt="Engage cognitive assessment screen 2" loading="lazy"><div class="screen-cap"><b>Cognitive</b> — in progress</div></div>
+    <div class="screen-card"><img src="engage-assets/memory.jpg" alt="Engage memory assessment screen" loading="lazy"><div class="screen-cap"><b>Memory</b> — recall task</div></div>
+    <div class="screen-card"><img src="engage-assets/sit-to-stand-1.jpg" alt="Engage sit-to-stand assessment screen 1" loading="lazy"><div class="screen-cap"><b>Sit-to-Stand</b> — setup</div></div>
+    <div class="screen-card"><img src="engage-assets/sit-to-stand-2.jpg" alt="Engage sit-to-stand assessment screen 2" loading="lazy"><div class="screen-cap"><b>Sit-to-Stand</b> — guidance</div></div>
+    <div class="screen-card"><img src="engage-assets/sit-to-stand-3.jpg" alt="Engage sit-to-stand assessment screen 3" loading="lazy"><div class="screen-cap"><b>Sit-to-Stand</b> — result</div></div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PROJECT 03: COGNIFY
+═══════════════════════════════════════════════════ -->
+<section class="proj-section" id="cognify" style="background: var(--white)">
+
+  <div class="section-tag reveal">Project 03 · Healthcare · NUS ISA</div>
+  <h2 class="section-h2 reveal" style="transition-delay:.08s"><em>Cognify</em></h2>
+  <p class="section-sub reveal" style="transition-delay:.14s">Cognitive training through games. A small ecosystem of games keeps elderly users mentally active, with caregiver-assisted flows and accessibility built in from the start.</p>
+
+  <div class="role-callout reveal" style="transition-delay:.18s">
+    <strong>My scope</strong>
+    The <b>game ecosystem &amp; information architecture</b>, the user and caregiver-assisted flows, and accessibility considerations for elderly usability.
+  </div>
+
+  <!-- Overview -->
+  <div class="divider-label reveal"><span class="dl-text">Overview</span></div>
+  <div class="screens-grid land reveal">
+    <div class="screen-card"><img src="cognify-assets/overview.jpg" alt="Cognify product overview screen" loading="lazy"><div class="screen-cap"><b>Overview</b> — training the mind through play</div></div>
+  </div>
+
+  <!-- Game content & screens -->
+  <div class="divider-label reveal"><span class="dl-text">Game content &amp; screens</span></div>
+  <div class="screens-grid land reveal">
+    <div class="screen-card"><img src="cognify-assets/contents-1.jpg" alt="Cognify game content screen 1" loading="lazy"><div class="screen-cap"><b>Content 01</b></div></div>
+    <div class="screen-card"><img src="cognify-assets/contents-2.jpg" alt="Cognify game content screen 2" loading="lazy"><div class="screen-cap"><b>Content 02</b></div></div>
+    <div class="screen-card"><img src="cognify-assets/contents-3.jpg" alt="Cognify game content screen 3" loading="lazy"><div class="screen-cap"><b>Content 03</b></div></div>
+    <div class="screen-card"><img src="cognify-assets/contents-4.jpg" alt="Cognify game content screen 4" loading="lazy"><div class="screen-cap"><b>Content 04</b></div></div>
+    <div class="screen-card"><img src="cognify-assets/contents-5.jpg" alt="Cognify game content screen 5" loading="lazy"><div class="screen-cap"><b>Content 05</b></div></div>
+    <div class="screen-card"><img src="cognify-assets/contents-6.jpg" alt="Cognify game content screen 6" loading="lazy"><div class="screen-cap"><b>Content 06</b></div></div>
+  </div>
+
+</section>
+
+
+<footer>
+  <div class="f-name">Sun Rui Tong</div>
+  <div class="f-links">
+    <a href="portfolio_7.html">← Portfolio</a>
+    <a href="returning-ai.html">Returning.AI →</a>
+    <a href="mailto:ruitong0615@gmail.com">Email</a>
+  </div>
+  <div class="f-copy">© 2025 Sun Rui Tong</div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'), ring=document.getElementById('cur-ring');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function lerp(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(lerp);})();
+document.addEventListener('mousedown',()=>{cur.style.transform='translate(-50%,-50%) scale(1.6)';ring.style.opacity='.6';});
+document.addEventListener('mouseup',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.opacity='.35';});
+document.querySelectorAll('a,button,video,.media-ph').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='14px';cur.style.height='14px';ring.style.width='44px';ring.style.height='44px';ring.style.opacity='.18';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='8px';cur.style.height='8px';ring.style.width='32px';ring.style.height='32px';ring.style.opacity='.35';});
+});
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
+});
+
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+const sections=document.querySelectorAll('.proj-section[id]');
+const tocItems=document.querySelectorAll('.toc-item');
+const tocObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      tocItems.forEach(a=>a.classList.remove('active'));
+      const active=document.querySelector(`.toc-item[href="#${entry.target.id}"]`);
+      if(active)active.classList.add('active');
+    }
+  });
+},{threshold:.25});
+sections.forEach(s=>tocObs.observe(s));
+</script>
+</body>
+</html>

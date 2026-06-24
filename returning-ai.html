@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Returning.AI — Sun Rui Tong</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --white: #FAFAF8;
+  --ink: #1C1B19;
+  --ink-soft: #6B6860;
+  --ink-faint: #C8C5BF;
+  --accent: #E8845A;
+  --accent-light: rgba(232,132,90,0.08);
+  --accent-mid: rgba(232,132,90,0.2);
+  --surface: #F3F2EE;
+  --border: #E5E3DC;
+  --r: 4px;
+  --green: #22C55E;
+  --green-bg: rgba(34,197,94,.1);
+  --green-bd: rgba(34,197,94,.3);
+  --amber: #E0A93B;
+  --blue: #5B8DEF;
+  --stage: #16161A;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--ink); font-family: 'Geist Mono', monospace; font-weight: 300; overflow-x: clip; cursor: none; }
+
+#cur { position: fixed; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .25s, height .25s; mix-blend-mode: multiply; }
+#cur-ring { position: fixed; width: 32px; height: 32px; border: 1.5px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); opacity: .35; transition: width .3s, height .3s, opacity .3s; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 24px 56px; background: rgba(250,250,248,.92); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+nav.scrolled { border-color: var(--border); }
+.nav-logo { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 400; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-back { display: flex; align-items: center; gap: 10px; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--white); background: var(--ink); padding: 9px 18px; border-radius: var(--r); text-decoration: none; transition: background .2s, gap .25s; }
+.nav-back:hover { background: var(--accent); gap: 14px; }
+
+/* PAGE HEADER */
+.page-header { padding: 160px 56px 100px; background: var(--white); position: relative; overflow: hidden; }
+.page-header::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, var(--ink-faint) 1px, transparent 1px); background-size: 28px 28px; opacity: .25; pointer-events: none; }
+.page-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, var(--white)); pointer-events: none; }
+.ph-inner { position: relative; z-index: 2; }
+.ph-top { display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: end; margin-bottom: 56px; }
+.ph-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; opacity: 0; animation: fadeUp .7s ease .2s forwards; }
+.ph-eyebrow::before { content: ''; display: block; width: 22px; height: 1.5px; background: var(--accent); }
+.ph-title { font-family: 'Fraunces', serif; font-size: clamp(2.6rem, 5.5vw, 5rem); font-weight: 300; line-height: 1.04; letter-spacing: -.025em; margin-bottom: 0; opacity: 0; animation: fadeUp .8s ease .35s forwards; }
+.ph-title em { font-style: italic; color: var(--accent); }
+.ph-right { opacity: 0; animation: fadeUp .8s ease .5s forwards; }
+.ph-sub { font-size: .73rem; line-height: 1.95; color: var(--ink-soft); margin-bottom: 28px; }
+.ph-sub b { color: var(--ink); font-weight: 500; }
+.ph-scroll-hint { display: flex; align-items: center; gap: 10px; font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); }
+.ph-scroll-hint::before { content: ''; display: block; width: 1px; height: 32px; background: var(--accent); opacity: .4; }
+.ph-bottom { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; opacity: 0; animation: fadeUp .8s ease .65s forwards; }
+.ph-stat { padding: 28px 32px; border-right: 1px solid var(--border); }
+.ph-stat:last-child { border-right: none; }
+.ph-stat-n { font-family: 'Fraunces', serif; font-size: 2.4rem; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+.ph-stat-n em { color: var(--accent); font-style: normal; }
+.ph-stat-l { font-size: .52rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.ph-stat-desc { font-size: .63rem; color: var(--ink-faint); margin-top: 4px; line-height: 1.6; }
+.ph-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 16px 32px; background: var(--surface); border-top: 1px solid var(--border); }
+.ph-tag { font-size: .5rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); border: 1px solid var(--border); background: var(--white); padding: 3px 9px; border-radius: var(--r); }
+
+/* TOC */
+.proj-toc { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0 56px; display: flex; align-items: center; gap: 0; position: sticky; top: 73px; z-index: 100; }
+.toc-label { font-size: .54rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); padding: 20px 28px 20px 0; border-right: 1px solid var(--border); margin-right: 28px; white-space: nowrap; }
+.toc-item { font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; padding: 20px 16px; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; white-space: nowrap; }
+.toc-item:hover, .toc-item.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Sections */
+.proj-section { padding: 100px 56px; border-top: 1px solid var(--border); scroll-margin-top: 132px; }
+.section-tag { display: flex; align-items: center; gap: 12px; font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.section-tag::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); }
+.section-h2 { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.1; letter-spacing: -.015em; margin-bottom: 16px; }
+.section-h2 em { font-style: italic; color: var(--accent); }
+.section-sub { font-size: .72rem; line-height: 1.95; color: var(--ink-soft); max-width: 640px; margin-bottom: 52px; }
+
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.on { opacity: 1; transform: none; }
+
+/* Story layout */
+.story-block { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 12px; }
+.story-block.flip { direction: rtl; }
+.story-block.flip > * { direction: ltr; }
+.story-text { padding: 48px 44px; background: var(--white); display: flex; flex-direction: column; justify-content: center; }
+.story-text.surface { background: var(--surface); }
+.story-eyebrow { font-size: .52rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.story-eyebrow::before { content: ''; width: 14px; height: 1px; background: var(--accent); }
+.story-h3 { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-bottom: 14px; line-height: 1.2; }
+.story-h3 em { font-style: italic; color: var(--accent); }
+.story-body { font-size: .69rem; line-height: 1.95; color: var(--ink-soft); }
+.story-body + .story-body { margin-top: 12px; }
+.story-body b { color: var(--ink); font-weight: 500; }
+
+/* Admin two-up images */
+.admin-img-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.admin-img-card { border-radius: var(--r); overflow: hidden; background: var(--white); border: 1px solid var(--border); }
+.admin-img-label { padding: 10px 14px; background: var(--surface); border-top: 1px solid var(--border); font-size: .54rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* Video */
+.demo-wrap { border-radius: var(--r); overflow: hidden; background: var(--surface); border: 1px solid var(--border); margin-bottom: 12px; }
+.demo-header { padding: 14px 20px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+.demo-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.demo-label { font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); flex: 1; }
+.demo-tag { font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; background: rgba(34,197,94,.1); color: #22C55E; border: 1px solid rgba(34,197,94,.25); padding: 3px 9px; border-radius: var(--r); }
+
+/* Full-width image display */
+.img-full { width: 100%; border-radius: var(--r); display: block; margin-top: 20px; }
+.img-caption { font-size: .54rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin-top: 10px; text-align: center; }
+
+.divider-label { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; margin-top: 52px; }
+.divider-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.dl-text { font-size: .54rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); white-space: nowrap; }
+
+/* Role callout */
+.role-callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--r); padding: 24px 28px; font-size: .72rem; line-height: 1.88; color: var(--ink-soft); margin-bottom: 48px; }
+.role-callout b { color: var(--ink); font-weight: 500; }
+.role-callout strong { color: var(--ink); font-weight: 500; display: block; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 8px; }
+
+/* Think chips */
+.thinking-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 44px; }
+.think-chip { display: flex; align-items: flex-start; gap: 10px; background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 18px; flex: 1; min-width: 200px; transition: border-color .2s, background .2s; }
+.think-chip:hover { border-color: var(--accent-mid); background: var(--accent-light); }
+.think-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.think-text { font-size: .66rem; line-height: 1.82; color: var(--ink-soft); }
+.think-text strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 3px; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; }
+
+/* Process / agent flow */
+.flow { display: flex; align-items: stretch; flex-wrap: wrap; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 44px; }
+.flow-step { flex: 1; min-width: 150px; padding: 24px 22px; border-right: 1px solid var(--border); background: var(--white); position: relative; transition: background .2s; }
+.flow-step:last-child { border-right: none; }
+.flow-step:hover { background: var(--accent-light); }
+.flow-n { font-size: .5rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.flow-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 400; color: var(--ink); margin-bottom: 6px; line-height: 1.25; }
+.flow-desc { font-size: .63rem; line-height: 1.7; color: var(--ink-soft); }
+
+/* Tri grid (overview cards) */
+.tri-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 12px; }
+
+/* Outcome metrics */
+.outcome-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 44px; }
+.outcome-cell { padding: 32px 30px; border-right: 1px solid var(--border); background: var(--white); }
+.outcome-cell:last-child { border-right: none; }
+.outcome-n { font-family: 'Fraunces', serif; font-size: 2.4rem; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 8px; }
+.outcome-n em { color: var(--accent); font-style: normal; }
+.outcome-l { font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); line-height: 1.5; }
+
+/* ── Media placeholder (drop real assets in here) ── */
+.media-ph { border: 1.5px dashed var(--ink-faint); border-radius: var(--r); background-color: var(--surface); background-image: repeating-linear-gradient(45deg, rgba(0,0,0,.018) 0, rgba(0,0,0,.018) 1px, transparent 1px, transparent 12px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 28px; min-height: 230px; transition: border-color .25s, background-color .25s; }
+.media-ph:hover { border-color: var(--accent); background-color: var(--accent-light); }
+.media-ph-icon { font-size: 1.6rem; margin-bottom: 12px; opacity: .5; }
+.media-ph-type { font-size: .5rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; font-weight: 500; }
+.media-ph-label { font-size: .66rem; line-height: 1.7; color: var(--ink-soft); max-width: 320px; }
+.media-ph-dim { font-size: .5rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin-top: 10px; }
+.media-ph.fill { height: 100%; border: none; border-left: 1.5px dashed var(--ink-faint); border-radius: 0; }
+.story-block.flip .media-ph.fill { border-left: none; border-right: 1.5px dashed var(--ink-faint); }
+.media-ph.wide { min-height: 400px; }
+.media-ph.short { min-height: 160px; }
+
+/* ── real screenshots — framed on a dark stage so dark UI shots sit intentionally on the light page ── */
+.shot { display: block; max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 28px -12px rgba(0,0,0,.5); }
+/* hero / fill: dark stage filling a story-block media column */
+.shot-fill { height: 100%; min-height: 300px; background: var(--stage); display: flex; align-items: center; justify-content: center; padding: 32px; }
+.shot-fill > .shot { width: auto; max-height: 470px; }
+/* framed card: dark stage image area + light caption */
+.admin-img-card { border-radius: 8px; overflow: hidden; background: var(--white); border: 1px solid var(--border); box-shadow: 0 16px 34px -24px rgba(28,27,25,.5); }
+.admin-img-card > .shot { width: 100%; border-radius: 0; box-shadow: none; }
+.shot-contain { width: 100%; height: 360px; object-fit: contain; background: var(--stage); padding: 24px; border-radius: 0; box-shadow: none; }
+.gallery-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.gallery-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--white); display: flex; flex-direction: column; box-shadow: 0 16px 34px -24px rgba(28,27,25,.5); }
+.gallery-card > .shot { width: 100%; height: 330px; object-fit: contain; background: var(--stage); padding: 22px; border-radius: 0; box-shadow: none; }
+.gallery-label { padding: 12px 16px; background: var(--surface); border-top: 1px solid var(--border); font-size: .56rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.gallery-label b { color: var(--ink); font-weight: 500; }
+.shot-missing { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 200px; border: 1.5px dashed var(--ink-faint); background: var(--surface); background-image: repeating-linear-gradient(45deg, rgba(0,0,0,.018) 0, rgba(0,0,0,.018) 1px, transparent 1px, transparent 12px); color: var(--ink-soft); font-size: .62rem; line-height: 1.6; padding: 28px; }
+.shot-missing::before { content: '⌖  '; color: var(--accent); }
+
+footer { padding: 30px 56px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--white); }
+.f-name { font-family: 'Fraunces', serif; font-weight: 300; font-size: .9rem; color: var(--ink-soft); }
+.f-links { display: flex; gap: 24px; }
+.f-links a { font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
+.f-links a:hover { color: var(--accent); }
+.f-copy { font-size: .56rem; letter-spacing: .1em; color: var(--ink-faint); }
+
+/* ═══ embedded system diagrams ═══ */
+.dgm-frame{ border:1px solid var(--border); border-radius:var(--r); background:var(--white); padding:40px 36px; margin-bottom:12px; overflow-x:auto; }
+.dgm-cap{ font-size:.5rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:28px; display:flex; align-items:center; gap:10px; }
+.dgm-cap::before{ content:''; width:16px; height:1.5px; background:var(--accent); }
+.dgm-col{ display:flex; flex-direction:column; align-items:center; }
+.dgm-row{ display:flex; align-items:center; justify-content:center; flex-wrap:wrap; }
+.dgm-node{ background:var(--white); border:1px solid var(--border); border-radius:var(--r); padding:13px 17px; text-align:center; min-width:128px; max-width:230px; transition:border-color .2s; }
+.dgm-node:hover{ border-color:var(--accent-mid); }
+.dgm-node-k{ font-size:.5rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:5px; }
+.dgm-node-t{ font-size:.7rem; font-weight:500; color:var(--ink); line-height:1.35; }
+.dgm-node-d{ font-size:.58rem; color:var(--ink-soft); line-height:1.6; margin-top:5px; }
+.dgm-node.surface{ background:var(--surface); }
+.dgm-node.accent{ background:var(--accent-light); border-color:var(--accent-mid); }
+.dgm-node.start{ background:var(--ink); border-color:var(--ink); }
+.dgm-node.start .dgm-node-t{ color:var(--white); }
+.dgm-node.start .dgm-node-k{ color:var(--accent); }
+.dgm-node.decision{ background:var(--accent-light); border:1.5px solid var(--accent-mid); border-radius:30px; }
+.dgm-node.ok{ background:var(--green-bg); border-color:var(--green-bd); }
+.dgm-node.ok .dgm-node-k{ color:var(--green); }
+.dgm-node.stop{ background:rgba(220,80,60,.07); border-color:rgba(220,80,60,.3); }
+.dgm-node.stop .dgm-node-k{ color:#D2553C; }
+.dgm-cv{ width:1.5px; height:28px; background:var(--border); position:relative; flex-shrink:0; }
+.dgm-cv::after{ content:''; position:absolute; bottom:-1px; left:50%; transform:translateX(-50%); border-left:4px solid transparent; border-right:4px solid transparent; border-top:6px solid var(--accent); }
+.dgm-cv.lbl{ height:42px; }
+.dgm-cv .tag{ position:absolute; left:12px; top:50%; transform:translateY(-50%); white-space:nowrap; font-size:.5rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); }
+.dgm-ch{ width:38px; height:1.5px; background:var(--border); position:relative; flex-shrink:0; }
+.dgm-ch::after{ content:''; position:absolute; right:-1px; top:50%; transform:translateY(-50%); border-top:4px solid transparent; border-bottom:4px solid transparent; border-left:6px solid var(--accent); }
+.dgm-branch{ display:flex; gap:44px; align-items:flex-start; justify-content:center; }
+.dgm-arm{ display:flex; flex-direction:column; align-items:center; }
+.dgm-armtag{ font-size:.5rem; letter-spacing:.1em; text-transform:uppercase; padding:3px 10px; border-radius:var(--r); margin-bottom:6px; }
+.dgm-armtag.yes{ background:var(--green-bg); color:var(--green); border:1px solid var(--green-bd); }
+.dgm-armtag.no{ background:rgba(220,80,60,.08); color:#D2553C; border:1px solid rgba(220,80,60,.3); }
+.dgm-pillars{ display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; width:100%; }
+.dgm-pillar{ padding:22px 20px; border-right:1px solid var(--border); }
+.dgm-pillar:last-child{ border-right:none; }
+.dgm-pillar-ic{ font-size:1.2rem; margin-bottom:10px; }
+.dgm-pillar-t{ font-family:'Fraunces',serif; font-size:.95rem; margin-bottom:7px; }
+.dgm-pillar-d{ font-size:.6rem; color:var(--ink-soft); line-height:1.65; }
+.dgm-frame table{ width:100%; border-collapse:collapse; font-size:.64rem; }
+.dgm-mx th, .dgm-mx td{ border:1px solid var(--border); padding:12px 15px; text-align:left; }
+.dgm-mx thead th{ background:var(--surface); font-weight:500; font-size:.52rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); }
+.dgm-mx tbody th{ background:var(--white); font-weight:500; color:var(--ink); }
+.dgm-mx td{ color:var(--ink-soft); }
+.dgm-pill{ display:inline-flex; align-items:center; gap:6px; padding:3px 9px; border-radius:20px; font-size:.54rem; white-space:nowrap; }
+.dgm-pill.full{ background:var(--green-bg); color:var(--green); border:1px solid var(--green-bd); }
+.dgm-pill.view{ background:rgba(91,141,239,.1); color:var(--blue); border:1px solid rgba(91,141,239,.3); }
+.dgm-pill.none{ background:rgba(220,80,60,.07); color:#D2553C; border:1px solid rgba(220,80,60,.3); }
+.dgm-dot{ width:7px; height:7px; border-radius:50%; display:inline-block; flex-shrink:0; }
+.dgm-states{ display:flex; align-items:center; justify-content:center; flex-wrap:wrap; }
+.dgm-state{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+.dgm-statechip{ display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:24px; border:1.5px solid var(--border); background:var(--white); font-size:.7rem; font-weight:500; }
+.dgm-statesub{ font-size:.52rem; color:var(--ink-faint); letter-spacing:.06em; text-transform:uppercase; }
+.dgm-lanes{ display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; width:100%; }
+.dgm-laneh{ padding:11px 14px; background:var(--ink); color:var(--white); font-size:.55rem; letter-spacing:.12em; text-transform:uppercase; text-align:center; border-right:1px solid rgba(255,255,255,.12); }
+.dgm-laneh:last-child{ border-right:none; }
+.dgm-seqrow{ display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--border); grid-column:1/-1; }
+.dgm-seqcell{ padding:14px 15px; border-right:1px solid var(--border); display:flex; align-items:center; }
+.dgm-seqcell:last-child{ border-right:none; }
+.dgm-seqcell.empty{ background:var(--surface); }
+.dgm-seqnum{ font-size:.48rem; letter-spacing:.14em; color:var(--accent); margin-bottom:4px; }
+.dgm-seqcell .t{ font-size:.62rem; color:var(--ink); line-height:1.5; }
+.dgm-seqarrow{ justify-content:center; color:var(--accent); font-size:.7rem; }
+.dgm-tree{ font-size:.66rem; line-height:2.05; color:var(--ink-soft); }
+.dgm-tree .root{ font-family:'Fraunces',serif; font-size:.95rem; color:var(--ink); }
+.dgm-tree .br{ color:var(--ink-faint); }
+.dgm-tree b{ color:var(--ink); font-weight:500; }
+.dgm-tree .tag{ display:inline-block; font-size:.5rem; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); background:var(--accent-light); border:1px solid var(--accent-mid); border-radius:var(--r); padding:1px 7px; margin-left:6px; }
+.dgm-cmp th, .dgm-cmp td{ border:1px solid var(--border); padding:15px 17px; vertical-align:top; text-align:left; }
+.dgm-cmp thead th{ background:var(--surface); font-size:.52rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); }
+.dgm-cmp thead th.new{ color:var(--accent); }
+.dgm-cmp tbody th{ background:var(--white); font-weight:500; color:var(--ink); width:140px; font-family:'Fraunces',serif; font-size:.82rem; }
+.dgm-cmp td.old{ color:var(--ink-soft); }
+.dgm-cmp td.new{ color:var(--ink); background:var(--accent-light); }
+.dgm-cmp td b{ color:var(--ink); font-weight:500; }
+.dgm-note{ margin-top:20px; background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:var(--r); padding:15px 19px; font-size:.62rem; line-height:1.8; color:var(--ink-soft); }
+.dgm-note b{ color:var(--ink); font-weight:500; }
+.dgm-note strong{ display:block; font-size:.52rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink); margin-bottom:6px; }
+.dgm-legend{ display:flex; gap:16px; flex-wrap:wrap; margin-top:22px; padding-top:16px; border-top:1px solid var(--border); }
+.dgm-legenditem{ display:flex; align-items:center; gap:7px; font-size:.56rem; color:var(--ink-soft); }
+/* clear vertical request/response sequence */
+.dgm-seq{ display:flex; flex-direction:column; align-items:stretch; max-width:760px; margin:0 auto; }
+.dgm-seqstep{ display:flex; align-items:stretch; border:1px solid var(--border); border-radius:var(--r); overflow:hidden; background:var(--white); }
+.dgm-actor{ flex:0 0 132px; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px 12px; font-size:.55rem; letter-spacing:.1em; text-transform:uppercase; font-weight:500; color:var(--white); }
+.dgm-actor.ui{ background:var(--ink); }
+.dgm-actor.be{ background:var(--accent); }
+.dgm-actor.api{ background:var(--blue); }
+.dgm-act{ padding:13px 18px; display:flex; flex-direction:column; gap:3px; justify-content:center; }
+.dgm-act b{ font-size:.72rem; color:var(--ink); font-weight:500; }
+.dgm-act span{ font-size:.6rem; color:var(--ink-soft); line-height:1.6; }
+.dgm-flowlbl{ align-self:center; font-size:.55rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); padding:7px 0; }
+.dgm-verdict{ font-size:.64rem; color:var(--ink-soft); display:flex; align-items:center; gap:8px; }
+.dgm-verdict + .dgm-verdict{ margin-top:7px; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .page-header { padding: 110px 24px 72px; }
+  .proj-section { padding: 72px 24px; }
+  .proj-toc { padding: 0 24px; overflow-x: auto; }
+  .ph-top { grid-template-columns: 1fr; gap: 36px; }
+  .ph-bottom { grid-template-columns: 1fr 1fr; }
+  .story-block { grid-template-columns: 1fr; }
+  .media-ph.fill { border: 1.5px dashed var(--ink-faint); border-radius: var(--r); }
+  .story-block.flip .media-ph.fill { border: 1.5px dashed var(--ink-faint); }
+  .admin-img-row, .tri-grid, .gallery-row { grid-template-columns: 1fr; }
+  .shot-contain, .gallery-card > .shot { height: auto; }
+  .shot-fill > .shot { max-height: none; }
+  .outcome-grid { grid-template-columns: 1fr 1fr; }
+  .flow-step { border-right: none; border-bottom: 1px solid var(--border); }
+  .flow-step:last-child { border-bottom: none; }
+  footer { flex-direction: column; gap: 16px; text-align: center; }
+  .dgm-frame { padding: 26px 16px; }
+  .dgm-pillars { grid-template-columns: 1fr 1fr; }
+  .dgm-branch { flex-direction: column; gap: 22px; }
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<nav id="nav">
+  <a href="portfolio_7.html" class="nav-logo">Sun Rui Tong<span>.</span></a>
+  <a href="portfolio_7.html" class="nav-back">← Back to portfolio</a>
+</nav>
+
+<!-- ═══════ PAGE HEADER ═══════ -->
+<section class="page-header">
+  <div class="ph-inner">
+    <div class="ph-top">
+      <div>
+        <div class="ph-eyebrow">Sept 2024 – Present · Fintech / Gamification</div>
+        <h1 class="ph-title">From logic<br>to interface —<br><em>end to end.</em></h1>
+      </div>
+      <div class="ph-right">
+        <p class="ph-sub">At Returning.AI, I lead the design of the <b>trader portal</b> and <b>broker admin dashboard</b> — defining feature logic, mapping edge cases, and delivering high-fidelity UI. Three deep projects below: a <b>store redesign</b>, an <b>AI-built quiz analytics product</b>, and a <b>configurable engagement-games platform</b>.</p>
+        <div class="ph-scroll-hint">
+          <span>Scroll to see the work</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ph-bottom reveal">
+      <div class="ph-stat">
+        <div class="ph-stat-n">9<em>+</em></div>
+        <div class="ph-stat-l">Brokerages</div>
+        <div class="ph-stat-desc">Axi, Vantage, OANDA, IronFX and more</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-n">3</div>
+        <div class="ph-stat-l">Flagship projects</div>
+        <div class="ph-stat-desc">Store · Quiz analytics · Engagement games</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-n">2<em>×</em></div>
+        <div class="ph-stat-l">Faster delivery</div>
+        <div class="ph-stat-desc">AI-assisted workflow, not AI-replaced design</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-n">Lead</div>
+        <div class="ph-stat-l">Design role</div>
+        <div class="ph-stat-desc">End-to-end ownership from logic to UI</div>
+      </div>
+    </div>
+
+    <div class="ph-tags reveal" style="transition-delay:.1s">
+      <span class="ph-tag">Product Design</span>
+      <span class="ph-tag">Product Strategy</span>
+      <span class="ph-tag">System Design</span>
+      <span class="ph-tag">Feature Logic Design</span>
+      <span class="ph-tag">AI-Assisted Development</span>
+      <span class="ph-tag">Admin Portal UX</span>
+      <span class="ph-tag">Gamification</span>
+      <span class="ph-tag">End-to-End Design</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<nav class="proj-toc" id="proj-toc">
+  <span class="toc-label">Projects</span>
+  <a href="#store" class="toc-item active">01 — Store Redesign</a>
+  <a href="#games" class="toc-item">02 — Engagement Games</a>
+  <a href="#quiz" class="toc-item">03 — Quiz Log &amp; Analytics</a>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PROJECT 01: STORE REDESIGN
+═══════════════════════════════════════════════════ -->
+<section class="proj-section" id="store" style="background: var(--white)">
+
+  <div class="section-tag reveal">Project 01 · 2025 · Product + System Design</div>
+  <h2 class="section-h2 reveal" style="transition-delay:.08s">Store <em>Redesign</em></h2>
+  <p class="section-sub reveal" style="transition-delay:.14s">The loyalty store let traders browse and claim rewards — but the system underneath couldn't scale. I redesigned it end to end: redemption logic, a permission framework, reward status management, and a cleaner category structure. This is system design as much as it is UI.</p>
+
+  <div class="role-callout reveal" style="transition-delay:.18s">
+    <strong>My scope</strong>
+    I owned the <b>product planning, system logic, and full UI</b> — from the redemption-methods architecture and eligibility rules to every admin panel and trader-facing screen. Only the backend code was written by engineering.
+  </div>
+
+  <!-- Project summary -->
+  <div class="divider-label reveal"><span class="dl-text">Project summary — before vs after</span></div>
+  <div class="story-block reveal">
+    <div class="story-text">
+      <div class="story-eyebrow">At a glance</div>
+      <h3 class="story-h3">One store, <em>rebuilt</em> from the logic up</h3>
+      <p class="story-body">The redesigned store keeps the familiar browse-and-claim surface but adds the layer that was missing: a configurable system for <b>how</b> rewards are claimed, <b>who</b> can claim them, and <b>what state</b> each redemption is in.</p>
+      <p class="story-body">Hero shot and a side-by-side of the old vs new store sit here.</p>
+    </div>
+    <div class="shot-fill">
+      <img class="shot" src="store-assets/new-store-home.png" alt="Redesigned Returning.AI store home — product category grid">
+    </div>
+  </div>
+  <div class="admin-img-row reveal">
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="store-assets/new-product.png" alt="Redesigned product detail — trader-facing">
+      <div class="admin-img-label">Final store · trader-facing</div>
+    </div>
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="store-assets/settings-redemption.png" alt="Broker admin — redemption-method settings">
+      <div class="admin-img-label">Final store · broker admin</div>
+    </div>
+  </div>
+
+  <div class="divider-label reveal"><span class="dl-text">Diagram — old vs new at a glance</span></div>
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 08 · Old vs new — across all four pillars</div>
+    <table class="dgm-cmp">
+      <thead><tr><th>Pillar</th><th>Old store</th><th class="new">New store</th></tr></thead>
+      <tbody>
+        <tr><th>Fulfilment</th><td class="old">One implicit claim; delivery, credit &amp; codes hacked in per client.</td><td class="new"><b>Unlimited configurable redemption methods</b> with custom fields &amp; API-checked conditions.</td></tr>
+        <tr><th>Access</th><td class="old">Flat list of which users / roles can buy.</td><td class="new"><b>No view · view only · full access</b> per role, plus <b>purchase limits</b> (e.g. 2/month).</td></tr>
+        <tr><th>Status</th><td class="old">Manual in-process / completed toggle.</td><td class="new"><b>Configurable status stages</b> by category / product level, with a refund branch.</td></tr>
+        <tr><th>Discovery</th><td class="old">Single flat product list.</td><td class="new"><b>Category IA</b> + search &amp; filter; sale, exclusive &amp; stock states.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Challenge -->
+  <div class="divider-label reveal"><span class="dl-text">The challenge — what was wrong with the old store</span></div>
+  <div class="story-block flip reveal">
+    <div class="story-text surface">
+      <div class="story-eyebrow">The problem</div>
+      <h3 class="story-h3">No logic layer, <em>no control</em></h3>
+      <p class="story-body">Traders could claim rewards, but there was <b>no system for fulfilment</b> — physical delivery, in-app credits, gift codes all had to be hacked in per client. Brokers had <b>no way to gate rewards</b> behind eligibility, and reward states were ambiguous once claimed.</p>
+      <p class="story-body">The pain points and the old system architecture are documented here.</p>
+    </div>
+    <div class="shot-fill">
+      <img class="shot" src="store-assets/old-store-home.png" alt="Old store home — flat product list">
+    </div>
+  </div>
+  <div class="admin-img-row reveal">
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="store-assets/old-product.png" alt="Old product description page">
+      <div class="admin-img-label">Old store · product page</div>
+    </div>
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="store-assets/old-checkout.png" alt="Old checkout — WooCommerce account form">
+      <div class="admin-img-label">Old store · checkout</div>
+    </div>
+  </div>
+  <div class="admin-img-row reveal" style="grid-template-columns:1fr">
+    <div class="admin-img-card">
+      <img class="shot" src="store-assets/old-store-home-2.png" alt="Earlier store design — voucher and category layout">
+      <div class="admin-img-label">Old store · earlier design iteration</div>
+    </div>
+  </div>
+
+  <!-- System redesign -->
+  <div class="divider-label reveal"><span class="dl-text">System redesign — the four pillars</span></div>
+  <div class="thinking-row reveal">
+    <div class="think-chip">
+      <div class="think-icon">🎁</div>
+      <div class="think-text"><strong>Redemption methods</strong>Brokers build methods from scratch — physical delivery, in-app credit, gift codes — each with custom fields and optional eligibility conditions.</div>
+    </div>
+    <div class="think-chip">
+      <div class="think-icon">🔐</div>
+      <div class="think-text"><strong>Permission framework</strong>Eligibility rules gate rewards by trading volume, completed actions, or custom field/API checks — with clear pass, fail, and retry states.</div>
+    </div>
+  </div>
+  <div class="thinking-row reveal">
+    <div class="think-chip">
+      <div class="think-icon">🔄</div>
+      <div class="think-text"><strong>Status management</strong>Every redemption moves through defined states — claimed, processing, fulfilled, failed — visible to both trader and broker.</div>
+    </div>
+    <div class="think-chip">
+      <div class="think-icon">🗂️</div>
+      <div class="think-text"><strong>Category structure</strong>A reworked information architecture so brokers can organise rewards and traders can actually find them.</div>
+    </div>
+  </div>
+
+  <!-- Diagram 01 · System model -->
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 01 · System model — the four pillars</div>
+    <div class="dgm-col">
+      <div class="dgm-node start" style="min-width:200px"><div class="dgm-node-k">Configurable per broker</div><div class="dgm-node-t">Store System</div></div>
+      <div class="dgm-cv"></div>
+    </div>
+    <div class="dgm-pillars">
+      <div class="dgm-pillar"><div class="dgm-pillar-ic">🎁</div><div class="dgm-pillar-t">Redemption Methods</div><div class="dgm-pillar-d">Brokers build claim methods from scratch — physical delivery, account credit, gift codes — each with custom fields &amp; optional eligibility conditions.</div></div>
+      <div class="dgm-pillar"><div class="dgm-pillar-ic">🔐</div><div class="dgm-pillar-t">Permission Framework</div><div class="dgm-pillar-d">Per role: no view / view only / full access, plus a purchase limit (e.g. Bronze 1/mo, Silver 2/mo).</div></div>
+      <div class="dgm-pillar"><div class="dgm-pillar-ic">🔄</div><div class="dgm-pillar-t">Status Management</div><div class="dgm-pillar-d">Configurable order-status stages by category or product level. Visible to both trader and broker.</div></div>
+      <div class="dgm-pillar"><div class="dgm-pillar-ic">🗂️</div><div class="dgm-pillar-t">Category IA</div><div class="dgm-pillar-d">A reworked structure so brokers organise rewards and traders can actually find them.</div></div>
+    </div>
+  </div>
+
+  <!-- Diagram 02 · Trader purchase flow -->
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 02 · Trader purchase flow — end to end</div>
+    <div class="dgm-col">
+      <div class="dgm-node start"><div class="dgm-node-k">Entry</div><div class="dgm-node-t">Browse store category</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Open product detail</div><div class="dgm-node-d">Permission gate → full access · view only · hidden</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Select redemption method</div><div class="dgm-node-d">e.g. Physical Delivery / Credit to Account</div></div>
+      <div class="dgm-cv lbl"><span class="tag">triggers API call</span></div>
+      <div class="dgm-node decision"><div class="dgm-node-k">Check</div><div class="dgm-node-t">Eligibility &amp; purchase limit met?</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-branch">
+        <div class="dgm-arm">
+          <span class="dgm-armtag yes">✓ Eligible</span>
+          <div class="dgm-node ok"><div class="dgm-node-k">Pass</div><div class="dgm-node-t">Fill required fields</div><div class="dgm-node-d">Name · phone · address — compulsory enforced</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-t">Review &amp; confirm</div><div class="dgm-node-d">Summary + redemption details</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node accent"><div class="dgm-node-k">Done</div><div class="dgm-node-t">Purchase confirmed</div><div class="dgm-node-d">Order created → New Purchase</div></div>
+        </div>
+        <div class="dgm-arm">
+          <span class="dgm-armtag no">✗ Not eligible</span>
+          <div class="dgm-node stop"><div class="dgm-node-k">Blocked</div><div class="dgm-node-t">Condition not met</div><div class="dgm-node-d">Shows requirement (e.g. reach level 22) or limit reached</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="dgm-legend">
+      <div class="dgm-legenditem"><span class="dgm-dot" style="background:var(--ink)"></span>Entry / terminal</div>
+      <div class="dgm-legenditem"><span class="dgm-dot" style="background:var(--accent)"></span>Decision</div>
+      <div class="dgm-legenditem"><span class="dgm-dot" style="background:var(--green)"></span>Eligible path</div>
+      <div class="dgm-legenditem"><span class="dgm-dot" style="background:#D2553C"></span>Blocked path</div>
+    </div>
+  </div>
+
+  <!-- Diagram 03 · Redemption-method builder -->
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 03 · Admin — redemption-method builder</div>
+    <div class="dgm-row" style="flex-wrap:nowrap; overflow-x:auto;">
+      <div class="dgm-node start"><div class="dgm-node-k">Settings</div><div class="dgm-node-t">New method</div></div>
+      <div class="dgm-ch"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Identity</div><div class="dgm-node-d">Title · description · icon</div></div>
+      <div class="dgm-ch"></div>
+      <div class="dgm-node surface"><div class="dgm-node-k">Loop ↻</div><div class="dgm-node-t">Add custom fields</div><div class="dgm-node-d">Name · type · required?</div></div>
+      <div class="dgm-ch"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Configure conditions</div><div class="dgm-node-d">Optional — backend API check</div></div>
+      <div class="dgm-ch"></div>
+      <div class="dgm-node accent"><div class="dgm-node-k">Publish</div><div class="dgm-node-t">Available on products</div></div>
+    </div>
+    <div class="dgm-note"><strong>Condition logic</strong>Conditions are optional gates a trader must satisfy (e.g. <b>user level ≥ 22</b>), evaluated live via a backend API at runtime. Each field can be marked <b>compulsory</b>; brokers can attach <b>unlimited methods</b> per store.</div>
+  </div>
+
+  <!-- Diagram 04 · Eligibility sequence -->
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 04 · Eligibility check — runtime sequence</div>
+    <div class="dgm-seq">
+      <div class="dgm-seqstep">
+        <div class="dgm-actor ui">Trader UI</div>
+        <div class="dgm-act"><b>Selects a redemption method</b><span>Taps e.g. Physical Delivery or Credit to Account on the product</span></div>
+      </div>
+      <div class="dgm-flowlbl">↓ &nbsp;sends eligibility request</div>
+      <div class="dgm-seqstep">
+        <div class="dgm-actor be">Store Backend</div>
+        <div class="dgm-act"><b>Checks role access &amp; purchase limit</b><span>Confirms the trader's role may buy and the monthly limit isn't reached</span></div>
+      </div>
+      <div class="dgm-flowlbl">↓ &nbsp;queries the condition</div>
+      <div class="dgm-seqstep">
+        <div class="dgm-actor api">Condition API</div>
+        <div class="dgm-act"><b>Evaluates the condition</b><span>e.g. is the user's level ≥ 22? — returns pass / fail</span></div>
+      </div>
+      <div class="dgm-flowlbl">↑ &nbsp;returns result</div>
+      <div class="dgm-seqstep">
+        <div class="dgm-actor be">Store Backend</div>
+        <div class="dgm-act"><b>Resolves eligibility</b><span>Combines role access + purchase limit + condition into one verdict</span></div>
+      </div>
+      <div class="dgm-flowlbl">↑ &nbsp;responds to the UI</div>
+      <div class="dgm-seqstep">
+        <div class="dgm-actor ui">Trader UI</div>
+        <div class="dgm-act">
+          <div class="dgm-verdict"><span class="dgm-armtag yes">✓ Eligible</span> unlock the purchase form</div>
+          <div class="dgm-verdict"><span class="dgm-armtag no">✗ Not eligible</span> show the requirement &amp; limit (e.g. 1 / 5 this month)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diagram 05 · Permission matrix -->
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 05 · Permission framework — access matrix</div>
+    <table class="dgm-mx">
+      <thead><tr><th>Role</th><th>Access level</th><th>Can view</th><th>Can purchase</th><th>Purchase limit</th></tr></thead>
+      <tbody>
+        <tr><th>Guest / below tier</th><td><span class="dgm-pill none">No access</span></td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><th>Bronze</th><td><span class="dgm-pill view">View only</span></td><td>Yes</td><td>No</td><td>—</td></tr>
+        <tr><th>Silver</th><td><span class="dgm-pill full">Full access</span></td><td>Yes</td><td>Yes</td><td>1 / month</td></tr>
+        <tr><th>Gold</th><td><span class="dgm-pill full">Full access</span></td><td>Yes</td><td>Yes</td><td>2 / month</td></tr>
+        <tr><th>Captain · Super Spender</th><td><span class="dgm-pill full">Full access</span></td><td>Yes</td><td>Yes</td><td>5 / month</td></tr>
+      </tbody>
+    </table>
+    <div class="dgm-note"><strong>Three access states</strong><b>No access</b> — product hidden entirely. <b>View only</b> — visible with a "View Only" badge, purchase disabled. <b>Full access</b> — purchasable within the role's monthly limit (e.g. "1 / 5 of this month · Resets 1 May 2026").</div>
+  </div>
+
+  <!-- Diagram 06 · Order-status lifecycle -->
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 06 · Order-status lifecycle</div>
+    <div class="dgm-states">
+      <div class="dgm-state"><div class="dgm-statechip"><span class="dgm-dot" style="background:#9C9890"></span>New Purchase</div><div class="dgm-statesub">Order received</div></div>
+      <div class="dgm-ch" style="width:54px"></div>
+      <div class="dgm-state"><div class="dgm-statechip"><span class="dgm-dot" style="background:var(--amber)"></span>In Progress</div><div class="dgm-statesub">Processing</div></div>
+      <div class="dgm-ch" style="width:54px"></div>
+      <div class="dgm-state"><div class="dgm-statechip"><span class="dgm-dot" style="background:var(--green)"></span>Completed</div><div class="dgm-statesub">Fulfilled</div></div>
+    </div>
+    <div class="dgm-col" style="margin-top:6px">
+      <div class="dgm-cv" style="height:22px"></div>
+      <div class="dgm-node stop" style="min-width:170px"><div class="dgm-node-k">Branch · any stage</div><div class="dgm-node-t"><span class="dgm-dot" style="background:var(--blue);margin-right:6px"></span>Refunded</div><div class="dgm-node-d">Trader requests refund → terminal</div></div>
+    </div>
+    <div class="dgm-note"><strong>Configurable by category or product level</strong>The four stages are the <b>default set</b>. Brokers can <b>add / rename statuses</b> and map each stage to display labels — e.g. <b>New Purchase</b> shown as "Order Received", <b>In Progress</b> as "Processing Order". Different categories / tiers can carry different configs.</div>
+  </div>
+
+  <!-- Diagram 07 · Information architecture -->
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 07 · Store information architecture</div>
+    <div class="dgm-tree">
+      <div class="root">🏬 Store</div>
+      <div><span class="br">├─</span> <b>Tabs:</b> Store · Purchased</div>
+      <div><span class="br">├─</span> <b>Search &amp; filter</b></div>
+      <div><span class="br">└─</span> <b>Categories</b> <span class="tag">Apple Products · For Ladies · Subscriptions · Rewards · custom…</span></div>
+      <div style="padding-left:26px"><span class="br">└─</span> <b>Products</b></div>
+      <div style="padding-left:52px"><span class="br">├─</span> Redemption methods <span class="tag">inherited from category</span></div>
+      <div style="padding-left:52px"><span class="br">├─</span> Permission config <span class="tag">per role: access + limit</span></div>
+      <div style="padding-left:52px"><span class="br">├─</span> Status config <span class="tag">by category / product level</span></div>
+      <div style="padding-left:52px"><span class="br">└─</span> Stock · price · sale · exclusivity</div>
+      <div style="height:12px"></div>
+      <div class="root">⚙️ Store Settings <span style="font-size:.58rem;color:var(--ink-faint)">(admin)</span></div>
+      <div><span class="br">├─</span> Redemption Methods builder</div>
+      <div><span class="br">├─</span> Permission framework</div>
+      <div><span class="br">├─</span> Product Statuses</div>
+      <div><span class="br">└─</span> Categories</div>
+    </div>
+  </div>
+
+  <!-- Built & shipped — real screens -->
+  <div class="divider-label reveal"><span class="dl-text">Built &amp; shipped — the real screens</span></div>
+  <div class="gallery-row reveal">
+    <div class="gallery-card"><img class="shot" src="store-assets/redemption-select.png" alt="Trader selecting a redemption method"><div class="gallery-label"><b>Redemption methods</b> · trader picks how to claim</div></div>
+    <div class="gallery-card"><img class="shot" src="store-assets/eligibility-check.png" alt="Live eligibility check result"><div class="gallery-label"><b>Eligibility check</b> · live API condition result</div></div>
+  </div>
+  <div class="gallery-row reveal">
+    <div class="gallery-card"><img class="shot" src="store-assets/permission-limit.png" alt="Product with full access and monthly purchase limit"><div class="gallery-label"><b>Permission &amp; limits</b> · access + monthly cap</div></div>
+    <div class="gallery-card"><img class="shot" src="store-assets/new-checkout.png" alt="Checkout with required redemption fields"><div class="gallery-label"><b>Checkout</b> · required redemption fields</div></div>
+  </div>
+  <div class="gallery-row reveal">
+    <div class="gallery-card"><img class="shot" src="store-assets/purchase-confirmation.png" alt="Purchase confirmation summary"><div class="gallery-label"><b>Confirmation</b> · review before claim</div></div>
+    <div class="gallery-card"><img class="shot" src="store-assets/order-status.png" alt="Order status lifecycle tracker"><div class="gallery-label"><b>Order status</b> · lifecycle tracking</div></div>
+  </div>
+  <div class="gallery-row reveal">
+    <div class="gallery-card"><img class="shot" src="store-assets/settings-statuses.png" alt="Admin product-status configuration"><div class="gallery-label"><b>Status config</b> · admin defines stages</div></div>
+    <div class="gallery-card"><img class="shot" src="store-assets/order-voucher.png" alt="Order detail with voucher and redemption option"><div class="gallery-label"><b>Order detail</b> · voucher &amp; redemption option</div></div>
+  </div>
+  <div class="admin-img-row reveal" style="grid-template-columns:1fr">
+    <div class="admin-img-card">
+      <img class="shot" src="store-assets/store-testing.png" alt="Store live in the testing environment">
+      <div class="admin-img-label">Live in testing · pending production</div>
+    </div>
+  </div>
+
+  <!-- Design process -->
+  <div class="divider-label reveal"><span class="dl-text">Design process — from exploration to migration</span></div>
+  <div class="flow reveal">
+    <div class="flow-step">
+      <div class="flow-n">Step 01</div>
+      <div class="flow-title">Claude</div>
+      <div class="flow-desc">Exploration — pressure-test logic, map edge cases, draft the system model.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-n">Step 02</div>
+      <div class="flow-title">Figma</div>
+      <div class="flow-desc">UX refinement — translate the logic into flows and high-fidelity screens.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-n">Step 03</div>
+      <div class="flow-title">Prototype</div>
+      <div class="flow-desc">Validation — test interactions and eligibility states before build.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-n">Step 04</div>
+      <div class="flow-title">Development</div>
+      <div class="flow-desc">Migration — hand off specs and migrate the existing store onto the new system.</div>
+    </div>
+  </div>
+  <div class="admin-img-row reveal" style="grid-template-columns:1fr">
+    <div class="admin-img-card">
+      <img class="shot" src="store-assets/ai-planning-1.png" alt="Figma Make — AI-assisted store design exploration">
+      <div class="admin-img-label">Figma Make · AI-assisted store design</div>
+    </div>
+  </div>
+
+  <!-- AI-assisted workflow -->
+  <div class="divider-label reveal"><span class="dl-text">AI-assisted workflow</span></div>
+  <div class="story-block reveal">
+    <div class="story-text">
+      <div class="story-eyebrow">How AI fits in</div>
+      <h3 class="story-h3">AI for <em>logic</em>, not pixels</h3>
+      <p class="story-body">Claude becomes a thinking partner for the hard part — the system logic, the edge cases, the permission rules — while design judgement and the final UI stay with me. The result is faster, more rigorous specs.</p>
+      <p class="story-body">A workflow infographic and the AI tooling stack go here.</p>
+    </div>
+    <div class="shot-fill">
+      <img class="shot" src="store-assets/ai-planning-2.png" alt="AI-assisted design collaboration building the store UI">
+    </div>
+  </div>
+
+  <!-- Outcome -->
+  <div class="divider-label reveal"><span class="dl-text">Outcome</span></div>
+  <div class="outcome-grid reveal">
+    <div class="outcome-cell"><div class="outcome-n">∞</div><div class="outcome-l">Redemption methods per broker</div></div>
+    <div class="outcome-cell"><div class="outcome-n">4</div><div class="outcome-l">System pillars redesigned</div></div>
+    <div class="outcome-cell"><div class="outcome-n">0</div><div class="outcome-l">Per-client fulfilment hacks needed</div></div>
+    <div class="outcome-cell"><div class="outcome-n">2<em>×</em></div><div class="outcome-l">Faster delivery via AI workflow</div></div>
+  </div>
+  <div class="thinking-row reveal">
+    <div class="think-chip">
+      <div class="think-icon">📈</div>
+      <div class="think-text"><strong>Improvements</strong>Add the before/after metrics and the improvements summary here once available.</div>
+    </div>
+    <div class="think-chip">
+      <div class="think-icon">💡</div>
+      <div class="think-text"><strong>Key learnings</strong>Designing the logic first made the UI almost write itself — and made migration far less risky.</div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PROJECT 02: ENGAGEMENT GAMES
+═══════════════════════════════════════════════════ -->
+<section class="proj-section" id="games" style="background: var(--surface)">
+
+  <div class="section-tag reveal">Project 02 · Product + System Design · Mini-Games</div>
+  <h2 class="section-h2 reveal" style="transition-delay:.08s">Configurable <em>Engagement Games</em></h2>
+  <p class="section-sub reveal" style="transition-delay:.14s">Three engagement mini-games on the platform — <b>World Cup Prediction</b>, <b>Spin the Wheel</b>, and <b>Quizzes</b>. Each shipped differently: one in a week with no Figma, one hand-designed before AI planning had matured, one built without AI and wired into our milestones. I owned the product logic, admin configuration, and trader-facing experience for all three.</p>
+
+  <div class="role-callout reveal" style="transition-delay:.18s">
+    <strong>My scope</strong>
+    For each game I designed the <b>admin configuration</b> and the <b>trader-facing experience</b> end to end — the prediction lifecycle, the Spin the Wheel system built on our <b>conditions logic</b>, and the quiz engine integrated with our <b>milestones</b> feature.
+  </div>
+
+  <!-- Platform overview -->
+  <div class="divider-label reveal"><span class="dl-text">Overview — one platform, many games</span></div>
+  <div class="tri-grid reveal">
+    <div class="think-chip" style="flex-direction:column;align-items:flex-start">
+      <div class="think-icon">⚽</div>
+      <div class="think-text"><strong>World Cup Prediction</strong>Bet the winner &amp; score before kickoff; correct calls earn rewards. No Figma · built in ~1 week.</div>
+    </div>
+    <div class="think-chip" style="flex-direction:column;align-items:flex-start">
+      <div class="think-icon">🎡</div>
+      <div class="think-text"><strong>Spin the Wheel</strong>Missions earn spins; spins win weighted prizes; streaks multiply. Hand-designed on our conditions logic.</div>
+    </div>
+    <div class="think-chip" style="flex-direction:column;align-items:flex-start">
+      <div class="think-icon">❓</div>
+      <div class="think-text"><strong>Quizzes</strong>Universal or knowledge mode, single/multi-select, milestone-linked. Built without AI.</div>
+    </div>
+  </div>
+  <div class="admin-img-row reveal" style="grid-template-columns:1fr">
+    <div class="admin-img-card">
+      <img class="shot" src="games-assets/wc-home.png" alt="Mini Games hub — All Mini Games, Spin the Wheel, Quizzes, Match Predictions tabs">
+      <div class="admin-img-label">The mini-games hub · all three games in one place</div>
+    </div>
+  </div>
+
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 01 · Mini-games overview</div>
+    <div class="dgm-col">
+      <div class="dgm-node start" style="min-width:240px"><div class="dgm-node-k">Platform · engagement</div><div class="dgm-node-t">Mini-Games</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-branch">
+        <div class="dgm-arm">
+          <div class="dgm-node accent"><div class="dgm-node-t">⚽ World Cup Prediction</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-t">Predict winner + exact score</div><div class="dgm-node-d">Correct calls earn rewards</div></div>
+          <div class="dgm-cv"></div>
+          <span class="dgm-armtag" style="background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-mid)">No Figma · ~1 week</span>
+        </div>
+        <div class="dgm-arm">
+          <div class="dgm-node accent"><div class="dgm-node-t">🎡 Spin the Wheel</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-t">Missions → spins → weighted prizes</div><div class="dgm-node-d">Streaks multiply rewards</div></div>
+          <div class="dgm-cv"></div>
+          <span class="dgm-armtag" style="background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-mid)">Hand-designed · conditions logic</span>
+        </div>
+        <div class="dgm-arm">
+          <div class="dgm-node accent"><div class="dgm-node-t">❓ Quizzes</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-t">Universal / Knowledge mode</div><div class="dgm-node-d">Single / multi-select questions</div></div>
+          <div class="dgm-cv"></div>
+          <span class="dgm-armtag" style="background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-mid)">No AI · milestone-linked</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- World Cup Prediction -->
+  <div class="divider-label reveal"><span class="dl-text">World Cup Prediction · no Figma, shipped in a week</span></div>
+  <div class="story-block reveal">
+    <div class="story-text">
+      <div class="story-eyebrow">Event-driven · ideation → ship in ~1 week</div>
+      <h3 class="story-h3">Bet the winner, <em>call the score</em></h3>
+      <p class="story-body">Admins set the two countries, the <b>prediction deadline</b>, the <b>score basis</b> and the <b>rewards</b>. Traders predict who wins and the exact score before submissions lock. When the match ends, everyone who called it correctly is paid out automatically.</p>
+      <p class="story-body">Two reward tiers: <b>correct winning team</b>, and a bigger payout for the <b>exact score</b>.</p>
+    </div>
+    <div class="shot-fill">
+      <img class="shot" src="games-assets/wc-predict.png" alt="World Cup prediction modal — user picks winner and score">
+    </div>
+  </div>
+  <div class="admin-img-row reveal">
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="games-assets/wc-settings.png" alt="Admin — Edit Match Prediction: teams, kickoff, submissions lock, rewards">
+      <div class="admin-img-label">Admin · set teams, deadline &amp; rewards</div>
+    </div>
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="games-assets/wc-result.png" alt="Result modal — perfect call, reward earned">
+      <div class="admin-img-label">Result · payout for a correct call</div>
+    </div>
+  </div>
+
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 02 · Match-prediction lifecycle</div>
+    <div class="dgm-col">
+      <div class="dgm-node start"><div class="dgm-node-k">Admin</div><div class="dgm-node-t">Set up the match</div><div class="dgm-node-d">Team A vs Team B · deadline · score basis · rewards</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node"><div class="dgm-node-t">User predicts winner + exact score</div><div class="dgm-node-d">While the window is open</div></div>
+      <div class="dgm-cv lbl"><span class="tag">submissions lock at deadline</span></div>
+      <div class="dgm-node surface"><div class="dgm-node-t">Match plays out</div></div>
+      <div class="dgm-cv lbl"><span class="tag">compare prediction vs result</span></div>
+      <div class="dgm-node decision"><div class="dgm-node-k">Judge</div><div class="dgm-node-t">Did they call it?</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-branch">
+        <div class="dgm-arm">
+          <span class="dgm-armtag yes">✓ Correct</span>
+          <div class="dgm-node ok"><div class="dgm-node-t">Winning team → reward</div><div class="dgm-node-d">+ exact score → bonus reward</div></div>
+        </div>
+        <div class="dgm-arm">
+          <span class="dgm-armtag no">✗ Missed</span>
+          <div class="dgm-node stop"><div class="dgm-node-t">No reward</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spin the Wheel -->
+  <div class="divider-label reveal"><span class="dl-text">Spin the Wheel · hand-designed on our conditions logic</span></div>
+  <div class="story-block flip reveal">
+    <div class="story-text surface">
+      <div class="story-eyebrow">Built before AI planning matured — all me</div>
+      <h3 class="story-h3">Missions, spins, streaks, <em>history</em></h3>
+      <p class="story-body">A complex system riding on the platform's <b>conditions logic</b>. Traders <b>complete missions to earn spins</b>, spin to win <b>weighted prizes</b>, and build <b>streaks</b> that multiply rewards — with a <b>spin history</b> tracking spins earned and used.</p>
+      <p class="story-body">I planned and designed the whole thing — every admin configuration and the entire user front — from wheel details and prize odds to how each section is displayed.</p>
+    </div>
+    <div class="shot-fill">
+      <img class="shot" src="games-assets/spin-home.png" alt="Spin the Wheel — user front with wheel, spin history, streaks and missions">
+    </div>
+  </div>
+  <div class="admin-img-row reveal">
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="games-assets/spin-config.png" alt="Admin — wheel settings, prizes and styles configuration">
+      <div class="admin-img-label">Admin · wheel details, missions &amp; prizes</div>
+    </div>
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="games-assets/spin-settings.png" alt="Admin — dashboard layout configuration for each section">
+      <div class="admin-img-label">Admin · configure each section's layout</div>
+    </div>
+  </div>
+
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 03 · Spin the Wheel — admin configuration</div>
+    <div class="dgm-col">
+      <div class="dgm-node start" style="min-width:200px"><div class="dgm-node-t">Create a wheel</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-branch">
+        <div class="dgm-arm">
+          <div class="dgm-node accent"><div class="dgm-node-t">Wheel details</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-d">Name · description · missions to earn a spin · who may play (permission)</div></div>
+        </div>
+        <div class="dgm-arm">
+          <div class="dgm-node accent"><div class="dgm-node-t">Prizes</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-d">Prize set · win probability per prize · how prizes are displayed</div></div>
+        </div>
+        <div class="dgm-arm">
+          <div class="dgm-node accent"><div class="dgm-node-t">Appearance</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-d">Which sections show &amp; their layout · styles, so clients theme the wheel</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 04 · Spin the Wheel — user loop</div>
+    <div class="dgm-row" style="flex-wrap:nowrap; overflow-x:auto;">
+      <div class="dgm-node start"><div class="dgm-node-t">Complete missions</div></div>
+      <div class="dgm-ch"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Earn spins</div></div>
+      <div class="dgm-ch"></div>
+      <div class="dgm-node accent"><div class="dgm-node-t">Spin the wheel</div></div>
+      <div class="dgm-ch"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Win a weighted prize</div></div>
+      <div class="dgm-ch"></div>
+      <div class="dgm-node surface"><div class="dgm-node-t">Streak multiplier</div><div class="dgm-node-d">boosts the reward</div></div>
+      <div class="dgm-ch"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Logged in spin history</div></div>
+    </div>
+    <div class="dgm-note"><strong>Built on the platform's conditions logic</strong>Missions, play <b>permission</b> and <b>streaks</b> are all condition-driven — the same rules engine used elsewhere on the platform, reused to gate and reward spins.</div>
+  </div>
+
+  <!-- Quiz Game -->
+  <div class="divider-label reveal"><span class="dl-text">Quizzes · built without AI, wired into milestones</span></div>
+  <div class="story-block reveal">
+    <div class="story-text">
+      <div class="story-eyebrow">Two modes · single &amp; multi-select</div>
+      <h3 class="story-h3">Score it, or <em>just play it</em></h3>
+      <p class="story-body">Quizzes run in <b>knowledge mode</b> (scored, with a passing mark) or <b>universal mode</b> (no score, completion only). Admins configure <b>attempts</b>, the <b>scoring system</b>, and the questions — each <b>single-select</b> or <b>multi-select</b>.</p>
+      <p class="story-body">Completing a quiz feeds the platform's <b>milestones</b> feature, so traders earn rewards for finishing.</p>
+    </div>
+    <div class="shot-fill">
+      <img class="shot" src="games-assets/quiz-question.png" alt="User taking a quiz — question with single-select options">
+    </div>
+  </div>
+  <div class="admin-img-row reveal">
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="games-assets/quiz-settings.png" alt="Admin — Edit Quiz: passing mark, questions, single/multi-select options">
+      <div class="admin-img-label">Admin · modes, attempts, scoring &amp; questions</div>
+    </div>
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="games-assets/quiz-modal.png" alt="Quiz start modal showing attempts remaining">
+      <div class="admin-img-label">User · start screen with attempts</div>
+    </div>
+  </div>
+
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 05 · Quiz flow &amp; modes</div>
+    <div class="dgm-col">
+      <div class="dgm-node start"><div class="dgm-node-k">Admin</div><div class="dgm-node-t">Configure the quiz</div><div class="dgm-node-d">Mode · attempts · scoring · single / multi-select questions</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node"><div class="dgm-node-t">User opens quiz</div><div class="dgm-node-d">Within remaining attempts</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Answer the questions</div></div>
+      <div class="dgm-cv lbl"><span class="tag">which mode?</span></div>
+      <div class="dgm-branch">
+        <div class="dgm-arm">
+          <span class="dgm-armtag" style="background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-mid)">Knowledge mode</span>
+          <div class="dgm-node"><div class="dgm-node-t">Scored vs passing mark</div></div>
+        </div>
+        <div class="dgm-arm">
+          <span class="dgm-armtag" style="background:rgba(91,141,239,.1);color:var(--blue);border:1px solid rgba(91,141,239,.3)">Universal mode</span>
+          <div class="dgm-node"><div class="dgm-node-t">No score · completion only</div></div>
+        </div>
+      </div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node accent"><div class="dgm-node-k">Integrated</div><div class="dgm-node-t">Completion → milestone reward</div></div>
+    </div>
+  </div>
+
+  <!-- How each was built -->
+  <div class="divider-label reveal"><span class="dl-text">How each game was built</span></div>
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 06 · Three games, three build approaches</div>
+    <table class="dgm-mx">
+      <thead><tr><th>Game</th><th>Build approach</th><th>What's distinctive</th></tr></thead>
+      <tbody>
+        <tr><th>⚽ World Cup Prediction</th><td>No Figma — ideation to product in ~1 week</td><td>Event-driven; two reward tiers (winning team + exact score)</td></tr>
+        <tr><th>🎡 Spin the Wheel</th><td>Hand-planned &amp; designed before AI planning had matured</td><td>Complex system on the platform's conditions logic — missions, weighted prizes, streaks</td></tr>
+        <tr><th>❓ Quizzes</th><td>Built without AI implementation</td><td>Universal / knowledge modes; single &amp; multi-select; milestone-integrated</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="thinking-row reveal">
+    <div class="think-chip">
+      <div class="think-icon">🧩</div>
+      <div class="think-text"><strong>Shared platform threads</strong>All three reuse the platform's reward and conditions engines — Spin the Wheel leans on them most, for missions, permission &amp; streaks.</div>
+    </div>
+    <div class="think-chip">
+      <div class="think-icon">🎯</div>
+      <div class="think-text"><strong>End-to-end ownership</strong>Product logic, admin configuration and the trader-facing experience for every game — from edge cases to final UI.</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     PROJECT 03: QUIZ LOG & QUIZ ANALYTICS  (FEATURED)
+═══════════════════════════════════════════════════ -->
+<section class="proj-section" id="quiz" style="background: var(--white)">
+
+  <div class="section-tag reveal">Project 03 · Featured · AI-Assisted End-to-End Product Creation</div>
+  <h2 class="section-h2 reveal" style="transition-delay:.08s">Quiz Log &amp; <em>Quiz Analytics</em></h2>
+  <p class="section-sub reveal" style="transition-delay:.14s">A complete product — built end to end with an AI-assisted, multi-agent workflow. From the problem and a planning doc, through architecture and local development, to a shipped quiz logging system and an analytics dashboard. I drove every layer: product, UX, system, and implementation logic.</p>
+
+  <div class="role-callout reveal" style="transition-delay:.18s">
+    <strong>Why it's featured · no Figma</strong>
+    This is the clearest example of how I work now. There were <b>no Figma designs</b> — I briefed the feature in <b>plain language with reference screenshots</b>, planned it with <b>Codex sub-agents</b>, built it locally, then ran a <b>PM · UX/UI · Dev · QA</b> agent review on localhost before a human dev did the final code review and backend refinement. Design and engineering collapse into one loop.
+  </div>
+
+  <!-- Problem -->
+  <div class="divider-label reveal"><span class="dl-text">The problem — why logs &amp; analytics were needed</span></div>
+  <div class="story-block reveal">
+    <div class="story-text">
+      <div class="story-eyebrow">The gap</div>
+      <h3 class="story-h3">Quizzes ran <em>blind</em></h3>
+      <p class="story-body">Brokers were running quiz games but had <b>no visibility</b> into what happened — who played, what they answered, how the quiz performed. There was no log to audit individual activity and no analytics to read engagement at a glance.</p>
+      <p class="story-body">Two surfaces close the gap: a <b>log</b> to audit every play, and an <b>analytics</b> view to read engagement at a glance.</p>
+    </div>
+    <div class="shot-fill">
+      <img class="shot" src="quiz-assets/quiz-analytics-entry.png" alt="Quiz admin — Edit Quiz screen with the Analytics entry point">
+    </div>
+  </div>
+
+  <!-- Feature map -->
+  <div class="divider-label reveal"><span class="dl-text">Feature map — one feature, two surfaces</span></div>
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 01 · Feature map — logs + analytics</div>
+    <div class="dgm-col">
+      <div class="dgm-node start" style="min-width:240px"><div class="dgm-node-k">One quiz feature</div><div class="dgm-node-t">Quiz Log &amp; Analytics</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-branch">
+        <div class="dgm-arm">
+          <div class="dgm-node accent"><div class="dgm-node-t">Quiz Log</div><div class="dgm-node-d">Audit individual activity</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-t">Games log view</div><div class="dgm-node-d">Every submission · open to view &amp; amend a response</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-t">User log view</div><div class="dgm-node-d">Per user: attempts used / remaining · best score</div></div>
+        </div>
+        <div class="dgm-arm">
+          <div class="dgm-node accent"><div class="dgm-node-t">Quiz Analytics</div><div class="dgm-node-d">Read engagement at a glance</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-t">Per-question responses</div><div class="dgm-node-d">Pie chart · % share per option · correct answer</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-t">Engagement insight</div><div class="dgm-node-d">Which option users pick more</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Planning -->
+  <div class="divider-label reveal"><span class="dl-text">Planning — from problem to development</span></div>
+  <div class="flow reveal">
+    <div class="flow-step"><div class="flow-n">01</div><div class="flow-title">Explain + screenshots</div><div class="flow-desc">Plain-language brief of what I want — no Figma.</div></div>
+    <div class="flow-step"><div class="flow-n">02</div><div class="flow-title">Codex sub-agents</div><div class="flow-desc">Break down &amp; sequence the task.</div></div>
+    <div class="flow-step"><div class="flow-n">03</div><div class="flow-title">Build locally</div><div class="flow-desc">Implement a working version.</div></div>
+    <div class="flow-step"><div class="flow-n">04</div><div class="flow-title">Multi-agent review</div><div class="flow-desc">PM · UX/UI · Dev · QA on localhost.</div></div>
+    <div class="flow-step"><div class="flow-n">05</div><div class="flow-title">Dev code review</div><div class="flow-desc">Refine the backend implementation.</div></div>
+    <div class="flow-step"><div class="flow-n">06</div><div class="flow-title">Ship</div><div class="flow-desc">Release to production.</div></div>
+  </div>
+  <div class="admin-img-row reveal">
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="quiz-assets/quiz-prompt.png" alt="Codex prompt — the plain-language brief for quiz analytics">
+      <div class="admin-img-label">Codex prompt · quiz analytics brief</div>
+    </div>
+    <div class="admin-img-card">
+      <img class="shot shot-contain" src="quiz-assets/quiz-plan.png" alt="Codex planning document for the quiz log">
+      <div class="admin-img-label">Codex plan · quiz log</div>
+    </div>
+  </div>
+
+  <!-- Quiz Logs -->
+  <div class="divider-label reveal"><span class="dl-text">Quiz Logs</span></div>
+  <div class="story-block flip reveal">
+    <div class="story-text surface">
+      <div class="story-eyebrow">Audit &amp; inspect</div>
+      <h3 class="story-h3">Every play, <em>filterable</em></h3>
+      <p class="story-body">Two views serve different jobs. The <b>games log</b> tracks every submission — open one to see the user's attempt and exact response, and <b>amend</b> their answers against the answer key. The <b>user log</b> tracks one user's performance on a quiz: attempts used / remaining, and best score.</p>
+      <p class="story-body">Showcasing: every submission · exact responses · admin amend · per-user performance.</p>
+    </div>
+    <div class="shot-fill">
+      <img class="shot" src="quiz-assets/quiz-log-modal.png" alt="Quiz User Details — attempts, best score, answer key and edit">
+    </div>
+  </div>
+
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 02 · Quiz Log — two views</div>
+    <div class="dgm-col">
+      <div class="dgm-node start" style="min-width:200px"><div class="dgm-node-t">Quiz Log</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-branch">
+        <div class="dgm-arm">
+          <span class="dgm-armtag" style="background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-mid)">Games log view</span>
+          <div class="dgm-node"><div class="dgm-node-t">All submissions</div><div class="dgm-node-d">Every attempt, across all users</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-t">Open a submission</div><div class="dgm-node-d">See the user's attempt &amp; exact response</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node accent"><div class="dgm-node-t">Amend answer / score</div><div class="dgm-node-d">Admin corrects against the answer key</div></div>
+        </div>
+        <div class="dgm-arm">
+          <span class="dgm-armtag" style="background:rgba(91,141,239,.1);color:var(--blue);border:1px solid rgba(91,141,239,.3)">User log view</span>
+          <div class="dgm-node"><div class="dgm-node-t">Select user + quiz</div></div>
+          <div class="dgm-cv"></div>
+          <div class="dgm-node"><div class="dgm-node-t">Performance summary</div><div class="dgm-node-d">Attempts used / remaining · best score · last completed</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz Analytics -->
+  <div class="divider-label reveal"><span class="dl-text">Quiz Analytics</span></div>
+  <div class="story-block reveal">
+    <div class="story-text">
+      <div class="story-eyebrow">Read it at a glance</div>
+      <h3 class="story-h3">From raw logs to <em>insight</em></h3>
+      <p class="story-body">Modelled on <b>Google Forms responses</b>: every question gets its own section with a <b>pie chart</b> and each option's <b>share of total selections</b>, with the correct answer marked. It answers the planning questions directly — are users engaging, and which option do they pick more?</p>
+      <p class="story-body">Showcasing: per-question pie charts · % share · correct answer · engagement read.</p>
+    </div>
+    <div class="shot-fill">
+      <img class="shot" src="quiz-assets/quiz-analytics-modal.png" alt="Quiz Analytics modal — per-question pie charts with response percentages">
+    </div>
+  </div>
+
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 03 · Quiz Analytics — how responses aggregate</div>
+    <div class="dgm-col">
+      <div class="dgm-node start"><div class="dgm-node-k">Admin</div><div class="dgm-node-t">Edit Quiz → ⋯ menu → Analytics</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Open Analytics modal</div><div class="dgm-node-d">Shows total response count</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node surface"><div class="dgm-node-k">Aggregate</div><div class="dgm-node-t">Gather all submissions</div></div>
+      <div class="dgm-cv lbl"><span class="tag">for each question ↻</span></div>
+      <div class="dgm-node"><div class="dgm-node-t">Tally selections per option</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Compute % share of total</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Render pie + option rows</div><div class="dgm-node-d">✓ correct answer marked</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node accent"><div class="dgm-node-k">Insight</div><div class="dgm-node-t">Engagement &amp; most-picked option</div></div>
+    </div>
+    <div class="dgm-note"><strong>Like Google Forms responses</strong>Each question is its own section — a pie chart with every option's <b>share of total selections</b>. Built to answer planning questions such as <b>"Are you interested in trading?"</b> or <b>"Would you trade more if we ran learning classes?"</b> — readable at a glance.</div>
+  </div>
+
+  <!-- How it was built -->
+  <div class="divider-label reveal"><span class="dl-text">How it was built — no Figma, agents in the loop</span></div>
+  <div class="dgm-frame reveal">
+    <div class="dgm-cap">Diagram 04 · The validation loop — agents review before a human dev</div>
+    <div class="dgm-col">
+      <div class="dgm-node start"><div class="dgm-node-t">Working build on localhost</div></div>
+      <div class="dgm-cv lbl"><span class="tag">reviewed in parallel by</span></div>
+      <div class="dgm-row" style="gap:8px; flex-wrap:wrap;">
+        <div class="dgm-node"><div class="dgm-node-k">Agent</div><div class="dgm-node-t">🧭 PM</div><div class="dgm-node-d">Scope &amp; requirements</div></div>
+        <div class="dgm-node"><div class="dgm-node-k">Agent</div><div class="dgm-node-t">🎨 UX / UI</div><div class="dgm-node-d">Flows &amp; states</div></div>
+        <div class="dgm-node"><div class="dgm-node-k">Agent</div><div class="dgm-node-t">💻 Dev</div><div class="dgm-node-d">Implementation</div></div>
+        <div class="dgm-node"><div class="dgm-node-k">Agent</div><div class="dgm-node-t">🔍 QA</div><div class="dgm-node-d">Edge cases &amp; bugs</div></div>
+      </div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node surface"><div class="dgm-node-t">Consolidate findings &amp; fix</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node"><div class="dgm-node-t">Human dev · code review</div><div class="dgm-node-d">Refine the backend implementation</div></div>
+      <div class="dgm-cv"></div>
+      <div class="dgm-node accent"><div class="dgm-node-k">Done</div><div class="dgm-node-t">Ship to production</div></div>
+    </div>
+    <div class="dgm-note"><strong>Why it's unusual</strong>No Figma and no design hand-off — a <b>plain brief + reference screenshots</b> drove the build, and a panel of <b>PM, UX/UI, Dev &amp; QA agents</b> checked it on localhost before a human dev did the final code review and backend refinement.</div>
+  </div>
+
+  <!-- Outcome -->
+  <div class="divider-label reveal"><span class="dl-text">Outcome</span></div>
+  <div class="thinking-row reveal">
+    <div class="think-chip">
+      <div class="think-icon">✨</div>
+      <div class="think-text"><strong>Feature highlights</strong>Google-Forms-style per-question analytics, plus a games log and user log — with admin answer amendment against the answer key.</div>
+    </div>
+    <div class="think-chip">
+      <div class="think-icon">⚡</div>
+      <div class="think-text"><strong>How it shipped</strong>End to end with no Figma — a plain brief and screenshots, Codex planning, and a PM/UX/Dev/QA agent review before human code review.</div>
+    </div>
+    <div class="think-chip">
+      <div class="think-icon">💡</div>
+      <div class="think-text"><strong>Lessons learned</strong>Clear screenshots + plain prose, paired with AI planning, can replace mockups — and agent review catches issues before a human ever reads the diff.</div>
+    </div>
+  </div>
+
+</section>
+
+
+
+<footer>
+  <div class="f-name">Sun Rui Tong</div>
+  <div class="f-links">
+    <a href="portfolio_7.html">← Portfolio</a>
+    <a href="nus.html">NUS projects →</a>
+    <a href="mailto:ruitong0615@gmail.com">Email</a>
+  </div>
+  <div class="f-copy">© 2025 Sun Rui Tong</div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'), ring=document.getElementById('cur-ring');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function lerp(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(lerp);})();
+document.addEventListener('mousedown',()=>{cur.style.transform='translate(-50%,-50%) scale(1.6)';ring.style.opacity='.6';});
+document.addEventListener('mouseup',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.opacity='.35';});
+document.querySelectorAll('a,button,video,.media-ph').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='14px';cur.style.height='14px';ring.style.width='44px';ring.style.height='44px';ring.style.opacity='.18';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='8px';cur.style.height='8px';ring.style.width='32px';ring.style.height='32px';ring.style.opacity='.35';});
+});
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
+});
+
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// TOC: smooth-scroll to a project, offsetting the fixed nav + sticky tab bar
+document.querySelectorAll('.toc-item').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    const target=id&&document.querySelector(id);
+    if(!target) return;
+    e.preventDefault();
+    const y=target.getBoundingClientRect().top+window.pageYOffset-128;
+    window.scrollTo({top:y,behavior:'smooth'});
+    history.replaceState(null,'',id);
+  });
+});
+
+// graceful fallback for screenshots not yet dropped into /store-assets
+document.querySelectorAll('img.shot').forEach(img=>{
+  img.addEventListener('error',()=>{
+    const ph=document.createElement('div');
+    ph.className=img.className+' shot-missing';
+    ph.textContent='Missing: '+(img.getAttribute('src')||'').replace('store-assets/','');
+    img.replaceWith(ph);
+  });
+});
+
+const sections=document.querySelectorAll('.proj-section[id]');
+const tocItems=document.querySelectorAll('.toc-item');
+const tocObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      tocItems.forEach(a=>a.classList.remove('active'));
+      const active=document.querySelector(`.toc-item[href="#${entry.target.id}"]`);
+      if(active)active.classList.add('active');
+    }
+  });
+},{threshold:.25});
+sections.forEach(s=>tocObs.observe(s));
+</script>
+</body>
+</html>
