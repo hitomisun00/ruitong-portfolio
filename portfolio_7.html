@@ -63,8 +63,8 @@ nav.scrolled { border-color: var(--border); }
 .fc-front, .fc-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; background: var(--white); border: 1px solid var(--border); border-radius: var(--r); box-shadow: 0 4px 24px rgba(0,0,0,.06), 0 1px 4px rgba(0,0,0,.04); padding: 20px 22px; overflow: hidden; }
 .fc-back { transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; }
 .fc1 { top: 30px; left: 0; width: 256px; height: 148px; transform: rotate(-2deg); animation: floatA 5s ease-in-out infinite; perspective: 800px; }
-.fc2 { top: 170px; right: 0; width: 212px; height: 132px; transform: rotate(1.5deg); animation: floatB 6s ease-in-out infinite; perspective: 800px; }
-.fc3 { bottom: 50px; left: 24px; width: 236px; height: 120px; transform: rotate(.7deg); animation: floatC 4.5s ease-in-out infinite; perspective: 800px; }
+.fc2 { top: 158px; right: 0; width: 212px; height: 150px; transform: rotate(1.5deg); animation: floatB 6s ease-in-out infinite; perspective: 800px; }
+.fc3 { bottom: 44px; left: 24px; width: 236px; height: 146px; transform: rotate(.7deg); animation: floatC 4.5s ease-in-out infinite; perspective: 800px; }
 @keyframes floatA { 0%,100%{transform:rotate(-2deg) translateY(0)} 50%{transform:rotate(-2deg) translateY(-9px)} }
 @keyframes floatB { 0%,100%{transform:rotate(1.5deg) translateY(0)} 50%{transform:rotate(1.5deg) translateY(-8px)} }
 @keyframes floatC { 0%,100%{transform:rotate(.7deg) translateY(0)} 50%{transform:rotate(.7deg) translateY(-11px)} }
@@ -131,6 +131,12 @@ nav.scrolled { border-color: var(--border); }
 .wfm-n { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 5px; }
 .wfm-n em { color: var(--accent); font-style: normal; }
 .wfm-l { font-size: .53rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.wf-foot { padding-top: 22px; border-top: 1px solid var(--border); margin-top: 4px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.wf-foot-list { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+.wf-cta { display: inline-flex; align-items: center; gap: 10px; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: #fff; background: var(--accent); padding: 13px 22px; border-radius: var(--r); box-shadow: 0 8px 22px -7px rgba(232,132,90,.65); transition: gap .25s, box-shadow .3s, transform .25s, background .25s; }
+.wf-cta span { font-size: .8rem; transition: transform .25s; }
+.work-featured:hover .wf-cta { gap: 15px; background: #E0743F; box-shadow: 0 12px 28px -7px rgba(232,132,90,.8); transform: translateY(-2px); }
+.work-featured:hover .wf-cta span { transform: translate(3px,-3px); }
 
 .about-section { background: var(--surface); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
@@ -408,9 +414,9 @@ footer { padding: 30px 56px; border-top: 1px solid var(--border); display: flex;
           <div><div class="wfm-n">∞</div><div class="wfm-l">Features brainstormed &amp; designed</div></div>
           <div><div class="wfm-n">2<em>×</em></div><div class="wfm-l">Faster delivery via AI workflow</div></div>
         </div>
-        <div style="padding-top:22px;border-top:1px solid var(--border);margin-top:4px;display:flex;align-items:center;justify-content:space-between;">
-          <span style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);">Store Redesign · Quiz Analytics · Engagement Games</span>
-          <span style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px;">See the projects <span>↗</span></span>
+        <div class="wf-foot">
+          <span class="wf-foot-list">Store Redesign · Quiz Analytics · Engagement Games</span>
+          <span class="wf-cta">Explore the case study <span>↗</span></span>
         </div>
       </div>
     </a>
