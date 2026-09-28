@@ -785,6 +785,12 @@
       transform-origin:center bottom;
       transition:transform var(--duration-normal) var(--ease-enter),box-shadow var(--duration-normal) ease;
     }
+    #rt-warm-folder-kv .resume-sheet {
+      background-image: url("resume-assets/Rui-Tong-Resume-preview.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+
     #rt-warm-folder-kv .resume-sheet::after {
       content:"";
       position:absolute;
@@ -1293,23 +1299,12 @@
       }
       curiosity.addEventListener('pointerenter',playCuriosity);
       curiosity.addEventListener('click',playCuriosity);
-      resumeDownload?.addEventListener('click',event=>{
-        event.preventDefault();
-        event.stopPropagation();
-        const comma=resumeDownload.href.indexOf(',');
-        const binary=atob(resumeDownload.href.slice(comma+1));
-        const bytes=new Uint8Array(binary.length);
-        for(let index=0;index<binary.length;index+=1)bytes[index]=binary.charCodeAt(index);
-        const objectUrl=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
-        const link=document.createElement('a');
-        link.href=objectUrl;
-        link.download=resumeDownload.download||'Sun-Rui-Tong-Resume-2025.pdf';
-        link.style.display='none';
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        setTimeout(()=>URL.revokeObjectURL(objectUrl),1000);
-      });
+      if(resumeDownload){
+        resumeDownload.href='resume-assets/Rui-Tong-Resume.pdf';
+        resumeDownload.download='Rui-Tong-Resume.pdf';
+        resumeDownload.setAttribute('aria-label',"Download Rui Tong's latest résumé PDF");
+        resumeDownload.addEventListener('click',event=>event.stopPropagation());
+      }
       if(finePointer.matches&&!reduceMotion.matches){
         page.addEventListener('pointerenter',()=>{pixelCursor.style.opacity='1';});
         page.addEventListener('pointerleave',()=>{pixelCursor.style.opacity='0';});
