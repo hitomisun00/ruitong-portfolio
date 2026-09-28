@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf7">
+  <meta name="description" content="Widget Platform case study by Rui Tong: source authority, constrained customization, runtime behavior and Streaks delivery evidence.">
+  <title>Widget Platform — Rui Tong</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="case-system.css">
+</head>
+<body style="--accent: var(--sage)">
+  <a class="skip-link" href="#content">Skip to case study</a>
+  <nav class="site-nav" aria-label="Portfolio navigation">
+    <a class="site-nav__brand" href="returning-ai.html" aria-label="Returning.AI project index"><span class="site-nav__mark" style="background:var(--sage)" aria-hidden="true"></span><span>Returning.AI / Widgets</span></a>
+    <div class="site-nav__links"><a href="#model">Product model</a><a href="#proof">Streaks proof</a><a class="back-link" href="index.html">← Portfolio</a></div>
+  </nav>
+
+  <main id="content">
+    <header class="shell hero">
+      <div>
+        <p class="eyebrow">Flagship case / platform system</p>
+        <h1>Designing the control plane for portable product experiences.</h1>
+        <p class="hero__lead">Widgets needed to feel flexible without becoming ungovernable. I defined how data authority, customization and runtime state should travel from an administrative control plane into embedded experiences.</p>
+      </div>
+      <aside class="hero__aside">
+        <dl class="meta-list">
+          <div><dt>My scope</dt><dd>Concept, Figma model, redesign, product logic, working local output</dd></div>
+          <div><dt>Collaboration</dt><dd>Wai Yan reviewed the code; release ownership remains separate</dd></div>
+          <div><dt>Proof</dt><dd>9 dossiers · Streaks implementation · recorded automated checks</dd></div>
+        </dl>
+        <div class="status-row"><span class="pill">Design archive</span><span class="pill" style="--dot: var(--sage)">Code evidence</span><span class="pill" style="--dot: var(--blush)">Production unverified</span></div>
+      </aside>
+    </header>
+
+    <div class="shell evidence-note">
+      <span class="evidence-note__mark" aria-hidden="true"></span>
+      <p><strong>Attribution and status.</strong> I originated the widget concept, produced its Figma version and later product model, and wrote the working local output represented here. Wai Yan provided code review. A production rollout is not claimed without separate release verification.</p>
+    </div>
+
+    <div class="shell">
+      <figure class="visual-window">
+        <div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Widget settings + live preview / preserved design</span></div>
+        <img src="widget-assets/streaks-configurator.png" width="1920" height="1080" fetchpriority="high" alt="Streaks widget settings beside a live preview panel">
+        <figcaption>Preserved Figma-archive evidence. Test content and identifiers remain visible; this is presented as design evidence, not a production screenshot.</figcaption>
+      </figure>
+    </div>
+
+    <section class="section" id="model" aria-labelledby="model-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">01 / Product model</span><h2 id="model-title">Flexibility needs boundaries users can understand.</h2></div>
+          <div><p class="section-intro">A widget editor can easily become a collection of unrelated controls. I treated it as a contract: the platform owns some truths, operators can safely customize others, and the runtime must preserve both.</p></div>
+        </div>
+        <div class="logic-rail">
+          <article class="logic-step"><small>Source authority</small><h3>Know where truth lives</h3><p>Identify which content and status come from the platform, campaign or user record.</p></article>
+          <article class="logic-step"><small>Constrained customization</small><h3>Expose safe decisions</h3><p>Offer meaningful copy, styling and state controls without letting local settings contradict core behavior.</p></article>
+          <article class="logic-step"><small>Runtime contract</small><h3>Preserve state in context</h3><p>Ensure embedded surfaces resolve configuration, progress and responsive behavior consistently.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="authority-title">
+      <div class="shell split">
+        <div class="copy-stack">
+          <span class="section-number">Decision one / authority</span>
+          <h3 id="authority-title">Not every editable field should become a new source of truth.</h3>
+          <p>I separated <strong>platform-owned behavior</strong> from <strong>operator-authored presentation</strong>. That reduces drift: a campaign can choose the message and visual treatment, while progress, eligibility and completion remain anchored to authoritative data.</p>
+          <div class="callout"><span class="callout__label">Product decision</span><p>Customization is valuable when it communicates a valid state—not when it can manufacture one.</p></div>
+        </div>
+        <div class="logic-rail" style="grid-template-columns:1fr">
+          <article class="logic-step"><small>Platform</small><h3>Eligibility + progress</h3><p>Authoritative behavior and user state.</p></article>
+          <article class="logic-step"><small>Configuration</small><h3>Copy + presentation</h3><p>Safe, deliberate operator choices.</p></article>
+          <article class="logic-step"><small>Runtime</small><h3>Resolved experience</h3><p>One coherent widget in its host context.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="preview-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">02 / Preview contract</span><h2 id="preview-title">Preview the consequence, not just the styling.</h2></div>
+          <div><p class="section-intro">A useful preview should help an operator understand how settings translate into a real state across sizes. That made responsive behavior and state fidelity part of the configuration experience rather than a late QA surprise.</p></div>
+        </div>
+        <div class="gallery-asym">
+          <figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Streaks / desktop test surface</span></div><img src="widget-assets/streaks-desktop.png" width="1440" height="1000" loading="lazy" alt="Desktop Streaks widget in a test portal"><figcaption>Recorded test-portal evidence at desktop width.</figcaption></figure>
+          <figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>390 px</span></div><img src="widget-assets/streaks-mobile.png" width="390" height="844" loading="lazy" alt="Mobile Streaks widget at 390 pixels wide"><figcaption>The same widget contract evaluated at mobile width.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="proof" aria-labelledby="proof-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">03 / Delivery proof</span><h2 id="proof-title">Streaks made the model testable.</h2></div>
+          <div><p class="section-intro">The Streaks slice turned the abstract widget grammar into implementation evidence: configuration states, responsive rendering and guards against incorrectly disabled interactions.</p></div>
+        </div>
+        <div class="evidence-ledger">
+          <article class="ledger-item"><small>Automated suites</small><strong>12 / 12 passed</strong><p>Recorded repository evidence for the tested implementation slice.</p></article>
+          <article class="ledger-item"><small>Automated tests</small><strong>119 / 119 passed</strong><p>Behavior coverage tied to the working local output.</p></article>
+          <article class="ledger-item"><small>State checks</small><strong>30 checks · 0 incorrect disables</strong><p>A focused verification of whether valid states remained interactive.</p></article>
+        </div>
+        <div class="callout" style="margin-top:24px"><span class="callout__label">Honest boundary</span><p>These records establish implementation readiness for the reviewed slice. They do not by themselves establish production adoption, release health or business impact.</p></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="next-title">
+      <div class="shell"><span class="section-number">Continue exploring</span><div class="next-links" id="next-title"><a class="next-link" href="store.html"><small>Other flagship</small><strong>Store →</strong></a><a class="next-link" href="product-decisions.html"><small>Supporting work</small><strong>Product Decisions →</strong></a><a class="next-link" href="returning-ai.html"><small>Project index</small><strong>All Returning.AI work →</strong></a></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell"><span>Rui Tong · Product designer · Singapore</span><a href="index.html">Return to the workbench ↑</a></div></footer>
+</body>
+</html>

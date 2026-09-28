@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf7">
+  <meta name="description" content="Selected product decisions by Rui Tong across quiz authoring and analytics, engagement games, permissions, scheduling and delivery systems.">
+  <title>Product decisions — Rui Tong</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="case-system.css">
+</head>
+<body style="--accent: var(--blush)">
+  <a class="skip-link" href="#content">Skip to project collection</a>
+  <nav class="site-nav" aria-label="Portfolio navigation">
+    <a class="site-nav__brand" href="returning-ai.html" aria-label="Returning.AI project index"><span class="site-nav__mark" style="background:var(--blush)" aria-hidden="true"></span><span>Returning.AI / Decisions</span></a>
+    <div class="site-nav__links"><a href="#quiz">Quiz</a><a href="#archive">Archive</a><a class="back-link" href="index.html">← Portfolio</a></div>
+  </nav>
+
+  <main id="content">
+    <header class="shell hero">
+      <div>
+        <p class="eyebrow">Supporting work / product judgment</p>
+        <h1>Small cases, real product decisions.</h1>
+        <p class="hero__lead">Not every useful decision needs a cinematic case study. This collection shows how I connected lifecycle gaps, permission logic, operational workflows and implementation evidence across the platform.</p>
+      </div>
+      <aside class="hero__aside">
+        <dl class="meta-list">
+          <div><dt>Lead thread</dt><dd>Quiz authoring → play → logs → analytics</dd></div>
+          <div><dt>Also here</dt><dd>Games, chart permissions, match scheduling, webhooks, analysis creation</dd></div>
+          <div><dt>Approach</dt><dd>AI-assisted synthesis with source authority, human judgment and QA</dd></div>
+        </dl>
+        <div class="status-row"><span class="pill">Mixed evidence depth</span><span class="pill" style="--dot: var(--blush)">Status called out per case</span></div>
+      </aside>
+    </header>
+
+    <div class="shell evidence-note">
+      <span class="evidence-note__mark" aria-hidden="true"></span>
+      <p><strong>Why the format changes here.</strong> The archive has strong reasoning and implementation evidence but incomplete final visuals for several features. I am using the screenshots that exist and keeping the rest as compact, status-labeled records rather than manufacturing polish.</p>
+    </div>
+
+    <section class="section" id="quiz" aria-labelledby="quiz-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">01 / Quiz lifecycle</span><h2 id="quiz-title">Authoring and analytics are one loop.</h2></div>
+          <div><p class="section-intro">Quiz creation only becomes operationally useful when teams can publish, inspect participation, diagnose an individual attempt and learn from aggregate behavior. I connected those moments as one lifecycle instead of separate admin features.</p></div>
+        </div>
+        <div class="lifecycle" aria-label="Quiz product lifecycle">
+          <div class="lifecycle__step"><small>01</small><strong>Author</strong></div>
+          <div class="lifecycle__step"><small>02</small><strong>Publish</strong></div>
+          <div class="lifecycle__step"><small>03</small><strong>Play</strong></div>
+          <div class="lifecycle__step"><small>04</small><strong>Inspect logs</strong></div>
+          <div class="lifecycle__step"><small>05</small><strong>Analyse patterns</strong></div>
+        </div>
+        <div class="gallery-two" style="margin-top:28px">
+          <figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Quiz authoring / preserved screen</span></div><img src="games-assets/quiz-settings.png" width="1600" height="714" loading="lazy" alt="Quiz settings and authoring interface"><figcaption>Existing authoring material. Two Rui-created ClickUp tasks and a large attachment archive support the specification trail; exact code attribution remains separate.</figcaption></figure>
+          <figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Quiz analytics / preserved screen</span></div><img src="quiz-assets/quiz-analytics-modal.png" width="1600" height="710" loading="lazy" alt="Quiz analytics modal showing performance information"><figcaption>Existing analytics material. Final code ownership and production verification remain to be resolved.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="games-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">02 / Engagement games</span><h2 id="games-title">A family of campaign mechanics, led by Spin.</h2></div>
+          <div><p class="section-intro">Spin the Wheel is the clearest visual lead, but the product question is broader: how campaign configuration, participation and outcome states stay coherent across different game mechanics.</p></div>
+        </div>
+        <div class="gallery-two">
+          <figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Spin the Wheel / customer-facing state</span></div><img src="games-assets/spin-home.png" width="1600" height="704" loading="lazy" alt="Spin the Wheel engagement game interface"><figcaption>Existing product visual used as the lead example for the engagement-game family.</figcaption></figure>
+          <figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Spin configuration / admin state</span></div><img src="games-assets/spin-config.png" width="1600" height="705" loading="lazy" alt="Spin the Wheel configuration interface"><figcaption>The operational counterpart: settings must resolve into a legible participant experience.</figcaption></figure>
+        </div>
+        <div class="callout" style="margin-top:24px"><span class="callout__label">Status</span><p>These are supporting artifacts. Exact ownership by game and final release status still need feature-level verification before stronger public claims.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="archive" aria-labelledby="archive-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">03 / Decision archive</span><h2 id="archive-title">Cross-layer problems worth keeping visible.</h2></div>
+          <div><p class="section-intro">These compact cases preserve the product decision, the strongest available proof and the remaining evidence boundary.</p></div>
+        </div>
+        <div class="case-stack">
+          <article class="mini-case">
+            <div class="mini-case__meta"><strong>Chart Permissions</strong>Very strong evidence</div>
+            <div class="mini-case__content"><h3>Permission logic that survived every layer.</h3><p>The useful design problem was not adding a toggle. It was maintaining the same access rule across interface state, persistence and runtime behavior.</p><p class="mini-case__proof">Proof: 75 focused checks · 22 Jest suites / 310 tests · Playwright 4 / 4 · 94 runtime tests. Merge and release remain unresolved.</p></div>
+          </article>
+          <article class="mini-case">
+            <div class="mini-case__meta"><strong>Match Prediction</strong>Approved specification</div>
+            <div class="mini-case__content"><h3>Scheduling as a state model, not a date picker.</h3><p>Prediction windows, locked states and result handling needed a single temporal contract so operators and participants would see consistent behavior.</p><p class="mini-case__proof">Proof: strong approved specification. Implementation and release are not currently verified.</p></div>
+          </article>
+          <article class="mini-case">
+            <div class="mini-case__meta"><strong>Webhook Workbench</strong>Strong system depth</div>
+            <div class="mini-case__content"><h3>Make an invisible integration debuggable.</h3><p>A workbench model turns webhook setup and failure inspection into an observable workflow rather than a blind configuration form.</p><p class="mini-case__proof">Proof: implementation presence and deep system material. Personal attribution and release still need confirmation.</p></div>
+          </article>
+          <article class="mini-case">
+            <div class="mini-case__meta"><strong>Create Analysis</strong>Shared delivery</div>
+            <div class="mini-case__content"><h3>Split a complex workflow at the right seam.</h3><p>My contribution covered Part A of the creation flow; development owned Part B. The value of the record is the explicit handoff boundary, not inflated end-to-end ownership.</p><p class="mini-case__proof">Status: completed contribution with scoped attribution.</p></div>
+          </article>
+          <article class="mini-case">
+            <div class="mini-case__meta"><strong>Storybook MCP</strong>Delivery system</div>
+            <div class="mini-case__content"><h3>Move design review closer to implemented behavior.</h3><p>The workflow treated Storybook as an implementation-readiness gate: inspect component states, compare behavior and make handoff evidence more concrete.</p><p class="mini-case__proof">Boundary: creation history, current health, adoption and CI enforcement remain unverified.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="ai-title">
+      <div class="shell split">
+        <div class="copy-stack"><span class="section-number">AI-enabled delivery</span><h3 id="ai-title">AI accelerated the work; it did not become the authority.</h3><p>I used AI to synthesize source material, expose contradictions, draft implementation artifacts and expand test coverage. Product decisions remained grounded in source evidence, explicit judgment, implementation review and QA.</p></div>
+        <div class="evidence-ledger" style="grid-template-columns:1fr">
+          <article class="ledger-item"><small>Source</small><strong>Trace the decision</strong><p>Separate observed behavior, documentation and reconstruction.</p></article>
+          <article class="ledger-item"><small>Judgment</small><strong>Choose what should be true</strong><p>Resolve product tradeoffs instead of accepting generated output as fact.</p></article>
+          <article class="ledger-item"><small>Verification</small><strong>Review the implementation</strong><p>Use tests and human QA to check that behavior matches intent.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="next-title">
+      <div class="shell"><span class="section-number">Continue exploring</span><div class="next-links" id="next-title"><a class="next-link" href="store.html"><small>Flagship</small><strong>Store →</strong></a><a class="next-link" href="widgets.html"><small>Flagship</small><strong>Widget Platform →</strong></a><a class="next-link" href="returning-ai.html"><small>Project index</small><strong>All Returning.AI work →</strong></a></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell"><span>Rui Tong · Product designer · Singapore</span><a href="index.html">Return to the workbench ↑</a></div></footer>
+</body>
+</html>

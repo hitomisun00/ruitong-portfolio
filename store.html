@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf7">
+  <meta name="description" content="Store product system case study by Rui Tong: access, inheritance, redemption and implementation evidence.">
+  <title>Store product system — Rui Tong</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="case-system.css">
+</head>
+<body style="--accent: var(--yellow)">
+  <a class="skip-link" href="#content">Skip to case study</a>
+  <nav class="site-nav" aria-label="Portfolio navigation">
+    <a class="site-nav__brand" href="returning-ai.html" aria-label="Returning.AI project index"><span class="site-nav__mark" aria-hidden="true"></span><span>Returning.AI / Store</span></a>
+    <div class="site-nav__links"><a href="#model">Product model</a><a href="#delivery">Delivery</a><a class="back-link" href="index.html">← Portfolio</a></div>
+  </nav>
+
+  <main id="content">
+    <header class="shell hero">
+      <div>
+        <p class="eyebrow">Flagship case / commerce system</p>
+        <h1>Turning a reward catalogue into a configurable commerce system.</h1>
+        <p class="hero__lead">The Store was not one shopping flow. It was a network of role permissions, product eligibility, redemption methods, field requirements and operational states. I made that logic visible and buildable.</p>
+      </div>
+      <aside class="hero__aside">
+        <dl class="meta-list">
+          <div><dt>My scope</dt><dd>Product definition, system model, interaction design, specification, local implementation</dd></div>
+          <div><dt>Proof</dt><dd>8 dossiers · 37 decisions · PRD/ticket reconstruction · Store Widget code evidence</dd></div>
+          <div><dt>Status</dt><dd>System established; full redesign release and outcomes not claimed</dd></div>
+        </dl>
+        <div class="status-row"><span class="pill">Preserved screens</span><span class="pill" style="--dot: var(--yellow)">Local reconstruction</span></div>
+      </aside>
+    </header>
+
+    <div class="shell evidence-note">
+      <span class="evidence-note__mark" aria-hidden="true"></span>
+      <p><strong>Evidence boundary.</strong> This case combines preserved interface evidence with a private product-logic reconstruction. It demonstrates the decisions and delivery model; it does not claim that the complete redesign shipped or that business outcomes were measured.</p>
+    </div>
+
+    <div class="shell">
+      <figure class="visual-window">
+        <div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Store / redesigned customer-facing view</span></div>
+        <img src="store-assets/new-store-home.png" width="2066" height="1161" fetchpriority="high" alt="Redesigned Store home showing reward products and catalogue navigation">
+        <figcaption>Preserved design artifact. The visible catalogue is one surface of a larger permission and configuration system.</figcaption>
+      </figure>
+    </div>
+
+    <section class="section" id="model" aria-labelledby="model-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">01 / Reframe</span><h2 id="model-title">The interface problem was really a rules problem.</h2></div>
+          <div><p class="section-intro">A familiar commerce UI can hide contradictory behavior: who sees the Store, which products they can open, how they pay, and what administrators must configure. I mapped these as linked decisions before treating them as screens.</p></div>
+        </div>
+        <div class="logic-rail">
+          <article class="logic-step"><small>Product decision</small><h3>Access before aesthetics</h3><p>Separate no access, view only and full access so the system never promises an action a role cannot complete.</p></article>
+          <article class="logic-step"><small>System behavior</small><h3>Most specific valid rule wins</h3><p>Resolve Store defaults through Category and Product overrides while preserving a clear source of truth.</p></article>
+          <article class="logic-step"><small>User outcome</small><h3>Predictable purchase states</h3><p>People see accurate actions; operators can explain why a product, method or field appears.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="access-title">
+      <div class="shell split">
+        <div class="copy-stack">
+          <span class="section-number">Decision one / access</span>
+          <h3 id="access-title">A visible product is not always a purchasable product.</h3>
+          <p>I separated <strong>role access</strong> from product-level eligibility. That made room for legitimate states such as a discoverable catalogue with disabled checkout, without collapsing everything into “hidden” or “available.”</p>
+          <div class="callout"><span class="callout__label">Why it matters</span><p>Permission states become an intentional product language across catalogue, product detail and checkout—instead of ad hoc exceptions in each screen.</p></div>
+        </div>
+        <figure class="visual-window">
+          <div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Permission and limit state</span></div>
+          <img src="store-assets/permission-limit.png" width="1600" height="704" loading="lazy" alt="Store interface showing a constrained permission or purchase limit state">
+          <figcaption>Preserved interface evidence used to reconstruct access and limit behavior.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="inherit-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">02 / Inheritance</span><h2 id="inherit-title">Defaults need a visible chain of authority.</h2></div>
+          <div><p class="section-intro">Store-level configuration provides a safe baseline. Categories and products can override it when the business rule becomes more specific. The model is simple to describe because the precedence is explicit.</p></div>
+        </div>
+        <div class="resolver" data-resolver aria-label="Synthetic Store rule resolver">
+          <div class="resolver__head"><h3>Try the rule resolver</h3><p>Synthetic explanatory model based on the reconstructed logic—not a production backend simulation.</p></div>
+          <div class="resolver__body">
+            <div class="resolver__controls">
+              <div class="control-group"><span class="control-label">Role access</span><div class="segmented"><button type="button" data-group="role" data-value="none" aria-pressed="false">No access</button><button type="button" data-group="role" data-value="view" aria-pressed="true">View only</button><button type="button" data-group="role" data-value="full" aria-pressed="false">Full access</button></div></div>
+              <div class="control-group"><span class="control-label">Most specific configuration</span><div class="segmented"><button type="button" data-group="source" data-value="store" aria-pressed="false">Store</button><button type="button" data-group="source" data-value="category" aria-pressed="true">Category</button><button type="button" data-group="source" data-value="product" aria-pressed="false">Product</button></div></div>
+            </div>
+            <div class="resolver__result" role="status" aria-live="polite"><small>Resolved behavior</small><strong data-result-title>The catalogue is visible, but purchasing is disabled.</strong><ul class="resolver__trace" data-result-trace></ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="sequence-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">03 / Sequencing</span><h2 id="sequence-title">Design the control plane before the glossy path.</h2></div>
+          <div><p class="section-intro">The safe sequence starts with permissions and configuration, then validates catalogue behavior, then checkout. Otherwise the customer surface can look complete while the operational model remains brittle.</p></div>
+        </div>
+        <div class="gallery-two">
+          <figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Store Management / preserved design</span></div><img src="store-assets/store-settings-management.png" width="1920" height="1080" loading="lazy" alt="Store Management settings with product configuration controls"><figcaption>Preserved Figma-archive evidence. Test identifiers remain visible; production use is not implied.</figcaption></figure>
+          <figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Catalogue states / preserved design</span></div><img src="store-assets/store-catalogue-figma.png" width="1920" height="1080" loading="lazy" alt="Store catalogue with multiple product availability states"><figcaption>Catalogue states show how configuration decisions surface to end users.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="delivery" aria-labelledby="delivery-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">Delivery evidence</span><h2 id="delivery-title">What the work established.</h2></div>
+          <div><p class="section-intro">The strongest outcome is not a vanity metric. It is a more explicit commerce model, enough specification for implementation, and a working Store Widget slice with recorded build evidence.</p></div>
+        </div>
+        <div class="evidence-ledger">
+          <article class="ledger-item"><small>Product model</small><strong>37 decision records</strong><p>Access, redemption, field display, order state and administrative behavior made reviewable.</p></article>
+          <article class="ledger-item"><small>Implementation slice</small><strong>Store Widget</strong><p>Recorded commit evidence across 49 changed files with tests, typecheck and build reported green.</p></article>
+          <article class="ledger-item"><small>Boundary</small><strong>Release remains separate</strong><p>The archive does not support claiming the full redesign shipped or produced measured business impact.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="next-title">
+      <div class="shell"><span class="section-number">Continue exploring</span><div class="next-links" id="next-title"><a class="next-link" href="widgets.html"><small>Next flagship</small><strong>Widget Platform →</strong></a><a class="next-link" href="product-decisions.html"><small>Supporting work</small><strong>Product Decisions →</strong></a><a class="next-link" href="returning-ai.html"><small>Project index</small><strong>All Returning.AI work →</strong></a></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell"><span>Rui Tong · Product designer · Singapore</span><a href="index.html">Return to the workbench ↑</a></div></footer>
+  <script src="case-system.js"></script>
+</body>
+</html>
