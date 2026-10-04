@@ -8,6 +8,7 @@
   <title>Store product system — Rui Tong</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="case-system.css">
+  <link rel="stylesheet" href="store-widget-embed.css">
 </head>
 <body style="--accent: var(--yellow)">
   <a class="skip-link" href="#content">Skip to case study</a>
@@ -122,6 +123,34 @@
       </div>
     </section>
 
+    <section class="section section--tint live-widget-section" id="live-store-widget" aria-labelledby="live-widget-title">
+      <div class="shell">
+        <div class="section-head live-widget-section__head">
+          <div>
+            <span class="section-number">Live integration test</span>
+            <h2 id="live-widget-title">Explore the Store widget in its embedded state.</h2>
+          </div>
+          <div>
+            <p class="section-intro">This temporary production test connects the portfolio to a shared TR5 QA account so the catalogue, product states and redemption flows can be explored in context.</p>
+            <p class="section-intro"><strong>Testing boundary:</strong> the catalogue contains internal test content. It is runtime evidence, not released customer data or a claim that the complete redesign shipped.</p>
+          </div>
+        </div>
+
+        <div class="live-widget-status" id="live-widget-status" data-state="loading" role="status" aria-live="polite">
+          <span class="live-widget-status__dot" aria-hidden="true"></span>
+          <div>
+            <span class="live-widget-status__label">TR5 sandbox</span>
+            <p class="live-widget-status__copy">Connecting to the live Store widget…</p>
+          </div>
+        </div>
+
+        <div class="live-widget-frame" aria-label="Embedded TR5 Store widget">
+          <div id="returning-ai-widget-NjlmMzJiZTk3MjMzMzkwZjVhYzQzNzk1"></div>
+        </div>
+        <p class="live-widget-footnote">The sandbox identity is supplied automatically for this prototype. Browsing and form exploration are intended; please do not complete a purchase.</p>
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="next-title">
       <div class="shell"><span class="section-number">Continue exploring</span><div class="next-links" id="next-title"><a class="next-link" href="widgets.html"><small>Next flagship</small><strong>Widget Platform →</strong></a><a class="next-link" href="product-decisions.html"><small>Supporting work</small><strong>Product Decisions →</strong></a><a class="next-link" href="returning-ai.html"><small>Project index</small><strong>All Returning.AI work →</strong></a></div></div>
     </section>
@@ -129,5 +158,6 @@
 
   <footer class="site-footer"><div class="shell"><span>Rui Tong · Product designer · Singapore</span><a href="index.html">Return to the workbench ↑</a></div></footer>
   <script src="case-system.js"></script>
+  <script src="store-widget-embed.js"></script>
 </body>
 </html>
