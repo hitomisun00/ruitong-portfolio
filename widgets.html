@@ -14,7 +14,7 @@
   <a class="skip-link" href="#content">Skip to case study</a>
   <nav class="site-nav" aria-label="Portfolio navigation">
     <a class="site-nav__brand" href="returning-ai.html" aria-label="Returning.AI project index"><span class="site-nav__mark" aria-hidden="true"></span><span>Returning.AI / Widgets</span></a>
-    <div class="site-nav__links"><a href="#system">System</a><a href="#workflow">AI workflow</a><a href="#lab">Try it</a><a class="back-link" href="index.html">← Portfolio</a></div>
+    <div class="site-nav__links"><a href="#system">System</a><a href="#client-use">Client use</a><a href="#workflow">AI workflow</a><a href="#lab">Try it</a><a class="back-link" href="index.html">← Portfolio</a></div>
   </nav>
 
   <main id="content">
@@ -50,7 +50,7 @@
 
     <div class="shell evidence-note case-status">
       <span class="evidence-note__mark" aria-hidden="true"></span>
-      <p><strong>Attribution and evidence.</strong> I originated the widget concept, created the first settings model in Figma, independently led the later redesign and wrote the working localhost output. The live captures below are dated read-only evidence from authenticated ADSS UAT and INFINOX environments; they verify visible product states, not authorship, rollout, adoption or business impact.</p>
+      <p><strong>Attribution and evidence.</strong> I originated the widget concept, created the first settings model in Figma, independently led the later redesign and wrote the working localhost output. The supplied INFINOX captures below show the control plane and hosted result; they verify visible product states, not authorship, rollout, adoption or business impact.</p>
     </div>
 
     <section class="section" id="system" aria-labelledby="system-title"><div class="shell">
@@ -80,13 +80,55 @@
       <div class="surface-map"><div class="surface-map__copy"><span class="section-number">Constrained by design</span><h3>Useful freedom without raw CSS.</h3><p>Operators can control the visual surfaces they actually need. Arbitrary positioning, dimensions, z-index, opacity, gradients and overflow stay out because they can break responsiveness, hierarchy or accessibility.</p></div><div class="surface-object" aria-label="Three styling surface levels"><div class="surface-layer surface-layer--widget"><span>Widget surface</span><div class="surface-layer surface-layer--section"><span>Section surface</span><div class="surface-layer surface-layer--nested"><span>Nested surface</span><i></i><i></i><i></i></div></div></div></div><ul class="surface-controls" aria-label="Approved surface controls"><li>Background</li><li>Stroke</li><li>Radius</li><li>Padding</li><li>Gap</li><li>Dividers</li></ul></div>
     </div></section>
 
-    <section class="section live-evidence" aria-labelledby="evidence-title"><div class="shell">
-      <div class="section-head"><div><span class="section-number">Dated product evidence</span><h2 id="evidence-title">The same control model survived different brands and features.</h2></div><div><p class="section-intro">These screens show the control plane in authenticated environments: Streaks configuration in ADSS UAT and appearance controls in INFINOX. The screenshots were captured read-only; no settings were changed or saved.</p></div></div>
-      <div class="evidence-gallery">
-        <figure class="evidence-shot evidence-shot--adss"><div class="evidence-shot__bar"><span>ADSS UAT · Streaks</span><em>Read-only capture · 4 Oct 2026</em></div><div class="evidence-shot__viewport"><img src="widget-assets/adss-streaks-settings.png" width="2560" height="1148" loading="lazy" alt="ADSS UAT Streaks widget settings with live preview and configuration rail"></div><figcaption><strong>Settings and preview stay connected.</strong> The source selection, display behavior and section controls are evaluated beside the resulting Streaks experience.</figcaption></figure>
-        <figure class="evidence-shot evidence-shot--infinox"><div class="evidence-shot__bar"><span>INFINOX · Style</span><em>Read-only capture · 1 Oct 2026</em></div><div class="evidence-shot__viewport"><img src="widget-assets/infinox-widget-style.png" width="2920" height="1360" loading="lazy" alt="INFINOX widget style controls beside a live Milestones preview"></div><figcaption><strong>Brand control is bounded.</strong> Theme, typography and color decisions are exposed while the preview retains the product’s responsive structure.</figcaption></figure>
+    <section class="section live-evidence" id="client-use" aria-labelledby="evidence-title"><div class="shell shell--wide">
+      <div class="client-intro">
+        <div><span class="section-number">How clients use it</span><h2 id="evidence-title">One configuration surface. Three distinct experiences inside INFINOX.</h2></div>
+        <div><p class="section-intro">A client does not see the editor. They see Store, Milestones or Streaks behaving as part of their own portal. Switch examples to compare what an operator configures in ReturningAI with what a trader experiences in the INFINOX shell.</p><p class="client-redaction"><span aria-hidden="true">●</span> Publication-safe presentation crops. Account names, balances and activity history are redacted.</p></div>
       </div>
-      <p class="evidence-limit"><strong>Evidence limit:</strong> these live captures verify visible product states in the named environments. They do not by themselves establish authorship, release history, adoption or business results.</p>
+
+      <div class="client-family" aria-label="Widget feature family">
+        <span>Feature family</span><strong>Store</strong><strong>Milestones</strong><strong>Streaks</strong><strong class="is-context">Socials <small>family context</small></strong>
+      </div>
+
+      <div class="client-switcher" role="tablist" aria-label="Choose an INFINOX widget example">
+        <button type="button" role="tab" id="client-tab-store" aria-controls="client-panel-store" aria-selected="true" tabindex="0" data-client-example="store"><span>Store</span><small>Style → catalogue</small></button>
+        <button type="button" role="tab" id="client-tab-milestones" aria-controls="client-panel-milestones" aria-selected="false" tabindex="-1" data-client-example="milestones"><span>Milestones</span><small>Surface → progress</small></button>
+        <button type="button" role="tab" id="client-tab-streaks" aria-controls="client-panel-streaks" aria-selected="false" tabindex="-1" data-client-example="streaks"><span>Streaks</span><small>Display → habit loop</small></button>
+      </div>
+
+      <div class="client-stage" data-client-stage>
+        <article class="client-panel is-active" id="client-panel-store" role="tabpanel" aria-labelledby="client-tab-store" data-client-panel="store">
+          <div class="client-story"><span>Store</span><h3>Bounded style controls become a branded reward catalogue.</h3><p>Spacing, section surfaces, stroke and radius are adjusted in context. The resulting catalogue sits inside INFINOX navigation without inheriting ReturningAI’s surrounding platform chrome.</p></div>
+          <div class="client-planes">
+            <figure class="client-plane client-plane--control"><figcaption><span>Configured in ReturningAI</span><strong>Style rail + live preview</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-store-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted INFINOX Store widget preview beside ReturningAI Style controls"></div><ul class="client-callouts" aria-label="Configuration decisions shown"><li>Section surface</li><li>Padding + gap</li><li>Corner radius</li></ul></figure>
+            <span class="client-transfer" aria-hidden="true"><i></i><b>rendered in host</b></span>
+            <figure class="client-plane client-plane--portal"><figcaption><span>Experienced in INFINOX</span><strong>Store inside the client portal</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-store-portal-redacted.jpg" width="1600" height="784" loading="lazy" alt="Redacted Store widget embedded inside the INFINOX client portal"></div></figure>
+          </div>
+        </article>
+
+        <article class="client-panel" id="client-panel-milestones" role="tabpanel" aria-labelledby="client-tab-milestones" data-client-panel="milestones" hidden>
+          <div class="client-story"><span>Milestones</span><h3>A shared surface system carries a dense progression model.</h3><p>The editor exposes widget and section styling while preserving the relationship between milestone groups, active stages, earned rewards and the remaining tier path.</p></div>
+          <div class="client-planes">
+            <figure class="client-plane client-plane--control"><figcaption><span>Configured in ReturningAI</span><strong>Surface hierarchy + live preview</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-milestones-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted INFINOX Milestones widget preview beside ReturningAI Style controls"></div><ul class="client-callouts" aria-label="Configuration decisions shown"><li>Widget surface</li><li>Section surface</li><li>Dividers + stroke</li></ul></figure>
+            <span class="client-transfer" aria-hidden="true"><i></i><b>rendered in host</b></span>
+            <figure class="client-plane client-plane--portal"><figcaption><span>Experienced in INFINOX</span><strong>Milestones inside the client portal</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-milestones-portal-redacted.jpg" width="1600" height="784" loading="lazy" alt="Redacted Milestones widget embedded inside the INFINOX client portal"></div></figure>
+          </div>
+        </article>
+
+        <article class="client-panel" id="client-panel-streaks" role="tabpanel" aria-labelledby="client-tab-streaks" data-client-panel="streaks" hidden>
+          <div class="client-story"><span>Streaks</span><h3>Layout and visibility choices shape the habit loop.</h3><p>Operators choose tile, horizontal or vertical presentation, the cards per row and which details appear. The client receives a focused daily-progress experience rather than a configuration-heavy interface.</p></div>
+          <div class="client-planes">
+            <figure class="client-plane client-plane--control"><figcaption><span>Configured in ReturningAI</span><strong>Display + section controls</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-streaks-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted INFINOX Streaks widget preview beside ReturningAI Settings controls"></div><ul class="client-callouts" aria-label="Configuration decisions shown"><li>Layout</li><li>Cards per row</li><li>Section visibility</li></ul></figure>
+            <span class="client-transfer" aria-hidden="true"><i></i><b>rendered in host</b></span>
+            <figure class="client-plane client-plane--portal"><figcaption><span>Experienced in INFINOX</span><strong>Streaks inside the client portal</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-streaks-portal-redacted.jpg" width="1600" height="780" loading="lazy" alt="Redacted Streaks widget embedded inside the INFINOX client portal"></div></figure>
+          </div>
+        </article>
+      </div>
+
+      <div class="client-reading">
+        <div><span>Product decision</span><strong>Expose only meaningful, safe choices.</strong></div><i aria-hidden="true"></i><div><span>System behavior</span><strong>Persist overrides while preserving feature authority.</strong></div><i aria-hidden="true"></i><div><span>User outcome</span><strong>A coherent experience inside the client’s own portal.</strong></div>
+      </div>
+      <p class="evidence-limit"><strong>Evidence limit:</strong> supplied authenticated captures verify visible INFINOX product states. They do not by themselves establish award causality, adoption, business impact or production ownership. Socials belongs to the wider widget family but is not shown here because this comparison uses only the paired captures supplied for publication.</p>
     </div></section>
 
     <section class="section section--tint" id="workflow" aria-labelledby="workflow-title"><div class="shell">
