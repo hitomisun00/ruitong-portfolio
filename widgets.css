@@ -135,6 +135,15 @@ html { overflow-x: hidden; overflow-x: clip; }
 .system-chain strong { grid-column: 2; grid-row: 1 / span 2; font-size: clamp(1.05rem,1.6vw,1.35rem); font-weight: 600; line-height: 1.28; }
 .system-chain p { grid-column: 3; grid-row: 1 / span 2; color: #667063; font-size: .79rem; line-height: 1.62; }
 
+.live-widget-story { background: #f5f1e8; }
+.live-widget-story .section-lead h2 { font-size: clamp(2.2rem, 3.8vw, 3.55rem); }
+.live-widget-story .section-lead > div:last-child { display: grid; gap: 14px; align-content: start; }
+.live-widget-story .section-lead > div:last-child p { color: var(--muted); font-size: .8rem; line-height: 1.68; }
+.live-widget-story .section-lead > div:last-child strong { color: var(--ink); }
+.live-widget-story .live-widget-status { border-color: rgba(73, 67, 54, .15); background: rgba(255, 254, 250, .72); }
+.live-widget-story .live-widget-frame { border-color: rgba(36, 34, 31, .22); box-shadow: 0 32px 90px rgba(65, 54, 38, .13); }
+.live-widget-story .live-widget-footnote { color: #777268; }
+
 .figma-origin { overflow: hidden; color: #f0f0eb; background: var(--widget-charcoal); }
 .figma-origin .section-lead > p { color: #aaaDA4; }
 .control-index { display: flex; flex-wrap: wrap; gap: 0; margin: -20px 0 30px; padding: 0; border-top: 1px solid rgba(255,255,255,.12); border-bottom: 1px solid rgba(255,255,255,.12); list-style: none; }

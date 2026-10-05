@@ -13,6 +13,22 @@
   let widgetReady = false;
   let recoveryAttempts = 0;
 
+  if (window.location.protocol !== 'https:' || window.location.hostname !== 'ruitong-portfolio26.vercel.app') {
+    status.dataset.state = 'loading';
+    status.querySelector('.live-widget-status__copy').textContent = 'The live sandbox activates on the published portfolio origin. Local and preview origins are blocked by its saved domain policy.';
+    const originNote = document.createElement('div');
+    originNote.className = 'store-widget-origin-note';
+    const label = document.createElement('span');
+    label.textContent = 'Public-origin preview';
+    const heading = document.createElement('strong');
+    heading.textContent = 'The TR5 Store widget will load here after publication.';
+    const copy = document.createElement('p');
+    copy.textContent = 'This boundary is part of the embed contract: the loader accepts only the authorized portfolio domain.';
+    originNote.append(label, heading, copy);
+    container.replaceChildren(originNote);
+    return;
+  }
+
   const widgetApi = () => window.ReturningAIWidget?.[container.id];
 
   const setStatus = (state, message) => {

@@ -7,8 +7,10 @@
   <meta name="description" content="Widget Platform case study by Rui Tong: modular controls that turn existing features into configurable, client-ready experiences, plus the AI-assisted workflow built to scale the system.">
   <title>Widget Platform — Rui Tong</title>
   <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://sgtr-eks-widgets.genesiv.org" crossorigin>
   <link rel="stylesheet" href="case-system.css">
   <link rel="stylesheet" href="widgets.css">
+  <link rel="stylesheet" href="store-widget-embed.css">
 </head>
 <body class="widgets-case">
   <a class="skip-link" href="#content">Skip to case study</a>
@@ -86,6 +88,25 @@
       <ol class="system-chain" aria-label="Product decision to user outcome"><li><span>Product decision</span><strong>Expose only meaningful choices</strong><p>Selection, visibility, layout and brand-safe styling—not arbitrary CSS or fabricated states.</p></li><li><span>System behavior</span><strong>Inherit live values until an override exists</strong><p>Reset removes the exception and returns the widget to the current feature value.</p></li><li><span>User outcome</span><strong>A client-ready experience without logic drift</strong><p>The portal can look native while eligibility, progress and rewards keep their original meaning.</p></li></ol>
     </div></section>
 
+    <section class="case-section live-widget-story live-widget-section" id="live-store-widget" aria-labelledby="live-widget-title">
+      <div class="shell shell--wide">
+        <div class="section-lead live-widget-section__head">
+          <div><p>Live delivery proof</p><h2 id="live-widget-title">The same Store feature, delivered as a real portable widget.</h2></div>
+          <div><p>This is the TR5 Store Simple Embed previously verified on the public portfolio origin. The loader authenticates the shared sandbox, creates the iframe and keeps the widget session alive inside this page.</p><p><strong>Testing boundary:</strong> the catalogue contains internal test content. It demonstrates the embed contract—not customer data, production adoption or a completed purchase flow.</p></div>
+        </div>
+
+        <div class="live-widget-status" id="live-widget-status" data-state="loading" role="status" aria-live="polite">
+          <span class="live-widget-status__dot" aria-hidden="true"></span>
+          <div><span class="live-widget-status__label">TR5 sandbox · Simple Embed</span><p class="live-widget-status__copy">Connecting to the live Store widget…</p></div>
+        </div>
+
+        <div class="live-widget-frame" aria-label="Embedded TR5 Store widget">
+          <div id="returning-ai-widget-NjlmMzJiZTk3MjMzMzkwZjVhYzQzNzk1"></div>
+        </div>
+        <p class="live-widget-footnote">The sandbox identity is supplied automatically for this prototype. Browsing and form exploration are intended; please do not complete a purchase.</p>
+      </div>
+    </section>
+
     <section class="case-section figma-origin" id="figma" aria-labelledby="figma-title"><div class="shell shell--wide">
       <div class="section-lead section-lead--wide"><h2 id="figma-title">The original design covered every reasonable client request. That was the clue.</h2><p>The Milestones configurator was intentionally granular: choose groups, arrange stages, reveal conditions and rewards, change surfaces, and define the loading state. It solved client variation—but rebuilding that logic for every feature took too long.</p></div>
       <ul class="control-index" aria-label="Milestones configuration coverage"><li>Selection</li><li>Layout</li><li>Groups</li><li>Stages</li><li>Conditions</li><li>Rewards</li><li>Progress</li><li>Theme</li><li>Loading</li></ul>
@@ -121,5 +142,6 @@
 
   <footer class="site-footer"><div class="shell"><span>Rui Tong · Product designer · Singapore</span><a href="index.html">Return to the workbench ↑</a></div></footer>
   <script src="widgets.js" defer></script>
+  <script src="store-widget-embed.js" defer></script>
 </body>
 </html>

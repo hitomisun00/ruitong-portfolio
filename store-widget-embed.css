@@ -111,6 +111,39 @@
   font-weight: 650;
 }
 
+.store-widget-origin-note {
+  display: grid;
+  place-content: center;
+  min-height: var(--store-widget-height);
+  padding: 32px;
+  color: #f3f3ef;
+  text-align: center;
+  background: radial-gradient(circle at 50% 35%, rgba(97, 116, 91, .2), transparent 36%), #171815;
+}
+
+.store-widget-origin-note span {
+  margin-bottom: 12px;
+  color: #9aa396;
+  font-size: .68rem;
+  font-weight: 720;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.store-widget-origin-note strong {
+  font-size: clamp(1.3rem, 3vw, 2.2rem);
+  font-weight: 560;
+  letter-spacing: -.035em;
+}
+
+.store-widget-origin-note p {
+  max-width: 520px;
+  margin: 13px auto 0;
+  color: #a8aaa3;
+  font-size: .78rem;
+  line-height: 1.6;
+}
+
 .store-widget-spinner {
   width: 34px;
   height: 34px;
