@@ -4,207 +4,120 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fbfaf7">
-  <meta name="description" content="Widget Platform case study by Rui Tong: a reusable control plane, AI-assisted configuration workflow, governed customization and embedded runtime proof.">
+  <meta name="description" content="Widget Platform case study by Rui Tong: modular controls that turn existing features into configurable, client-ready experiences, plus the AI-assisted workflow built to scale the system.">
   <title>Widget Platform — Rui Tong</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="case-system.css">
   <link rel="stylesheet" href="widgets.css">
 </head>
-<body class="widgets-case" style="--accent: var(--sage)">
+<body class="widgets-case">
   <a class="skip-link" href="#content">Skip to case study</a>
+
   <nav class="site-nav" aria-label="Portfolio navigation">
     <a class="site-nav__brand" href="returning-ai.html" aria-label="Returning.AI project index"><span class="site-nav__mark" aria-hidden="true"></span><span>Returning.AI / Widgets</span></a>
-    <div class="site-nav__links"><a href="#system">System</a><a href="#origin">Figma origin</a><a href="#client-use">Client use</a><a href="#workflow">AI workflow</a><a href="#lab">Try it</a><a class="back-link" href="index.html">← Portfolio</a></div>
+    <div class="site-nav__links"><a href="#client-use">In use</a><a href="#system">System</a><a href="#figma">Figma</a><a href="#workflow">AI workflow</a><a class="back-link" href="index.html">← Portfolio</a></div>
   </nav>
 
   <main id="content">
-    <header class="shell hero widget-hero">
-      <div>
-        <p class="eyebrow">Flagship case / product platform</p>
-        <h1>Designing the control plane for portable product experiences.</h1>
-        <p class="hero__lead">Once a feature could travel into a broker site, every decision became a boundary: what follows the source, what an operator can change, and what the runtime must protect. I turned those decisions into a reusable widget system—and then a human-guided AI workflow for generating the next configuration.</p>
-        <div class="hero-actions"><a class="primary-action" href="#lab">Try the configurator</a><a class="text-action" href="#system">Read the product logic <span aria-hidden="true">↓</span></a></div>
+    <header class="widget-hero shell shell--wide">
+      <div class="widget-hero__copy">
+        <p class="case-context">Originator · Product design · Working implementation</p>
+        <h1>One product feature. Any client portal.</h1>
+        <p class="widget-hero__lead">I designed a modular widget platform that turns existing features into configurable, brand-ready experiences without duplicating their logic. Then I built an AI-assisted workflow to draft the next control model.</p>
+        <div class="widget-hero__actions"><a class="primary-action" href="#client-use">See it in use</a><a class="quiet-action" href="#figma">Explore the original design</a></div>
       </div>
-      <aside class="hero__aside">
-        <dl class="meta-list">
-          <div><dt>My scope</dt><dd>Concept, Figma model, product logic, specification and working local implementation</dd></div>
-          <div><dt>System</dt><dd>Settings / Style / Setup, inheritance, responsive states and embed behavior</dd></div>
-          <div><dt>Collaboration</dt><dd>Wai Yan reviewed the code; release ownership remains separate</dd></div>
-        </dl>
-        <div class="status-row"><span class="pill">Design archive</span><span class="pill" style="--dot:var(--yellow)">Working implementation</span><span class="pill" style="--dot:var(--blush)">Release unverified</span></div>
-      </aside>
+
+      <div class="layer-stage" data-layer-stack data-active-layer="experience">
+        <div class="layer-stage__topline"><span>Milestones through the system</span><span>Choose a layer</span></div>
+        <div class="layer-tabs" role="tablist" aria-label="Explore the widget layers">
+          <button type="button" role="tab" id="layer-tab-design" aria-controls="layer-sheet-design" aria-selected="false" tabindex="-1" data-layer-tab="design"><span>Design</span><small>Control model</small></button>
+          <button type="button" role="tab" id="layer-tab-configure" aria-controls="layer-sheet-configure" aria-selected="false" tabindex="-1" data-layer-tab="configure"><span>Configure</span><small>Live preview</small></button>
+          <button type="button" role="tab" id="layer-tab-experience" aria-controls="layer-sheet-experience" aria-selected="true" tabindex="0" data-layer-tab="experience"><span>Experience</span><small>Client portal</small></button>
+        </div>
+        <div class="layer-canvas" aria-live="polite">
+          <figure class="layer-sheet layer-sheet--design" id="layer-sheet-design" role="tabpanel" aria-labelledby="layer-tab-design" aria-hidden="true" data-layer-sheet="design">
+            <figcaption><span>Product decision</span><strong>Define what clients can safely change</strong></figcaption>
+            <div class="layer-sheet__image layer-sheet__image--rail"><img src="widget-assets/figma-origin/milestones-settings-overview.png" width="437" height="1438" loading="eager" alt="Original Figma control model for the Milestones widget"></div>
+          </figure>
+          <figure class="layer-sheet layer-sheet--configure" id="layer-sheet-configure" role="tabpanel" aria-labelledby="layer-tab-configure" aria-hidden="true" data-layer-sheet="configure">
+            <figcaption><span>System behavior</span><strong>Configure the widget with a live preview</strong></figcaption>
+            <div class="layer-sheet__image"><img src="widget-assets/client-proof/infinox-milestones-config-redacted.jpg" width="1600" height="778" loading="eager" alt="Redacted Milestones widget configuration and live preview in ReturningAI"></div>
+          </figure>
+          <figure class="layer-sheet layer-sheet--experience" id="layer-sheet-experience" role="tabpanel" aria-labelledby="layer-tab-experience" aria-hidden="false" data-layer-sheet="experience">
+            <figcaption><span>User outcome</span><strong>A native experience inside INFINOX</strong></figcaption>
+            <div class="layer-sheet__image"><img src="widget-assets/client-proof/infinox-milestones-portal-redacted.jpg" width="1600" height="784" fetchpriority="high" alt="Redacted Milestones widget embedded inside the INFINOX client portal"></div>
+          </figure>
+        </div>
+        <p class="layer-stage__hint">Select a layer to bring its evidence forward.</p>
+      </div>
     </header>
 
-    <section class="shell hero-system" aria-label="Widget product system overview">
-      <div class="hero-system__rail">
-        <article class="system-node system-node--feature"><span>Source feature</span><strong>Capability + live values</strong><small>Owns eligibility and business meaning</small></article><span class="system-connector" aria-hidden="true"></span>
-        <article class="system-node system-node--config"><span>Control plane</span><strong>Selection + overrides</strong><small>Exposes deliberate, reversible choices</small></article><span class="system-connector" aria-hidden="true"></span>
-        <article class="system-node system-node--runtime"><span>Runtime</span><strong>Normalize + safeguard</strong><small>Protects old, partial and narrow states</small></article>
-      </div>
-      <div class="hero-system__outcome">
-        <div class="mini-browser"><i></i><i></i><i></i><span>broker.example</span></div>
-        <div class="mini-widget"><div><span>Daily login</span><b>9</b><em>day streak</em></div><ol aria-label="Example weekly progress"><li class="is-done">M</li><li class="is-done">T</li><li class="is-done">W</li><li class="is-current">T</li><li>F</li><li>S</li><li>S</li></ol></div>
-        <p><strong>Embedded experience</strong><span>One coherent result inside its host context</span></p>
-      </div>
-    </section>
+    <div class="case-provenance shell shell--wide"><span aria-hidden="true"></span><p><strong>Scope and evidence.</strong> I originated the concept, designed the system and built the working local implementation; Wai Yan reviewed the code. The screenshots verify visible product states, not rollout, adoption or business impact. Client-identifying account details have been removed.</p></div>
 
-    <div class="shell evidence-note case-status">
-      <span class="evidence-note__mark" aria-hidden="true"></span>
-      <p><strong>Attribution and evidence.</strong> I originated the widget concept, created the first settings model in Figma, independently led the later redesign and wrote the working localhost output. The supplied INFINOX captures below show the control plane and hosted result; they verify visible product states, not authorship, rollout, adoption or business impact.</p>
-    </div>
+    <section class="case-section client-use" id="client-use" aria-labelledby="client-title"><div class="shell shell--wide">
+      <div class="section-lead"><h2 id="client-title">Built once. Shaped for the client.</h2><p>The operator sees controls. The client sees a focused feature that belongs in their portal. Compare the two surfaces across Store, Milestones and Streaks.</p></div>
 
-    <section class="section" id="system" aria-labelledby="system-title"><div class="shell">
-      <div class="section-head"><div><span class="section-number">The product problem</span><h2 id="system-title">A portable feature cannot become a second source of truth.</h2></div><div><p class="section-intro">The early widgets proved that an embed is not just a smaller screen. It introduces a new host, new dimensions, new branding needs and new runtime failure states—without permission to duplicate the feature’s business rules.</p></div></div>
-      <div class="problem-pair">
-        <article class="problem-card"><span class="problem-card__signal">Without a model</span><h3>Copied defaults look correct, then silently drift.</h3><p>A widget can preserve an old title, status or display rule after the source feature changes. Operators cannot tell which value is still live.</p><div class="drift-sketch" aria-label="Copied values drifting apart"><div><small>Feature</small><strong>Daily login</strong><span>Changed today</span></div><i aria-hidden="true"></i><div><small>Widget copy</small><strong>Weekly login</strong><span>Snapshot from creation</span></div></div></article>
-        <article class="problem-card problem-card--solution"><span class="problem-card__signal">With explicit authority</span><h3>Every control says who owns the value.</h3><p>Availability stays with the feature. Approved fields inherit until an override exists. Layout and appearance remain widget-only.</p><div class="authority-stack" aria-label="Three control authority classes"><span><i class="dot dot--feature"></i><b>Feature-owned</b><em>Respect and explain</em></span><span><i class="dot dot--shared"></i><b>Inheritable</b><em>Follow or override</em></span><span><i class="dot dot--widget"></i><b>Widget-only</b><em>Store locally</em></span></div></article>
-      </div>
-    </div></section>
-
-    <section class="section section--tint" id="authority" aria-labelledby="authority-title"><div class="shell split authority-layout">
-      <div class="copy-stack"><span class="section-number">Decision one / source authority</span><h2 id="authority-title">Inheritance stays live until the operator makes a deliberate exception.</h2><p>The resolution rule is small, but it prevents an entire class of drift: <strong>effective value = widget override ?? current feature value</strong>. Reset removes the override; it does not copy today’s feature value into a new snapshot.</p><div class="callout"><span class="callout__label">Product judgement</span><p>Customization is useful when it communicates a valid state—not when it can manufacture one.</p></div></div>
-      <div class="authority-resolver" data-widget-resolver>
-        <div class="authority-resolver__head"><span>Interactive logic trace</span><strong>Change the source. Add an override. Reset it.</strong></div>
-        <div class="authority-resolver__controls"><fieldset><legend>Current feature title</legend><div class="segmented resolver-options"><button type="button" data-resolver-group="source" data-value="Milestones" aria-pressed="true">Milestones</button><button type="button" data-resolver-group="source" data-value="My progress" aria-pressed="false">My progress</button></div></fieldset><fieldset><legend>Widget override</legend><div class="segmented resolver-options"><button type="button" data-resolver-group="override" data-value="" aria-pressed="true">Follow feature</button><button type="button" data-resolver-group="override" data-value="Achievements" aria-pressed="false">Achievements</button></div></fieldset></div>
-        <div class="authority-resolver__result" aria-live="polite"><span>Rendered title</span><strong data-resolved-value>Milestones</strong><ul><li data-source-trace>Reading the current feature value</li><li data-override-trace>No widget override exists</li><li>The source feature remains unchanged</li></ul></div>
-      </div>
-    </div></section>
-
-    <section class="section" id="grammar" aria-labelledby="grammar-title"><div class="shell">
-      <div class="section-head"><div><span class="section-number">Decision two / configuration grammar</span><h2 id="grammar-title">One predictable shell. Different controls for each feature.</h2></div><div><p class="section-intro">The answer was not a universal form. It was a stable grammar that gives feature-specific choices a predictable home and keeps styling power inside safe boundaries.</p></div></div>
-      <div class="grammar-grid">
-        <article class="grammar-card is-active"><span>Settings</span><h3>What appears and how it behaves</h3><ul><li>Selection and ordering</li><li>Layout and display behavior</li><li>Sections, fields and nested content</li><li>Inherited values and explicit overrides</li></ul></article>
-        <article class="grammar-card"><span>Style</span><h3>How approved surfaces look</h3><ul><li>Theme and typography</li><li>Background and stroke</li><li>Radius, padding and gaps</li><li>Dividers across three surface depths</li></ul></article>
-        <article class="grammar-card"><span>Setup</span><h3>How the experience reaches its host</h3><ul><li>Widget mode and identifier</li><li>Domain access</li><li>Embed guidance</li><li>Runtime and provider requirements</li></ul></article>
-      </div>
-      <div class="surface-map"><div class="surface-map__copy"><span class="section-number">Constrained by design</span><h3>Useful freedom without raw CSS.</h3><p>Operators can control the visual surfaces they actually need. Arbitrary positioning, dimensions, z-index, opacity, gradients and overflow stay out because they can break responsiveness, hierarchy or accessibility.</p></div><div class="surface-object" aria-label="Three styling surface levels"><div class="surface-layer surface-layer--widget"><span>Widget surface</span><div class="surface-layer surface-layer--section"><span>Section surface</span><div class="surface-layer surface-layer--nested"><span>Nested surface</span><i></i><i></i><i></i></div></div></div></div><ul class="surface-controls" aria-label="Approved surface controls"><li>Background</li><li>Stroke</li><li>Radius</li><li>Padding</li><li>Gap</li><li>Dividers</li></ul></div>
-    </div></section>
-
-    <section class="section section--tint origin-section" id="origin" aria-labelledby="origin-title"><div class="shell shell--wide">
-      <div class="origin-intro">
-        <div><span class="section-number">The Figma origin / Milestones</span><h2 id="origin-title">The first configurator was already a smart solution. Its depth revealed the next problem.</h2></div>
-        <div><p class="section-intro">A one-size-fits-all widget could not satisfy different client brands, layouts and content needs. I designed a modular Milestones configuration model that could hide, show, arrange and style the parts of the experience without changing what the feature meant.</p><p class="origin-evidence-note">Original Figma design evidence. Scroll the rail and switch between Settings and Style.</p></div>
-      </div>
-
-      <div class="origin-logic" aria-label="Why the original configurator led to automation">
-        <article><span>Why it worked</span><strong>Granular enough for real client variation</strong><p>Groups, stages, conditions, rewards, progress and brand surfaces could be composed instead of hard-coded.</p></article>
-        <i aria-hidden="true"></i>
-        <article><span>What it exposed</span><strong>Every feature needed a new control model</strong><p>The system concepts repeated, but labels, relationships and safe exceptions changed from Store to Milestones to Streaks and Socials.</p></article>
-        <i aria-hidden="true"></i>
-        <article class="origin-logic__turn"><span>The turning point</span><strong>Generate the repeatable structure; review the feature-specific decisions</strong><p>That became the brief for the Widget Configurator skill.</p></article>
-      </div>
-
-      <div class="origin-stage" data-origin-gallery>
-        <div class="origin-rail">
-          <div class="origin-rail__bar">
-            <div><span>Milestones / configuration rail</span><strong>Original Figma model</strong></div>
-            <div class="origin-tabs" role="tablist" aria-label="Choose a Milestones configuration layer">
-              <button type="button" role="tab" id="origin-tab-settings" aria-controls="origin-panel-settings" aria-selected="true" tabindex="0" data-origin-tab="settings">Settings</button>
-              <button type="button" role="tab" id="origin-tab-style" aria-controls="origin-panel-style" aria-selected="false" tabindex="-1" data-origin-tab="style">Style</button>
-            </div>
-          </div>
-
-          <div class="origin-panel is-active" id="origin-panel-settings" role="tabpanel" aria-labelledby="origin-tab-settings" data-origin-panel="settings">
-            <div class="origin-scroll" tabindex="0" role="region" aria-label="Scrollable original Milestones Settings designs">
-              <figure><figcaption><span>01</span><strong>Selection, layout and milestone groups</strong></figcaption><img src="widget-assets/figma-origin/milestones-settings-overview.png" width="437" height="1438" loading="lazy" alt="Original Figma Settings design for Milestones selection, layout and group display controls"></figure>
-              <figure><figcaption><span>02</span><strong>Stages, conditions and rewards</strong></figcaption><img src="widget-assets/figma-origin/milestones-settings-stages.png" width="418" height="1323" loading="lazy" alt="Original Figma Settings design for Milestone stage, condition and reward controls"></figure>
-              <figure><figcaption><span>03</span><strong>Progress card and banner</strong></figcaption><img src="widget-assets/figma-origin/milestones-settings-progress.png" width="425" height="501" loading="lazy" alt="Original Figma Settings design for Milestone progress card and banner controls"></figure>
-            </div>
-            <p class="origin-scroll-hint"><span aria-hidden="true">↕</span> Scroll through the original Settings rail</p>
-          </div>
-
-          <div class="origin-panel" id="origin-panel-style" role="tabpanel" aria-labelledby="origin-tab-style" data-origin-panel="style" hidden>
-            <div class="origin-scroll" tabindex="0" role="region" aria-label="Scrollable original Milestones Style designs">
-              <figure><figcaption><span>01</span><strong>Theme tokens and main widget surface</strong></figcaption><img src="widget-assets/figma-origin/milestones-style-theme.png" width="436" height="1109" loading="lazy" alt="Original Figma Style design showing Milestones theme tokens and main widget surface controls"></figure>
-              <figure><figcaption><span>02</span><strong>Section surface and loading state</strong></figcaption><img src="widget-assets/figma-origin/milestones-style-sections.png" width="430" height="1185" loading="lazy" alt="Original Figma Style design showing section surface and widget loading state controls"></figure>
-            </div>
-            <p class="origin-scroll-hint"><span aria-hidden="true">↕</span> Scroll through the original Style rail</p>
-          </div>
+      <div class="client-workspace" data-client-workspace>
+        <div class="client-tabs" role="tablist" aria-label="Choose a client widget example">
+          <button type="button" role="tab" id="client-tab-store" aria-controls="client-panel-store" aria-selected="false" tabindex="-1" data-client-example="store">Store</button>
+          <button type="button" role="tab" id="client-tab-milestones" aria-controls="client-panel-milestones" aria-selected="true" tabindex="0" data-client-example="milestones">Milestones</button>
+          <button type="button" role="tab" id="client-tab-streaks" aria-controls="client-panel-streaks" aria-selected="false" tabindex="-1" data-client-example="streaks">Streaks</button>
         </div>
 
-        <figure class="origin-output">
-          <figcaption><span>Configured result</span><strong>Default Milestones view</strong></figcaption>
-          <div class="origin-output__image"><img src="widget-assets/figma-origin/milestones-default-view.png" width="1318" height="1317" loading="lazy" alt="Original Figma default Milestones widget with group, stage cards, conditions, rewards and progress card"></div>
-          <ul aria-label="Visible Milestones sections"><li>Milestone group</li><li>Stage map</li><li>Conditions + rewards</li><li>Progress card</li></ul>
-        </figure>
-      </div>
-
-      <div class="origin-bridge"><span>Design insight</span><p><strong>Modularity solved client variation.</strong> The long configuration rail made the recurring design labour visible—and gave the automation workflow a concrete, governed target.</p><a href="#workflow">See how the skill responds <span aria-hidden="true">↓</span></a></div>
-    </div></section>
-
-    <section class="section live-evidence" id="client-use" aria-labelledby="evidence-title"><div class="shell shell--wide">
-      <div class="client-intro">
-        <div><span class="section-number">How clients use it</span><h2 id="evidence-title">One configuration surface. Three distinct experiences inside INFINOX.</h2></div>
-        <div><p class="section-intro">A client does not see the editor. They see Store, Milestones or Streaks behaving as part of their own portal. Switch examples to compare what an operator configures in ReturningAI with what a trader experiences in the INFINOX shell.</p><p class="client-redaction"><span aria-hidden="true">●</span> Publication-safe presentation crops. Account names, balances and activity history are redacted.</p></div>
-      </div>
-
-      <div class="client-family" aria-label="Widget feature family">
-        <span>Feature family</span><strong>Store</strong><strong>Milestones</strong><strong>Streaks</strong><strong class="is-context">Socials <small>family context</small></strong>
-      </div>
-
-      <div class="client-switcher" role="tablist" aria-label="Choose an INFINOX widget example">
-        <button type="button" role="tab" id="client-tab-store" aria-controls="client-panel-store" aria-selected="true" tabindex="0" data-client-example="store"><span>Store</span><small>Style → catalogue</small></button>
-        <button type="button" role="tab" id="client-tab-milestones" aria-controls="client-panel-milestones" aria-selected="false" tabindex="-1" data-client-example="milestones"><span>Milestones</span><small>Surface → progress</small></button>
-        <button type="button" role="tab" id="client-tab-streaks" aria-controls="client-panel-streaks" aria-selected="false" tabindex="-1" data-client-example="streaks"><span>Streaks</span><small>Display → habit loop</small></button>
-      </div>
-
-      <div class="client-stage" data-client-stage>
-        <article class="client-panel is-active" id="client-panel-store" role="tabpanel" aria-labelledby="client-tab-store" data-client-panel="store">
-          <div class="client-story"><span>Store</span><h3>Bounded style controls become a branded reward catalogue.</h3><p>Spacing, section surfaces, stroke and radius are adjusted in context. The resulting catalogue sits inside INFINOX navigation without inheriting ReturningAI’s surrounding platform chrome.</p></div>
-          <div class="client-planes">
-            <figure class="client-plane client-plane--control"><figcaption><span>Configured in ReturningAI</span><strong>Style rail + live preview</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-store-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted INFINOX Store widget preview beside ReturningAI Style controls"></div><ul class="client-callouts" aria-label="Configuration decisions shown"><li>Section surface</li><li>Padding + gap</li><li>Corner radius</li></ul></figure>
-            <span class="client-transfer" aria-hidden="true"><i></i><b>rendered in host</b></span>
-            <figure class="client-plane client-plane--portal"><figcaption><span>Experienced in INFINOX</span><strong>Store inside the client portal</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-store-portal-redacted.jpg" width="1600" height="784" loading="lazy" alt="Redacted Store widget embedded inside the INFINOX client portal"></div></figure>
-          </div>
+        <article class="client-panel" id="client-panel-store" role="tabpanel" aria-labelledby="client-tab-store" data-client-panel="store" hidden>
+          <div class="client-panel__story"><div><span>Store</span><h3>Style controls become a branded reward catalogue.</h3></div><p>Operators tune the surface, spacing and structure. Traders receive a catalogue that sits naturally inside INFINOX navigation.</p></div>
+          <div class="client-compare"><figure><figcaption><span>Configured in ReturningAI</span><strong>Style rail + preview</strong></figcaption><div><img src="widget-assets/client-proof/infinox-store-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted Store widget configuration and preview in ReturningAI"></div></figure><span class="client-compare__transfer" aria-hidden="true"><i></i><b>Rendered in the client shell</b></span><figure><figcaption><span>Experienced in INFINOX</span><strong>Reward catalogue</strong></figcaption><div><img src="widget-assets/client-proof/infinox-store-portal-redacted.jpg" width="1600" height="784" loading="lazy" alt="Redacted Store widget embedded inside the INFINOX client portal"></div></figure></div>
         </article>
 
-        <article class="client-panel" id="client-panel-milestones" role="tabpanel" aria-labelledby="client-tab-milestones" data-client-panel="milestones" hidden>
-          <div class="client-story"><span>Milestones</span><h3>A shared surface system carries a dense progression model.</h3><p>The editor exposes widget and section styling while preserving the relationship between milestone groups, active stages, earned rewards and the remaining tier path.</p></div>
-          <div class="client-planes">
-            <figure class="client-plane client-plane--control"><figcaption><span>Configured in ReturningAI</span><strong>Surface hierarchy + live preview</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-milestones-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted INFINOX Milestones widget preview beside ReturningAI Style controls"></div><ul class="client-callouts" aria-label="Configuration decisions shown"><li>Widget surface</li><li>Section surface</li><li>Dividers + stroke</li></ul></figure>
-            <span class="client-transfer" aria-hidden="true"><i></i><b>rendered in host</b></span>
-            <figure class="client-plane client-plane--portal"><figcaption><span>Experienced in INFINOX</span><strong>Milestones inside the client portal</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-milestones-portal-redacted.jpg" width="1600" height="784" loading="lazy" alt="Redacted Milestones widget embedded inside the INFINOX client portal"></div></figure>
-          </div>
+        <article class="client-panel is-active" id="client-panel-milestones" role="tabpanel" aria-labelledby="client-tab-milestones" data-client-panel="milestones">
+          <div class="client-panel__story"><div><span>Milestones</span><h3>One surface system carries a dense progression model.</h3></div><p>Widget and section styling adapt to the brand while milestone groups, active stages and reward relationships remain legible.</p></div>
+          <div class="client-compare"><figure><figcaption><span>Configured in ReturningAI</span><strong>Surface hierarchy + preview</strong></figcaption><div><img src="widget-assets/client-proof/infinox-milestones-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted Milestones widget configuration and preview in ReturningAI"></div></figure><span class="client-compare__transfer" aria-hidden="true"><i></i><b>Rendered in the client shell</b></span><figure><figcaption><span>Experienced in INFINOX</span><strong>Progression experience</strong></figcaption><div><img src="widget-assets/client-proof/infinox-milestones-portal-redacted.jpg" width="1600" height="784" loading="lazy" alt="Redacted Milestones widget embedded inside the INFINOX client portal"></div></figure></div>
         </article>
 
         <article class="client-panel" id="client-panel-streaks" role="tabpanel" aria-labelledby="client-tab-streaks" data-client-panel="streaks" hidden>
-          <div class="client-story"><span>Streaks</span><h3>Layout and visibility choices shape the habit loop.</h3><p>Operators choose tile, horizontal or vertical presentation, the cards per row and which details appear. The client receives a focused daily-progress experience rather than a configuration-heavy interface.</p></div>
-          <div class="client-planes">
-            <figure class="client-plane client-plane--control"><figcaption><span>Configured in ReturningAI</span><strong>Display + section controls</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-streaks-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted INFINOX Streaks widget preview beside ReturningAI Settings controls"></div><ul class="client-callouts" aria-label="Configuration decisions shown"><li>Layout</li><li>Cards per row</li><li>Section visibility</li></ul></figure>
-            <span class="client-transfer" aria-hidden="true"><i></i><b>rendered in host</b></span>
-            <figure class="client-plane client-plane--portal"><figcaption><span>Experienced in INFINOX</span><strong>Streaks inside the client portal</strong></figcaption><div class="client-plane__image"><img src="widget-assets/client-proof/infinox-streaks-portal-redacted.jpg" width="1600" height="780" loading="lazy" alt="Redacted Streaks widget embedded inside the INFINOX client portal"></div></figure>
-          </div>
+          <div class="client-panel__story"><div><span>Streaks</span><h3>Layout and visibility choices shape the habit loop.</h3></div><p>Operators choose the presentation and details. Traders receive a focused daily-progress experience instead of the configuration behind it.</p></div>
+          <div class="client-compare"><figure><figcaption><span>Configured in ReturningAI</span><strong>Display controls + preview</strong></figcaption><div><img src="widget-assets/client-proof/infinox-streaks-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted Streaks widget configuration and preview in ReturningAI"></div></figure><span class="client-compare__transfer" aria-hidden="true"><i></i><b>Rendered in the client shell</b></span><figure><figcaption><span>Experienced in INFINOX</span><strong>Daily progress</strong></figcaption><div><img src="widget-assets/client-proof/infinox-streaks-portal-redacted.jpg" width="1600" height="780" loading="lazy" alt="Redacted Streaks widget embedded inside the INFINOX client portal"></div></figure></div>
         </article>
       </div>
+    </div></section>
 
-      <div class="client-reading">
-        <div><span>Product decision</span><strong>Expose only meaningful, safe choices.</strong></div><i aria-hidden="true"></i><div><span>System behavior</span><strong>Persist overrides while preserving feature authority.</strong></div><i aria-hidden="true"></i><div><span>User outcome</span><strong>A coherent experience inside the client’s own portal.</strong></div>
+    <section class="case-section system-story" id="system" aria-labelledby="system-title"><div class="shell">
+      <div class="system-story__copy"><p>Platform decision</p><h2 id="system-title">The widget adapts. The feature stays in charge.</h2><p>Clients need flexibility, but copying feature values into every embed would create a second source of truth. I separated product authority from presentation.</p></div>
+      <ol class="system-chain" aria-label="Product decision to user outcome"><li><span>Product decision</span><strong>Expose only meaningful choices</strong><p>Selection, visibility, layout and brand-safe styling—not arbitrary CSS or fabricated states.</p></li><li><span>System behavior</span><strong>Inherit live values until an override exists</strong><p>Reset removes the exception and returns the widget to the current feature value.</p></li><li><span>User outcome</span><strong>A client-ready experience without logic drift</strong><p>The portal can look native while eligibility, progress and rewards keep their original meaning.</p></li></ol>
+    </div></section>
+
+    <section class="case-section figma-origin" id="figma" aria-labelledby="figma-title"><div class="shell shell--wide">
+      <div class="section-lead section-lead--wide"><h2 id="figma-title">The original design covered every reasonable client request. That was the clue.</h2><p>The Milestones configurator was intentionally granular: choose groups, arrange stages, reveal conditions and rewards, change surfaces, and define the loading state. It solved client variation—but rebuilding that logic for every feature took too long.</p></div>
+      <ul class="control-index" aria-label="Milestones configuration coverage"><li>Selection</li><li>Layout</li><li>Groups</li><li>Stages</li><li>Conditions</li><li>Rewards</li><li>Progress</li><li>Theme</li><li>Loading</li></ul>
+
+      <div class="figma-studio" data-figma-studio>
+        <div class="figma-studio__bar"><div><span>Milestones configurator</span><strong>Original Figma model</strong></div><div class="figma-tabs" role="tablist" aria-label="Choose the original Figma controls"><button type="button" role="tab" id="figma-tab-settings" aria-controls="figma-panel-settings" aria-selected="true" tabindex="0" data-figma-tab="settings">Settings</button><button type="button" role="tab" id="figma-tab-style" aria-controls="figma-panel-style" aria-selected="false" tabindex="-1" data-figma-tab="style">Style</button></div></div>
+        <div class="figma-studio__body">
+          <div class="figma-panel is-active" id="figma-panel-settings" role="tabpanel" aria-labelledby="figma-tab-settings" data-figma-panel="settings"><div class="figma-rail" tabindex="0" role="region" aria-label="Scrollable original Milestones Settings design"><section><h3>Selection, layout and groups</h3><img src="widget-assets/figma-origin/milestones-settings-overview.png" width="437" height="1438" loading="lazy" alt="Original Figma Settings design for Milestones selection, layout and group controls"></section><section><h3>Stages, conditions and rewards</h3><img src="widget-assets/figma-origin/milestones-settings-stages.png" width="418" height="1323" loading="lazy" alt="Original Figma Settings design for Milestone stage, condition and reward controls"></section><section><h3>Progress card and banner</h3><img src="widget-assets/figma-origin/milestones-settings-progress.png" width="425" height="501" loading="lazy" alt="Original Figma Settings design for the Milestone progress card and banner"></section></div></div>
+          <div class="figma-panel" id="figma-panel-style" role="tabpanel" aria-labelledby="figma-tab-style" data-figma-panel="style" hidden><div class="figma-rail" tabindex="0" role="region" aria-label="Scrollable original Milestones Style design"><section><h3>Theme and main widget surface</h3><img src="widget-assets/figma-origin/milestones-style-theme.png" width="436" height="1109" loading="lazy" alt="Original Figma Style design for theme tokens and the main widget surface"></section><section><h3>Section surface and loading state</h3><img src="widget-assets/figma-origin/milestones-style-sections.png" width="430" height="1185" loading="lazy" alt="Original Figma Style design for section surfaces and the loading state"></section></div></div>
+          <figure class="figma-preview"><figcaption><span>Every control resolves here</span><strong>Default Milestones view</strong></figcaption><div><img src="widget-assets/figma-origin/milestones-default-view.png" width="1318" height="1317" loading="lazy" alt="Original Figma default Milestones view with its group, stages, conditions, rewards and progress card"></div></figure>
+        </div>
+        <p class="figma-studio__hint"><span aria-hidden="true">↕</span> Scroll the control rail. The preview stays in context.</p>
       </div>
-      <p class="evidence-limit"><strong>Evidence limit:</strong> supplied authenticated captures verify visible INFINOX product states. They do not by themselves establish award causality, adoption, business impact or production ownership. Socials belongs to the wider widget family but is not shown here because this comparison uses only the paired captures supplied for publication.</p>
     </div></section>
 
-    <section class="section section--tint" id="workflow" aria-labelledby="workflow-title"><div class="shell">
-      <div class="section-head"><div><span class="section-number">The workflow problem</span><h2 id="workflow-title">I was still re-deciding the same system for every new widget.</h2></div><div><p class="section-intro">The long Milestones rail made the pattern tangible. The feature-specific controls changed, but the questions repeated: which source is authoritative, which choices are safe, how they should be grouped, and which states need proof. I encoded that reusable judgement into a governed, resumable skill.</p></div></div>
-      <ol class="workflow-rail" aria-label="AI-assisted widget configuration workflow"><li><span>Request</span><strong>Describe the feature and desired outcome</strong><small>Start at discovery, implementation, QA or handoff</small></li><li><span>Inspect</span><strong>Read the feature and closest approved pattern</strong><small>Separate product questions from technical discovery</small></li><li><span>Propose</span><strong>Generate a grouped control model</strong><small>Classify authority, visibility, styling and states</small></li><li><span>Review</span><strong>Resolve feature-specific exceptions</strong><small>A human confirms ambiguity, risk and source ownership</small></li><li><span>Deliver</span><strong>Implement and prove the requested checkpoint</strong><small>Use locked targets, proportional QA and evidence</small></li></ol>
-      <div class="workflow-boundary"><div><span>The skill accelerates</span><strong>Recurring structure</strong><p>Canonical groups, common controls, authority labels, test scenarios and resumable run state.</p></div><div><span>The designer still decides</span><strong>What is genuinely new</strong><p>Feature meaning, exceptions, product trade-offs, source truth and whether the evidence proves behavior.</p></div></div>
+    <section class="case-section workflow-story" id="workflow" aria-labelledby="workflow-title"><div class="shell">
+      <div class="section-lead section-lead--wide"><h2 id="workflow-title">I turned repeated configuration work into a reviewable AI workflow.</h2><p>The skill drafts the recurring structure, but it does not pretend every feature is identical. A designer still reviews feature meaning, exceptions, source authority and proof.</p></div>
+      <ol class="workflow-path" aria-label="Widget Configurator workflow"><li><span>Inspect</span><strong>Read the feature and closest approved pattern</strong></li><li><span>Draft</span><strong>Propose Settings, Style and Setup controls</strong></li><li><span>Review</span><strong>Resolve feature-specific decisions with a human</strong></li><li><span>Prove</span><strong>Implement the requested checkpoint and test it</strong></li></ol>
+      <div class="prototype-dock"><div class="prototype-dock__copy"><p>Working local prototype</p><h3>Try the workflow when you want the detail—not before.</h3><p>The public simulation uses a deterministic Spin the Wheel fixture. It sends nothing, saves nothing and makes no external change.</p><div><button type="button" class="primary-action" data-open-configurator>Open the configurator</button><a class="quiet-action" href="widget-configurator.html">Open as a full page</a></div></div><div class="prototype-dock__preview" aria-label="Example Widget Configurator proposal"><div class="prototype-prompt"><span>You</span><p>Turn Spin the Wheel into a configurable widget.</p></div><div class="prototype-response"><span>Widget Configurator</span><strong>Draft ready for review</strong><ul><li><b>Settings</b> content, behavior and visibility</li><li><b>Style</b> theme, surfaces and loading state</li><li><b>Setup</b> delivery and embed requirements</li></ul><small>Human review required for feature-specific exceptions.</small></div></div></div>
     </div></section>
 
-    <section class="section lab-section" id="lab" aria-labelledby="lab-title"><div class="shell shell--wide">
-      <div class="section-head"><div><span class="section-number">Interactive reconstruction</span><h2 id="lab-title">Give the workflow a feature. Review what it proposes.</h2></div><div><p class="section-intro">This public demo uses one deterministic Spin the Wheel fixture. It simulates the workflow locally—no model call, tenant data, credentials, persistence or external action—then lets you test the resulting Settings / Style / Setup controls.</p><a class="text-action lab-link" href="widget-configurator.html">Open the full workflow case →</a></div></div>
-      <div class="lab-frame-shell"><div class="lab-frame-shell__bar"><span><i></i>Widget Configurator Skill</span><em>Public simulation · nothing is sent or saved</em></div><iframe src="widget-configurator.html?embed=1#lab" title="Interactive Widget Configurator Skill simulation" loading="lazy"></iframe><noscript><p class="noscript-fallback">JavaScript is required for the interactive configurator. <a href="widget-configurator.html">Read the full workflow case instead.</a></p></noscript></div>
+    <section class="case-section proof-story" id="proof" aria-labelledby="proof-title"><div class="shell shell--wide">
+      <div class="section-lead"><h2 id="proof-title">The system became credible when Streaks survived implementation and QA.</h2><p>The preserved implementation slice covers persistence, compatibility, preview behavior and responsive states. The figures below are recorded verification—not a claim about adoption or business impact.</p></div>
+      <dl class="proof-line"><div><dt>Automated suites</dt><dd>12 / 12 passed</dd></div><div><dt>Automated tests</dt><dd>119 / 119 passed</dd></div><div><dt>State checks</dt><dd>30 checked · 0 incorrectly disabled</dd></div></dl>
+      <div class="proof-visual"><figure><figcaption><span>Configured in ReturningAI</span><strong>Streaks display controls</strong></figcaption><img src="widget-assets/client-proof/infinox-streaks-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted Streaks configuration and preview used as implementation evidence"></figure><figure><figcaption><span>Rendered in INFINOX</span><strong>Responsive client experience</strong></figcaption><img src="widget-assets/client-proof/infinox-streaks-portal-redacted.jpg" width="1600" height="780" loading="lazy" alt="Redacted Streaks widget inside the INFINOX client portal"></figure></div>
+      <p class="proof-limit"><strong>Honest boundary:</strong> the estimated 70–80% reduction in repetitive planning is Rui Tong’s retrospective estimate, not an independently measured result. Production rollout and client impact remain separate verification questions.</p>
     </div></section>
 
-    <section class="section section--tint" id="proof" aria-labelledby="proof-title"><div class="shell">
-      <div class="section-head"><div><span class="section-number">Delivery proof / Streaks</span><h2 id="proof-title">The system became credible when it survived state, persistence and responsive QA.</h2></div><div><p class="section-intro">Streaks exercised the full chain: source audit, proposal, review, implementation, persistence, compatibility and runtime behavior. The wider widget family showed that the model could generalize without making every feature identical.</p></div></div>
-      <div class="evidence-ledger proof-ledger"><article class="ledger-item"><small>Automated suites</small><strong>12 / 12 passed</strong><p>Recorded validation for the reviewed Streaks implementation slice.</p></article><article class="ledger-item"><small>Automated tests</small><strong>119 / 119 passed</strong><p>Behavior coverage including persistence, isolation, preview and compatibility.</p></article><article class="ledger-item"><small>State checks</small><strong>30 checked · 0 incorrectly disabled</strong><p>Focused verification that valid configuration states remained interactive.</p></article></div>
-      <div class="gallery-asym proof-gallery"><figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Streaks / desktop test surface</span></div><img src="widget-assets/streaks-desktop.png" width="1440" height="1000" loading="lazy" alt="Desktop Streaks widget in a test portal"><figcaption>Recorded test-portal evidence at desktop width.</figcaption></figure><figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>390 px</span></div><img src="widget-assets/streaks-mobile.png" width="390" height="844" loading="lazy" alt="Mobile Streaks widget at 390 pixels wide"><figcaption>The same widget contract evaluated at mobile width.</figcaption></figure></div>
-      <div class="callout proof-boundary"><span class="callout__label">Honest boundary</span><p>The records establish implementation confidence for the preserved slice. The estimated 70–80% reduction in repetitive planning work is Rui Tong’s retrospective estimate, not an independently measured outcome. Production rollout, adoption and business impact remain separate verification questions.</p></div>
-    </div></section>
-
-    <section class="section reflection" aria-labelledby="reflection-title"><div class="shell split"><div class="copy-stack"><span class="section-number">What changed</span><h2 id="reflection-title">The output was not one better editor. It was a way to keep product logic coherent as the platform grew.</h2><p>The strongest idea proved to be the authority model: source capability, explicit overrides and widget-only presentation. The workflow then moved repetitive planning onto a proposal, leaving human attention for the feature-specific decisions where it mattered.</p></div><div class="reflection-list"><div><span>Durable</span><strong>Source authority + shared configuration grammar</strong></div><div><span>Still partial</span><strong>Universal provenance indicators + full style cascade</strong></div><div><span>Measure next</span><strong>Completion time, override comprehension, setup errors and embed adoption</strong></div></div></div></section>
-
-    <section class="section" aria-labelledby="next-title"><div class="shell"><span class="section-number">Continue exploring</span><div class="next-links" id="next-title"><a class="next-link" href="widget-configurator.html"><small>Interactive workflow</small><strong>Widget Configurator Skill →</strong></a><a class="next-link" href="store.html"><small>Other flagship</small><strong>Store →</strong></a><a class="next-link" href="returning-ai.html"><small>Project index</small><strong>All Returning.AI work →</strong></a></div></div></section>
+    <section class="case-section case-ending" aria-labelledby="ending-title"><div class="shell"><p>The lasting design</p><h2 id="ending-title">Not one better editor—a way to scale product logic without losing control.</h2><div class="case-ending__links"><a href="widget-configurator.html">Explore the Widget Configurator</a><a href="store.html">Next case: Store</a><a href="index.html">Return to the workbench</a></div></div></section>
   </main>
+
+  <dialog class="configurator-dialog" data-configurator-dialog aria-labelledby="configurator-dialog-title"><div class="configurator-dialog__shell"><header><div><span>Interactive prototype</span><strong id="configurator-dialog-title">Widget Configurator</strong></div><button type="button" aria-label="Close Widget Configurator" data-close-configurator>Close</button></header><iframe data-src="widget-configurator.html?embed=1#lab" title="Interactive Widget Configurator simulation"></iframe></div></dialog>
 
   <footer class="site-footer"><div class="shell"><span>Rui Tong · Product designer · Singapore</span><a href="index.html">Return to the workbench ↑</a></div></footer>
   <script src="widgets.js" defer></script>
