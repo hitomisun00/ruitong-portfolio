@@ -28,6 +28,53 @@
     render();
   }
 
+  const originTabs = Array.from(document.querySelectorAll('[data-origin-tab]'));
+  const originPanels = Array.from(document.querySelectorAll('[data-origin-panel]'));
+
+  const selectOriginLayer = (name, moveFocus = false, syncUrl = false) => {
+    originTabs.forEach((tab) => {
+      const selected = tab.dataset.originTab === name;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      if (selected && moveFocus) tab.focus();
+    });
+
+    originPanels.forEach((panel) => {
+      const selected = panel.dataset.originPanel === name;
+      panel.hidden = !selected;
+      panel.classList.toggle('is-active', selected);
+      if (selected) {
+        const scrollRegion = panel.querySelector('.origin-scroll');
+        if (scrollRegion) scrollRegion.scrollTop = 0;
+      }
+    });
+
+    if (syncUrl) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('origin', name);
+      window.history.replaceState({}, '', url);
+    }
+  };
+
+  originTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectOriginLayer(tab.dataset.originTab, false, true));
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      let nextIndex = index;
+      if (event.key === 'ArrowRight') nextIndex = (index + 1) % originTabs.length;
+      if (event.key === 'ArrowLeft') nextIndex = (index - 1 + originTabs.length) % originTabs.length;
+      if (event.key === 'Home') nextIndex = 0;
+      if (event.key === 'End') nextIndex = originTabs.length - 1;
+      selectOriginLayer(originTabs[nextIndex].dataset.originTab, true, true);
+    });
+  });
+
+  const requestedOrigin = new URLSearchParams(window.location.search).get('origin');
+  if (originTabs.some((tab) => tab.dataset.originTab === requestedOrigin)) {
+    selectOriginLayer(requestedOrigin);
+  }
+
   const clientTabs = Array.from(document.querySelectorAll('[data-client-example]'));
   const clientPanels = Array.from(document.querySelectorAll('[data-client-panel]'));
 

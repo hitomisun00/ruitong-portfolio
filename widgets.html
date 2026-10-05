@@ -14,7 +14,7 @@
   <a class="skip-link" href="#content">Skip to case study</a>
   <nav class="site-nav" aria-label="Portfolio navigation">
     <a class="site-nav__brand" href="returning-ai.html" aria-label="Returning.AI project index"><span class="site-nav__mark" aria-hidden="true"></span><span>Returning.AI / Widgets</span></a>
-    <div class="site-nav__links"><a href="#system">System</a><a href="#client-use">Client use</a><a href="#workflow">AI workflow</a><a href="#lab">Try it</a><a class="back-link" href="index.html">← Portfolio</a></div>
+    <div class="site-nav__links"><a href="#system">System</a><a href="#origin">Figma origin</a><a href="#client-use">Client use</a><a href="#workflow">AI workflow</a><a href="#lab">Try it</a><a class="back-link" href="index.html">← Portfolio</a></div>
   </nav>
 
   <main id="content">
@@ -80,6 +80,58 @@
       <div class="surface-map"><div class="surface-map__copy"><span class="section-number">Constrained by design</span><h3>Useful freedom without raw CSS.</h3><p>Operators can control the visual surfaces they actually need. Arbitrary positioning, dimensions, z-index, opacity, gradients and overflow stay out because they can break responsiveness, hierarchy or accessibility.</p></div><div class="surface-object" aria-label="Three styling surface levels"><div class="surface-layer surface-layer--widget"><span>Widget surface</span><div class="surface-layer surface-layer--section"><span>Section surface</span><div class="surface-layer surface-layer--nested"><span>Nested surface</span><i></i><i></i><i></i></div></div></div></div><ul class="surface-controls" aria-label="Approved surface controls"><li>Background</li><li>Stroke</li><li>Radius</li><li>Padding</li><li>Gap</li><li>Dividers</li></ul></div>
     </div></section>
 
+    <section class="section section--tint origin-section" id="origin" aria-labelledby="origin-title"><div class="shell shell--wide">
+      <div class="origin-intro">
+        <div><span class="section-number">The Figma origin / Milestones</span><h2 id="origin-title">The first configurator was already a smart solution. Its depth revealed the next problem.</h2></div>
+        <div><p class="section-intro">A one-size-fits-all widget could not satisfy different client brands, layouts and content needs. I designed a modular Milestones configuration model that could hide, show, arrange and style the parts of the experience without changing what the feature meant.</p><p class="origin-evidence-note">Original Figma design evidence. Scroll the rail and switch between Settings and Style.</p></div>
+      </div>
+
+      <div class="origin-logic" aria-label="Why the original configurator led to automation">
+        <article><span>Why it worked</span><strong>Granular enough for real client variation</strong><p>Groups, stages, conditions, rewards, progress and brand surfaces could be composed instead of hard-coded.</p></article>
+        <i aria-hidden="true"></i>
+        <article><span>What it exposed</span><strong>Every feature needed a new control model</strong><p>The system concepts repeated, but labels, relationships and safe exceptions changed from Store to Milestones to Streaks and Socials.</p></article>
+        <i aria-hidden="true"></i>
+        <article class="origin-logic__turn"><span>The turning point</span><strong>Generate the repeatable structure; review the feature-specific decisions</strong><p>That became the brief for the Widget Configurator skill.</p></article>
+      </div>
+
+      <div class="origin-stage" data-origin-gallery>
+        <div class="origin-rail">
+          <div class="origin-rail__bar">
+            <div><span>Milestones / configuration rail</span><strong>Original Figma model</strong></div>
+            <div class="origin-tabs" role="tablist" aria-label="Choose a Milestones configuration layer">
+              <button type="button" role="tab" id="origin-tab-settings" aria-controls="origin-panel-settings" aria-selected="true" tabindex="0" data-origin-tab="settings">Settings</button>
+              <button type="button" role="tab" id="origin-tab-style" aria-controls="origin-panel-style" aria-selected="false" tabindex="-1" data-origin-tab="style">Style</button>
+            </div>
+          </div>
+
+          <div class="origin-panel is-active" id="origin-panel-settings" role="tabpanel" aria-labelledby="origin-tab-settings" data-origin-panel="settings">
+            <div class="origin-scroll" tabindex="0" role="region" aria-label="Scrollable original Milestones Settings designs">
+              <figure><figcaption><span>01</span><strong>Selection, layout and milestone groups</strong></figcaption><img src="widget-assets/figma-origin/milestones-settings-overview.png" width="437" height="1438" loading="lazy" alt="Original Figma Settings design for Milestones selection, layout and group display controls"></figure>
+              <figure><figcaption><span>02</span><strong>Stages, conditions and rewards</strong></figcaption><img src="widget-assets/figma-origin/milestones-settings-stages.png" width="418" height="1323" loading="lazy" alt="Original Figma Settings design for Milestone stage, condition and reward controls"></figure>
+              <figure><figcaption><span>03</span><strong>Progress card and banner</strong></figcaption><img src="widget-assets/figma-origin/milestones-settings-progress.png" width="425" height="501" loading="lazy" alt="Original Figma Settings design for Milestone progress card and banner controls"></figure>
+            </div>
+            <p class="origin-scroll-hint"><span aria-hidden="true">↕</span> Scroll through the original Settings rail</p>
+          </div>
+
+          <div class="origin-panel" id="origin-panel-style" role="tabpanel" aria-labelledby="origin-tab-style" data-origin-panel="style" hidden>
+            <div class="origin-scroll" tabindex="0" role="region" aria-label="Scrollable original Milestones Style designs">
+              <figure><figcaption><span>01</span><strong>Theme tokens and main widget surface</strong></figcaption><img src="widget-assets/figma-origin/milestones-style-theme.png" width="436" height="1109" loading="lazy" alt="Original Figma Style design showing Milestones theme tokens and main widget surface controls"></figure>
+              <figure><figcaption><span>02</span><strong>Section surface and loading state</strong></figcaption><img src="widget-assets/figma-origin/milestones-style-sections.png" width="430" height="1185" loading="lazy" alt="Original Figma Style design showing section surface and widget loading state controls"></figure>
+            </div>
+            <p class="origin-scroll-hint"><span aria-hidden="true">↕</span> Scroll through the original Style rail</p>
+          </div>
+        </div>
+
+        <figure class="origin-output">
+          <figcaption><span>Configured result</span><strong>Default Milestones view</strong></figcaption>
+          <div class="origin-output__image"><img src="widget-assets/figma-origin/milestones-default-view.png" width="1318" height="1317" loading="lazy" alt="Original Figma default Milestones widget with group, stage cards, conditions, rewards and progress card"></div>
+          <ul aria-label="Visible Milestones sections"><li>Milestone group</li><li>Stage map</li><li>Conditions + rewards</li><li>Progress card</li></ul>
+        </figure>
+      </div>
+
+      <div class="origin-bridge"><span>Design insight</span><p><strong>Modularity solved client variation.</strong> The long configuration rail made the recurring design labour visible—and gave the automation workflow a concrete, governed target.</p><a href="#workflow">See how the skill responds <span aria-hidden="true">↓</span></a></div>
+    </div></section>
+
     <section class="section live-evidence" id="client-use" aria-labelledby="evidence-title"><div class="shell shell--wide">
       <div class="client-intro">
         <div><span class="section-number">How clients use it</span><h2 id="evidence-title">One configuration surface. Three distinct experiences inside INFINOX.</h2></div>
@@ -132,7 +184,7 @@
     </div></section>
 
     <section class="section section--tint" id="workflow" aria-labelledby="workflow-title"><div class="shell">
-      <div class="section-head"><div><span class="section-number">The workflow problem</span><h2 id="workflow-title">I was still re-deciding the same system for every new widget.</h2></div><div><p class="section-intro">The screens changed, but the questions repeated: which source is authoritative, which controls are safe, how they should be grouped, and which states need proof. I encoded that reusable judgement into a governed, resumable skill.</p></div></div>
+      <div class="section-head"><div><span class="section-number">The workflow problem</span><h2 id="workflow-title">I was still re-deciding the same system for every new widget.</h2></div><div><p class="section-intro">The long Milestones rail made the pattern tangible. The feature-specific controls changed, but the questions repeated: which source is authoritative, which choices are safe, how they should be grouped, and which states need proof. I encoded that reusable judgement into a governed, resumable skill.</p></div></div>
       <ol class="workflow-rail" aria-label="AI-assisted widget configuration workflow"><li><span>Request</span><strong>Describe the feature and desired outcome</strong><small>Start at discovery, implementation, QA or handoff</small></li><li><span>Inspect</span><strong>Read the feature and closest approved pattern</strong><small>Separate product questions from technical discovery</small></li><li><span>Propose</span><strong>Generate a grouped control model</strong><small>Classify authority, visibility, styling and states</small></li><li><span>Review</span><strong>Resolve feature-specific exceptions</strong><small>A human confirms ambiguity, risk and source ownership</small></li><li><span>Deliver</span><strong>Implement and prove the requested checkpoint</strong><small>Use locked targets, proportional QA and evidence</small></li></ol>
       <div class="workflow-boundary"><div><span>The skill accelerates</span><strong>Recurring structure</strong><p>Canonical groups, common controls, authority labels, test scenarios and resumable run state.</p></div><div><span>The designer still decides</span><strong>What is genuinely new</strong><p>Feature meaning, exceptions, product trade-offs, source truth and whether the evidence proves behavior.</p></div></div>
     </div></section>
