@@ -4,111 +4,115 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fbfaf7">
-  <meta name="description" content="Widget Platform case study by Rui Tong: source authority, constrained customization, runtime behavior and Streaks delivery evidence.">
+  <meta name="description" content="Widget Platform case study by Rui Tong: a reusable control plane, AI-assisted configuration workflow, governed customization and embedded runtime proof.">
   <title>Widget Platform — Rui Tong</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="case-system.css">
+  <link rel="stylesheet" href="widgets.css">
 </head>
-<body style="--accent: var(--sage)">
+<body class="widgets-case" style="--accent: var(--sage)">
   <a class="skip-link" href="#content">Skip to case study</a>
   <nav class="site-nav" aria-label="Portfolio navigation">
-    <a class="site-nav__brand" href="returning-ai.html" aria-label="Returning.AI project index"><span class="site-nav__mark" style="background:var(--sage)" aria-hidden="true"></span><span>Returning.AI / Widgets</span></a>
-    <div class="site-nav__links"><a href="#model">Product model</a><a href="#proof">Streaks proof</a><a class="back-link" href="index.html">← Portfolio</a></div>
+    <a class="site-nav__brand" href="returning-ai.html" aria-label="Returning.AI project index"><span class="site-nav__mark" aria-hidden="true"></span><span>Returning.AI / Widgets</span></a>
+    <div class="site-nav__links"><a href="#system">System</a><a href="#workflow">AI workflow</a><a href="#lab">Try it</a><a class="back-link" href="index.html">← Portfolio</a></div>
   </nav>
 
   <main id="content">
-    <header class="shell hero">
+    <header class="shell hero widget-hero">
       <div>
-        <p class="eyebrow">Flagship case / platform system</p>
+        <p class="eyebrow">Flagship case / product platform</p>
         <h1>Designing the control plane for portable product experiences.</h1>
-        <p class="hero__lead">Widgets needed to feel flexible without becoming ungovernable. I defined how data authority, customization and runtime state should travel from an administrative control plane into embedded experiences.</p>
+        <p class="hero__lead">Once a feature could travel into a broker site, every decision became a boundary: what follows the source, what an operator can change, and what the runtime must protect. I turned those decisions into a reusable widget system—and then a human-guided AI workflow for generating the next configuration.</p>
+        <div class="hero-actions"><a class="primary-action" href="#lab">Try the configurator</a><a class="text-action" href="#system">Read the product logic <span aria-hidden="true">↓</span></a></div>
       </div>
       <aside class="hero__aside">
         <dl class="meta-list">
-          <div><dt>My scope</dt><dd>Concept, Figma model, redesign, product logic, working local output</dd></div>
+          <div><dt>My scope</dt><dd>Concept, Figma model, product logic, specification and working local implementation</dd></div>
+          <div><dt>System</dt><dd>Settings / Style / Setup, inheritance, responsive states and embed behavior</dd></div>
           <div><dt>Collaboration</dt><dd>Wai Yan reviewed the code; release ownership remains separate</dd></div>
-          <div><dt>Proof</dt><dd>9 dossiers · Streaks implementation · recorded automated checks</dd></div>
         </dl>
-        <div class="status-row"><span class="pill">Design archive</span><span class="pill" style="--dot: var(--sage)">Code evidence</span><span class="pill" style="--dot: var(--blush)">Production unverified</span></div>
+        <div class="status-row"><span class="pill">Design archive</span><span class="pill" style="--dot:var(--yellow)">Working implementation</span><span class="pill" style="--dot:var(--blush)">Release unverified</span></div>
       </aside>
     </header>
 
-    <div class="shell evidence-note">
+    <section class="shell hero-system" aria-label="Widget product system overview">
+      <div class="hero-system__rail">
+        <article class="system-node system-node--feature"><span>Source feature</span><strong>Capability + live values</strong><small>Owns eligibility and business meaning</small></article><span class="system-connector" aria-hidden="true"></span>
+        <article class="system-node system-node--config"><span>Control plane</span><strong>Selection + overrides</strong><small>Exposes deliberate, reversible choices</small></article><span class="system-connector" aria-hidden="true"></span>
+        <article class="system-node system-node--runtime"><span>Runtime</span><strong>Normalize + safeguard</strong><small>Protects old, partial and narrow states</small></article>
+      </div>
+      <div class="hero-system__outcome">
+        <div class="mini-browser"><i></i><i></i><i></i><span>broker.example</span></div>
+        <div class="mini-widget"><div><span>Daily login</span><b>9</b><em>day streak</em></div><ol aria-label="Example weekly progress"><li class="is-done">M</li><li class="is-done">T</li><li class="is-done">W</li><li class="is-current">T</li><li>F</li><li>S</li><li>S</li></ol></div>
+        <p><strong>Embedded experience</strong><span>One coherent result inside its host context</span></p>
+      </div>
+    </section>
+
+    <div class="shell evidence-note case-status">
       <span class="evidence-note__mark" aria-hidden="true"></span>
-      <p><strong>Attribution and status.</strong> I originated the widget concept, produced its Figma version and later product model, and wrote the working local output represented here. Wai Yan provided code review. A production rollout is not claimed without separate release verification.</p>
+      <p><strong>Attribution and evidence.</strong> I originated the widget concept, created the first settings model in Figma, independently led the later redesign and wrote the working localhost output. The live captures below are dated read-only evidence from authenticated ADSS UAT and INFINOX environments; they verify visible product states, not authorship, rollout, adoption or business impact.</p>
     </div>
 
-    <div class="shell">
-      <figure class="visual-window">
-        <div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Widget settings + live preview / preserved design</span></div>
-        <img src="widget-assets/streaks-configurator.png" width="1920" height="1080" fetchpriority="high" alt="Streaks widget settings beside a live preview panel">
-        <figcaption>Preserved Figma-archive evidence. Test content and identifiers remain visible; this is presented as design evidence, not a production screenshot.</figcaption>
-      </figure>
-    </div>
-
-    <section class="section" id="model" aria-labelledby="model-title">
-      <div class="shell">
-        <div class="section-head">
-          <div><span class="section-number">01 / Product model</span><h2 id="model-title">Flexibility needs boundaries users can understand.</h2></div>
-          <div><p class="section-intro">A widget editor can easily become a collection of unrelated controls. I treated it as a contract: the platform owns some truths, operators can safely customize others, and the runtime must preserve both.</p></div>
-        </div>
-        <div class="logic-rail">
-          <article class="logic-step"><small>Source authority</small><h3>Know where truth lives</h3><p>Identify which content and status come from the platform, campaign or user record.</p></article>
-          <article class="logic-step"><small>Constrained customization</small><h3>Expose safe decisions</h3><p>Offer meaningful copy, styling and state controls without letting local settings contradict core behavior.</p></article>
-          <article class="logic-step"><small>Runtime contract</small><h3>Preserve state in context</h3><p>Ensure embedded surfaces resolve configuration, progress and responsive behavior consistently.</p></article>
-        </div>
+    <section class="section" id="system" aria-labelledby="system-title"><div class="shell">
+      <div class="section-head"><div><span class="section-number">The product problem</span><h2 id="system-title">A portable feature cannot become a second source of truth.</h2></div><div><p class="section-intro">The early widgets proved that an embed is not just a smaller screen. It introduces a new host, new dimensions, new branding needs and new runtime failure states—without permission to duplicate the feature’s business rules.</p></div></div>
+      <div class="problem-pair">
+        <article class="problem-card"><span class="problem-card__signal">Without a model</span><h3>Copied defaults look correct, then silently drift.</h3><p>A widget can preserve an old title, status or display rule after the source feature changes. Operators cannot tell which value is still live.</p><div class="drift-sketch" aria-label="Copied values drifting apart"><div><small>Feature</small><strong>Daily login</strong><span>Changed today</span></div><i aria-hidden="true"></i><div><small>Widget copy</small><strong>Weekly login</strong><span>Snapshot from creation</span></div></div></article>
+        <article class="problem-card problem-card--solution"><span class="problem-card__signal">With explicit authority</span><h3>Every control says who owns the value.</h3><p>Availability stays with the feature. Approved fields inherit until an override exists. Layout and appearance remain widget-only.</p><div class="authority-stack" aria-label="Three control authority classes"><span><i class="dot dot--feature"></i><b>Feature-owned</b><em>Respect and explain</em></span><span><i class="dot dot--shared"></i><b>Inheritable</b><em>Follow or override</em></span><span><i class="dot dot--widget"></i><b>Widget-only</b><em>Store locally</em></span></div></article>
       </div>
-    </section>
+    </div></section>
 
-    <section class="section section--tint" aria-labelledby="authority-title">
-      <div class="shell split">
-        <div class="copy-stack">
-          <span class="section-number">Decision one / authority</span>
-          <h3 id="authority-title">Not every editable field should become a new source of truth.</h3>
-          <p>I separated <strong>platform-owned behavior</strong> from <strong>operator-authored presentation</strong>. That reduces drift: a campaign can choose the message and visual treatment, while progress, eligibility and completion remain anchored to authoritative data.</p>
-          <div class="callout"><span class="callout__label">Product decision</span><p>Customization is valuable when it communicates a valid state—not when it can manufacture one.</p></div>
-        </div>
-        <div class="logic-rail" style="grid-template-columns:1fr">
-          <article class="logic-step"><small>Platform</small><h3>Eligibility + progress</h3><p>Authoritative behavior and user state.</p></article>
-          <article class="logic-step"><small>Configuration</small><h3>Copy + presentation</h3><p>Safe, deliberate operator choices.</p></article>
-          <article class="logic-step"><small>Runtime</small><h3>Resolved experience</h3><p>One coherent widget in its host context.</p></article>
-        </div>
+    <section class="section section--tint" id="authority" aria-labelledby="authority-title"><div class="shell split authority-layout">
+      <div class="copy-stack"><span class="section-number">Decision one / source authority</span><h2 id="authority-title">Inheritance stays live until the operator makes a deliberate exception.</h2><p>The resolution rule is small, but it prevents an entire class of drift: <strong>effective value = widget override ?? current feature value</strong>. Reset removes the override; it does not copy today’s feature value into a new snapshot.</p><div class="callout"><span class="callout__label">Product judgement</span><p>Customization is useful when it communicates a valid state—not when it can manufacture one.</p></div></div>
+      <div class="authority-resolver" data-widget-resolver>
+        <div class="authority-resolver__head"><span>Interactive logic trace</span><strong>Change the source. Add an override. Reset it.</strong></div>
+        <div class="authority-resolver__controls"><fieldset><legend>Current feature title</legend><div class="segmented resolver-options"><button type="button" data-resolver-group="source" data-value="Milestones" aria-pressed="true">Milestones</button><button type="button" data-resolver-group="source" data-value="My progress" aria-pressed="false">My progress</button></div></fieldset><fieldset><legend>Widget override</legend><div class="segmented resolver-options"><button type="button" data-resolver-group="override" data-value="" aria-pressed="true">Follow feature</button><button type="button" data-resolver-group="override" data-value="Achievements" aria-pressed="false">Achievements</button></div></fieldset></div>
+        <div class="authority-resolver__result" aria-live="polite"><span>Rendered title</span><strong data-resolved-value>Milestones</strong><ul><li data-source-trace>Reading the current feature value</li><li data-override-trace>No widget override exists</li><li>The source feature remains unchanged</li></ul></div>
       </div>
-    </section>
+    </div></section>
 
-    <section class="section" aria-labelledby="preview-title">
-      <div class="shell">
-        <div class="section-head">
-          <div><span class="section-number">02 / Preview contract</span><h2 id="preview-title">Preview the consequence, not just the styling.</h2></div>
-          <div><p class="section-intro">A useful preview should help an operator understand how settings translate into a real state across sizes. That made responsive behavior and state fidelity part of the configuration experience rather than a late QA surprise.</p></div>
-        </div>
-        <div class="gallery-asym">
-          <figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Streaks / desktop test surface</span></div><img src="widget-assets/streaks-desktop.png" width="1440" height="1000" loading="lazy" alt="Desktop Streaks widget in a test portal"><figcaption>Recorded test-portal evidence at desktop width.</figcaption></figure>
-          <figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>390 px</span></div><img src="widget-assets/streaks-mobile.png" width="390" height="844" loading="lazy" alt="Mobile Streaks widget at 390 pixels wide"><figcaption>The same widget contract evaluated at mobile width.</figcaption></figure>
-        </div>
+    <section class="section" id="grammar" aria-labelledby="grammar-title"><div class="shell">
+      <div class="section-head"><div><span class="section-number">Decision two / configuration grammar</span><h2 id="grammar-title">One predictable shell. Different controls for each feature.</h2></div><div><p class="section-intro">The answer was not a universal form. It was a stable grammar that gives feature-specific choices a predictable home and keeps styling power inside safe boundaries.</p></div></div>
+      <div class="grammar-grid">
+        <article class="grammar-card is-active"><span>Settings</span><h3>What appears and how it behaves</h3><ul><li>Selection and ordering</li><li>Layout and display behavior</li><li>Sections, fields and nested content</li><li>Inherited values and explicit overrides</li></ul></article>
+        <article class="grammar-card"><span>Style</span><h3>How approved surfaces look</h3><ul><li>Theme and typography</li><li>Background and stroke</li><li>Radius, padding and gaps</li><li>Dividers across three surface depths</li></ul></article>
+        <article class="grammar-card"><span>Setup</span><h3>How the experience reaches its host</h3><ul><li>Widget mode and identifier</li><li>Domain access</li><li>Embed guidance</li><li>Runtime and provider requirements</li></ul></article>
       </div>
-    </section>
+      <div class="surface-map"><div class="surface-map__copy"><span class="section-number">Constrained by design</span><h3>Useful freedom without raw CSS.</h3><p>Operators can control the visual surfaces they actually need. Arbitrary positioning, dimensions, z-index, opacity, gradients and overflow stay out because they can break responsiveness, hierarchy or accessibility.</p></div><div class="surface-object" aria-label="Three styling surface levels"><div class="surface-layer surface-layer--widget"><span>Widget surface</span><div class="surface-layer surface-layer--section"><span>Section surface</span><div class="surface-layer surface-layer--nested"><span>Nested surface</span><i></i><i></i><i></i></div></div></div></div><ul class="surface-controls" aria-label="Approved surface controls"><li>Background</li><li>Stroke</li><li>Radius</li><li>Padding</li><li>Gap</li><li>Dividers</li></ul></div>
+    </div></section>
 
-    <section class="section section--tint" id="proof" aria-labelledby="proof-title">
-      <div class="shell">
-        <div class="section-head">
-          <div><span class="section-number">03 / Delivery proof</span><h2 id="proof-title">Streaks made the model testable.</h2></div>
-          <div><p class="section-intro">The Streaks slice turned the abstract widget grammar into implementation evidence: configuration states, responsive rendering and guards against incorrectly disabled interactions.</p></div>
-        </div>
-        <div class="evidence-ledger">
-          <article class="ledger-item"><small>Automated suites</small><strong>12 / 12 passed</strong><p>Recorded repository evidence for the tested implementation slice.</p></article>
-          <article class="ledger-item"><small>Automated tests</small><strong>119 / 119 passed</strong><p>Behavior coverage tied to the working local output.</p></article>
-          <article class="ledger-item"><small>State checks</small><strong>30 checks · 0 incorrect disables</strong><p>A focused verification of whether valid states remained interactive.</p></article>
-        </div>
-        <div class="callout" style="margin-top:24px"><span class="callout__label">Honest boundary</span><p>These records establish implementation readiness for the reviewed slice. They do not by themselves establish production adoption, release health or business impact.</p></div>
+    <section class="section live-evidence" aria-labelledby="evidence-title"><div class="shell">
+      <div class="section-head"><div><span class="section-number">Dated product evidence</span><h2 id="evidence-title">The same control model survived different brands and features.</h2></div><div><p class="section-intro">These screens show the control plane in authenticated environments: Streaks configuration in ADSS UAT and appearance controls in INFINOX. The screenshots were captured read-only; no settings were changed or saved.</p></div></div>
+      <div class="evidence-gallery">
+        <figure class="evidence-shot evidence-shot--adss"><div class="evidence-shot__bar"><span>ADSS UAT · Streaks</span><em>Read-only capture · 4 Oct 2026</em></div><div class="evidence-shot__viewport"><img src="widget-assets/adss-streaks-settings.png" width="2560" height="1148" loading="lazy" alt="ADSS UAT Streaks widget settings with live preview and configuration rail"></div><figcaption><strong>Settings and preview stay connected.</strong> The source selection, display behavior and section controls are evaluated beside the resulting Streaks experience.</figcaption></figure>
+        <figure class="evidence-shot evidence-shot--infinox"><div class="evidence-shot__bar"><span>INFINOX · Style</span><em>Read-only capture · 1 Oct 2026</em></div><div class="evidence-shot__viewport"><img src="widget-assets/infinox-widget-style.png" width="2920" height="1360" loading="lazy" alt="INFINOX widget style controls beside a live Milestones preview"></div><figcaption><strong>Brand control is bounded.</strong> Theme, typography and color decisions are exposed while the preview retains the product’s responsive structure.</figcaption></figure>
       </div>
-    </section>
+      <p class="evidence-limit"><strong>Evidence limit:</strong> these live captures verify visible product states in the named environments. They do not by themselves establish authorship, release history, adoption or business results.</p>
+    </div></section>
 
-    <section class="section" aria-labelledby="next-title">
-      <div class="shell"><span class="section-number">Continue exploring</span><div class="next-links" id="next-title"><a class="next-link" href="store.html"><small>Other flagship</small><strong>Store →</strong></a><a class="next-link" href="product-decisions.html"><small>Supporting work</small><strong>Product Decisions →</strong></a><a class="next-link" href="returning-ai.html"><small>Project index</small><strong>All Returning.AI work →</strong></a></div></div>
-    </section>
+    <section class="section section--tint" id="workflow" aria-labelledby="workflow-title"><div class="shell">
+      <div class="section-head"><div><span class="section-number">The workflow problem</span><h2 id="workflow-title">I was still re-deciding the same system for every new widget.</h2></div><div><p class="section-intro">The screens changed, but the questions repeated: which source is authoritative, which controls are safe, how they should be grouped, and which states need proof. I encoded that reusable judgement into a governed, resumable skill.</p></div></div>
+      <ol class="workflow-rail" aria-label="AI-assisted widget configuration workflow"><li><span>Request</span><strong>Describe the feature and desired outcome</strong><small>Start at discovery, implementation, QA or handoff</small></li><li><span>Inspect</span><strong>Read the feature and closest approved pattern</strong><small>Separate product questions from technical discovery</small></li><li><span>Propose</span><strong>Generate a grouped control model</strong><small>Classify authority, visibility, styling and states</small></li><li><span>Review</span><strong>Resolve feature-specific exceptions</strong><small>A human confirms ambiguity, risk and source ownership</small></li><li><span>Deliver</span><strong>Implement and prove the requested checkpoint</strong><small>Use locked targets, proportional QA and evidence</small></li></ol>
+      <div class="workflow-boundary"><div><span>The skill accelerates</span><strong>Recurring structure</strong><p>Canonical groups, common controls, authority labels, test scenarios and resumable run state.</p></div><div><span>The designer still decides</span><strong>What is genuinely new</strong><p>Feature meaning, exceptions, product trade-offs, source truth and whether the evidence proves behavior.</p></div></div>
+    </div></section>
+
+    <section class="section lab-section" id="lab" aria-labelledby="lab-title"><div class="shell shell--wide">
+      <div class="section-head"><div><span class="section-number">Interactive reconstruction</span><h2 id="lab-title">Give the workflow a feature. Review what it proposes.</h2></div><div><p class="section-intro">This public demo uses one deterministic Spin the Wheel fixture. It simulates the workflow locally—no model call, tenant data, credentials, persistence or external action—then lets you test the resulting Settings / Style / Setup controls.</p><a class="text-action lab-link" href="widget-configurator.html">Open the full workflow case →</a></div></div>
+      <div class="lab-frame-shell"><div class="lab-frame-shell__bar"><span><i></i>Widget Configurator Skill</span><em>Public simulation · nothing is sent or saved</em></div><iframe src="widget-configurator.html?embed=1#lab" title="Interactive Widget Configurator Skill simulation" loading="lazy"></iframe><noscript><p class="noscript-fallback">JavaScript is required for the interactive configurator. <a href="widget-configurator.html">Read the full workflow case instead.</a></p></noscript></div>
+    </div></section>
+
+    <section class="section section--tint" id="proof" aria-labelledby="proof-title"><div class="shell">
+      <div class="section-head"><div><span class="section-number">Delivery proof / Streaks</span><h2 id="proof-title">The system became credible when it survived state, persistence and responsive QA.</h2></div><div><p class="section-intro">Streaks exercised the full chain: source audit, proposal, review, implementation, persistence, compatibility and runtime behavior. The wider widget family showed that the model could generalize without making every feature identical.</p></div></div>
+      <div class="evidence-ledger proof-ledger"><article class="ledger-item"><small>Automated suites</small><strong>12 / 12 passed</strong><p>Recorded validation for the reviewed Streaks implementation slice.</p></article><article class="ledger-item"><small>Automated tests</small><strong>119 / 119 passed</strong><p>Behavior coverage including persistence, isolation, preview and compatibility.</p></article><article class="ledger-item"><small>State checks</small><strong>30 checked · 0 incorrectly disabled</strong><p>Focused verification that valid configuration states remained interactive.</p></article></div>
+      <div class="gallery-asym proof-gallery"><figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>Streaks / desktop test surface</span></div><img src="widget-assets/streaks-desktop.png" width="1440" height="1000" loading="lazy" alt="Desktop Streaks widget in a test portal"><figcaption>Recorded test-portal evidence at desktop width.</figcaption></figure><figure class="visual-window"><div class="visual-window__bar"><span class="window-dots"><i></i><i></i><i></i></span><span>390 px</span></div><img src="widget-assets/streaks-mobile.png" width="390" height="844" loading="lazy" alt="Mobile Streaks widget at 390 pixels wide"><figcaption>The same widget contract evaluated at mobile width.</figcaption></figure></div>
+      <div class="callout proof-boundary"><span class="callout__label">Honest boundary</span><p>The records establish implementation confidence for the preserved slice. The estimated 70–80% reduction in repetitive planning work is Rui Tong’s retrospective estimate, not an independently measured outcome. Production rollout, adoption and business impact remain separate verification questions.</p></div>
+    </div></section>
+
+    <section class="section reflection" aria-labelledby="reflection-title"><div class="shell split"><div class="copy-stack"><span class="section-number">What changed</span><h2 id="reflection-title">The output was not one better editor. It was a way to keep product logic coherent as the platform grew.</h2><p>The strongest idea proved to be the authority model: source capability, explicit overrides and widget-only presentation. The workflow then moved repetitive planning onto a proposal, leaving human attention for the feature-specific decisions where it mattered.</p></div><div class="reflection-list"><div><span>Durable</span><strong>Source authority + shared configuration grammar</strong></div><div><span>Still partial</span><strong>Universal provenance indicators + full style cascade</strong></div><div><span>Measure next</span><strong>Completion time, override comprehension, setup errors and embed adoption</strong></div></div></div></section>
+
+    <section class="section" aria-labelledby="next-title"><div class="shell"><span class="section-number">Continue exploring</span><div class="next-links" id="next-title"><a class="next-link" href="widget-configurator.html"><small>Interactive workflow</small><strong>Widget Configurator Skill →</strong></a><a class="next-link" href="store.html"><small>Other flagship</small><strong>Store →</strong></a><a class="next-link" href="returning-ai.html"><small>Project index</small><strong>All Returning.AI work →</strong></a></div></div></section>
   </main>
 
   <footer class="site-footer"><div class="shell"><span>Rui Tong · Product designer · Singapore</span><a href="index.html">Return to the workbench ↑</a></div></footer>
+  <script src="widgets.js" defer></script>
 </body>
 </html>

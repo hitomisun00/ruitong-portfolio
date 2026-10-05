@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf7">
+  <meta name="description" content="Widget Configurator Skill case study by Rui Tong: turning repetitive feature-control decisions into a reusable, human-guided configuration workflow.">
+  <title>Widget Configurator Skill — Rui Tong</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="case-system.css">
+  <link rel="stylesheet" href="widget-configurator.css">
+</head>
+<body class="configurator-case" style="--accent: var(--sage)">
+  <a class="skip-link" href="#content">Skip to case study</a>
+  <nav class="site-nav" aria-label="Portfolio navigation">
+    <a class="site-nav__brand" href="widgets.html" aria-label="Widget Platform case study"><span class="site-nav__mark" style="background:var(--sage)" aria-hidden="true"></span><span>Widget Configurator Skill</span></a>
+    <div class="site-nav__links"><a href="#lab">Try the demo</a><a href="#system">The system</a><a class="back-link" href="index.html">← Portfolio</a></div>
+  </nav>
+
+  <main id="content">
+    <header class="shell hero skill-hero">
+      <div>
+        <p class="eyebrow">Interactive AI workflow case</p>
+        <h1>I stopped redesigning the same settings panel.</h1>
+        <p class="hero__lead">Every new widget repeated the same difficult work: decide what people can configure, structure dozens of controls, define safe styling boundaries, and prove the result still behaves. I turned that recurring judgement into a reusable, human-guided skill.</p>
+        <a class="hero-jump" href="#lab">Configure the demo <span aria-hidden="true">↓</span></a>
+      </div>
+      <aside class="hero__aside">
+        <dl class="meta-list">
+          <div><dt>My role</dt><dd>Workflow author, product model, control grammar and implementation safeguards</dd></div>
+          <div><dt>Core move</dt><dd>Feature anatomy → proposed controls → review → implementation-ready contract</dd></div>
+          <div><dt>Impact</dt><dd>Estimated 70–80% less repetitive planning effort; not independently measured</dd></div>
+        </dl>
+        <div class="status-row"><span class="pill">Working skill archive</span><span class="pill" style="--dot: var(--yellow)">Human-guided</span><span class="pill" style="--dot: var(--blush)">Public simulation</span></div>
+      </aside>
+    </header>
+
+    <div class="shell evidence-note">
+      <span class="evidence-note__mark" aria-hidden="true"></span>
+      <p><strong>Evidence and confidentiality.</strong> This page generalizes the original company workflow. The interactive lab is a local deterministic reconstruction based on the skill archive and a read-only audit of the established settings UI. It does not connect to a model, save changes, or expose client credentials or tenant data.</p>
+    </div>
+
+    <section class="proof-strip shell" aria-label="Source package facts">
+      <div><strong>6,876</strong><span>lines across skill, workflow runtime, references and tests</span></div>
+      <div><strong>125</strong><span>behavioral tests included in the supplied package</span></div>
+      <div><strong>8</strong><span>resumable checkpoints from discovery to Git completion</span></div>
+      <div><strong>1</strong><span>shared grammar instead of another one-off panel</span></div>
+    </section>
+
+    <section class="section lab-section" id="lab" aria-labelledby="lab-title">
+      <div class="shell shell--wide">
+        <div class="section-head lab-section__head">
+          <div><span class="section-number">Interactive reconstruction</span><h2 id="lab-title">Give the skill a feature. Review the controls it proposes.</h2></div>
+          <div><p class="section-intro">The public demo is deliberately scoped to one fixture: Spin the Wheel. It shows the relationship the real workflow was designed to manage—feature intent on the left, rendered consequence in the middle, and the established Settings / Style / Setup rail on the right.</p></div>
+        </div>
+
+        <div class="config-bench" data-bench-state="empty">
+          <div class="bench-toolbar">
+            <div>
+              <span class="bench-toolbar__dot" aria-hidden="true"></span>
+              <strong>Widget configuration bench</strong>
+              <span class="bench-toolbar__status">Simulation fixture · Spin the Wheel</span>
+            </div>
+            <span class="bench-toolbar__mode">No data is sent or saved</span>
+          </div>
+
+          <form class="prompt-dock" id="prompt-form">
+            <div class="prompt-dock__copy">
+              <label for="feature-prompt">Describe the feature you want to configure</label>
+              <p>The real skill inspects the feature and closest approved widget pattern before proposing controls.</p>
+            </div>
+            <div class="prompt-dock__entry">
+              <textarea id="feature-prompt" name="feature-prompt" rows="2" placeholder="e.g. Create widget settings for my spin the wheel feature…" autocomplete="off" aria-describedby="prompt-help"></textarea>
+              <div class="prompt-dock__actions">
+                <button class="quiet-action" id="sample-prompt" type="button">Use sample prompt</button>
+                <button class="generate-action" type="submit">Generate controls</button>
+              </div>
+              <p class="prompt-error" id="prompt-error" role="alert" hidden>Describe a feature before generating controls.</p>
+            </div>
+            <p class="sr-only" id="prompt-help">This deterministic demo accepts the supplied sample and generates a predefined Spin the Wheel control proposal.</p>
+          </form>
+
+          <div class="bench-empty" id="bench-empty">
+            <div class="bench-empty__object" aria-hidden="true"><span></span><span></span><span></span></div>
+            <h3>Start with a feature, not a blank settings panel.</h3>
+            <p>The skill turns feature anatomy, platform patterns and safe customization rules into a reviewable control structure.</p>
+          </div>
+
+          <div class="bench-workspace" id="bench-workspace" hidden>
+            <aside class="generated-outline" aria-label="Generated control proposal">
+              <div class="generated-outline__head">
+                <span>Generated proposal</span>
+                <strong id="generated-feature-name">Spin the Wheel</strong>
+                <p>7 groups · 24 proposed controls</p>
+              </div>
+              <ol class="proposal-list">
+                <li><button type="button" data-target-tab="settings" data-target-group="widget-basics"><span>Widget basics</span><small>4 controls</small></button></li>
+                <li><button type="button" data-target-tab="settings" data-target-group="display-behaviour"><span>Display behaviour</span><small>3 controls</small></button></li>
+                <li><button type="button" data-target-tab="settings" data-target-group="widget-display"><span>Widget display</span><small>8 controls</small></button></li>
+                <li><button type="button" data-target-tab="style" data-target-group="widget-appearance"><span>Widget appearance</span><small>3 controls</small></button></li>
+                <li><button type="button" data-target-tab="style" data-target-group="main-style"><span>Main widget style</span><small>6 controls</small></button></li>
+                <li><button type="button" data-target-tab="style" data-target-group="section-style"><span>Section style</span><small>Inherited pattern</small></button></li>
+                <li><button type="button" data-target-tab="setup" data-target-group="setup-panel"><span>Setup boundary</span><small>Deferred</small></button></li>
+              </ol>
+              <div class="authority-key">
+                <span><i class="authority-key__dot authority-key__dot--feature"></i>Feature-owned</span>
+                <span><i class="authority-key__dot authority-key__dot--shared"></i>Inheritable</span>
+                <span><i class="authority-key__dot authority-key__dot--widget"></i>Widget-only</span>
+              </div>
+              <div class="human-check"><strong>Human review remains required</strong><p>Feature-specific exceptions, source authority and ambiguous controls are reviewed before implementation.</p></div>
+            </aside>
+
+            <section class="widget-preview" aria-label="Live widget preview">
+              <header class="widget-preview__head">
+                <div><strong>Widget Preview</strong><span>This is a live preview. Adjust settings to see changes instantly.</span></div>
+                <div class="preview-modes" aria-label="Preview size"><button type="button" class="is-active" data-preview-mode="desktop">Desktop View</button><button type="button" data-preview-mode="mobile">Mobile View</button></div>
+              </header>
+              <div class="aspect-note">This preview is showing in <strong>16:9</strong> aspect ratio.</div>
+              <div class="preview-canvas" id="preview-canvas">
+                <article class="wheel-widget" id="wheel-widget">
+                  <div class="wheel-widget__copy" id="preview-copy">
+                    <h3 id="preview-title">Spin the Wheel</h3>
+                    <p id="preview-description">Spin for a chance to reveal your next reward.</p>
+                  </div>
+                  <div class="wheel-widget__layout">
+                    <div class="wheel-wrap">
+                      <div class="wheel-pointer" id="wheel-pointer" aria-hidden="true"></div>
+                      <div class="wheel" id="wheel" aria-label="Prize wheel preview">
+                        <span style="--i:0">10</span><span style="--i:1">20</span><span style="--i:2">Try</span><span style="--i:3">50</span>
+                        <span style="--i:4">5</span><span style="--i:5">Again</span><span style="--i:6">30</span><span style="--i:7">Gift</span>
+                      </div>
+                      <button class="wheel-widget__cta" id="spin-button" type="button">Spin the wheel</button>
+                    </div>
+                    <div class="prize-list" id="prize-list">
+                      <strong>Possible rewards</strong>
+                      <ul><li><span>50 points</span><b>1%</b></li><li><span>30 points</span><b>4%</b></li><li><span>20 points</span><b>10%</b></li><li><span>Try again</span><b>25%</b></li></ul>
+                    </div>
+                  </div>
+                  <p class="spin-result" id="spin-result" role="status" aria-live="polite"></p>
+                </article>
+              </div>
+            </section>
+
+            <aside class="settings-rail" aria-label="Widget configuration controls">
+              <nav class="settings-tabs" aria-label="Configuration sections" role="tablist">
+                <button id="settings-tab" type="button" role="tab" aria-selected="true" aria-controls="settings-panel" data-tab="settings">Settings</button>
+                <button id="style-tab" type="button" role="tab" aria-selected="false" aria-controls="style-panel" data-tab="style">Style</button>
+                <button id="setup-tab" type="button" role="tab" aria-selected="false" aria-controls="setup-panel" data-tab="setup">Setup</button>
+              </nav>
+
+              <div class="settings-scroll">
+                <section class="tab-panel" id="settings-panel" role="tabpanel" aria-labelledby="settings-tab">
+                  <div class="control-block" id="widget-basics">
+                    <label class="field-label" for="widget-title">Widget Title</label>
+                    <input class="text-input" id="widget-title" name="widget-title" type="text" value="Spin the Wheel Widget" maxlength="60" autocomplete="off">
+                    <div class="character-count"><span>Used in the admin list</span><span id="title-count">21 / 60</span></div>
+                    <label class="field-label" for="widget-id">Widget ID</label>
+                    <input class="text-input" id="widget-id" name="widget-id" type="text" value="demo-spin-wheel-01" translate="no" disabled>
+                  </div>
+
+                  <fieldset class="control-block radio-block">
+                    <legend>Widget Layout</legend>
+                    <p>Each layout is optimized for the type of information it displays.</p>
+                    <label><input type="radio" name="layout" value="focus" checked><span>Wheel Focus</span></label>
+                    <label><input type="radio" name="layout" value="split"><span>Wheel + Rewards</span></label>
+                  </fieldset>
+
+                  <fieldset class="control-block radio-block" id="display-behaviour">
+                    <legend>Display Behaviour</legend>
+                    <p>Choose how the widget adapts when embedded.</p>
+                    <label><input type="radio" name="display" value="dynamic" checked><span>Dynamic</span></label>
+                    <label><input type="radio" name="display" value="fixed"><span>Fixed (Width × Height)</span></label>
+                    <div class="fixed-dimensions" id="fixed-dimensions" hidden>
+                      <label for="fixed-width">Width</label><input class="number-input" id="fixed-width" name="fixed-width" type="number" min="280" max="720" value="520">
+                      <label for="fixed-height">Height</label><input class="number-input" id="fixed-height" name="fixed-height" type="number" min="320" max="760" value="520">
+                    </div>
+                  </fieldset>
+
+                  <div class="accordion control-block is-open" id="widget-display">
+                    <button class="accordion__trigger" type="button" aria-expanded="true"><span><strong>Widget Display</strong><small>Configure the display of this feature widget</small></span><i aria-hidden="true"></i></button>
+                    <div class="accordion__content">
+                      <label class="check-row inheritance-row"><input id="use-feature-settings" type="checkbox" checked><span>Use <u>feature</u> settings</span><em class="authority authority--shared">Inherited</em></label>
+                      <div class="nested-panel">
+                        <h4>Widget Header</h4>
+                        <label class="check-row"><input id="show-header" type="checkbox" checked><span>Header</span><em class="authority authority--shared">Shared</em></label>
+                        <input class="text-input" id="feature-title" name="feature-title" type="text" value="Spin the Wheel" autocomplete="off" aria-label="Widget header override">
+                        <label class="check-row"><input id="show-description" type="checkbox" checked><span>Description</span><em class="authority authority--shared">Shared</em></label>
+                        <input class="text-input" id="feature-description" name="feature-description" type="text" value="Spin for a chance to reveal your next reward." autocomplete="off" aria-label="Widget description override">
+                      </div>
+                      <div class="nested-panel">
+                        <h4>General Display</h4>
+                        <label class="check-row"><input id="show-pointer" type="checkbox" checked disabled><span>Wheel Pointer</span><em class="authority authority--feature">Required</em></label>
+                        <label class="check-row"><input id="show-labels" type="checkbox" checked><span>Prize Labels</span><em class="authority authority--widget">Widget</em></label>
+                        <label class="check-row"><input id="show-cta" type="checkbox" checked><span>Call-To-Action Button</span><em class="authority authority--widget">Widget</em></label>
+                        <label class="check-row"><input id="show-prize-list" type="checkbox"><span>Rewards List</span><em class="authority authority--widget">Widget</em></label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="tab-panel" id="style-panel" role="tabpanel" aria-labelledby="style-tab" hidden>
+                  <div class="accordion control-block is-open" id="widget-appearance">
+                    <button class="accordion__trigger" type="button" aria-expanded="true"><span><strong>Widget Appearance</strong><small>The appearance of the widget.</small></span><i aria-hidden="true"></i></button>
+                    <div class="accordion__content">
+                      <label class="field-label" for="font-select">Widget Font</label>
+                      <select class="text-input" id="font-select"><option value="system">System UI</option><option value="roboto" selected>Roboto</option><option value="rounded">Rounded Sans</option></select>
+                      <div class="theme-heading">Background Colour</div>
+                      <div class="theme-mode" role="group" aria-label="Theme mode"><button class="is-active" type="button" data-theme-mode="dark">Dark Theme</button><button type="button" data-theme-mode="light">Light Theme</button></div>
+                      <div class="theme-presets" aria-label="Appearance presets">
+                        <button type="button" data-theme-preset="amber" aria-label="Amber preset" aria-pressed="true"><span class="swatch swatch--amber"></span></button>
+                        <button type="button" data-theme-preset="paper" aria-label="Paper preset" aria-pressed="false"><span class="swatch swatch--paper"></span></button>
+                        <button type="button" data-theme-preset="coral" aria-label="Coral preset" aria-pressed="false"><span class="swatch swatch--coral"></span></button>
+                        <button type="button" data-theme-preset="rose" aria-label="Rose preset" aria-pressed="false"><span class="swatch swatch--rose"></span></button>
+                        <button type="button" data-theme-preset="sand" aria-label="Sand preset" aria-pressed="false"><span class="swatch swatch--sand"></span></button>
+                        <button type="button" class="apple-preset" data-theme-preset="apple" aria-pressed="false"><span class="swatch swatch--apple"></span><span>Apple-inspired</span></button>
+                      </div>
+                      <div class="colour-list">
+                        <label><span>Primary Accent</span><input id="accent-color" type="color" value="#f0bb00"><output id="accent-output">#F0BB00</output></label>
+                        <label><span>Primary Text</span><input id="text-color" type="color" value="#ffffff"><output id="text-output">#FFFFFF</output></label>
+                        <label><span>Primary Background</span><input id="background-color" type="color" value="#0c0b04"><output id="background-output">#0C0B04</output></label>
+                        <label><span>Divider</span><input id="divider-color" type="color" value="#636161"><output id="divider-output">#636161</output></label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion control-block is-open" id="main-style">
+                    <button class="accordion__trigger" type="button" aria-expanded="true"><span><strong>Main Widget Style</strong><small>Outer container appearance</small></span><i aria-hidden="true"></i></button>
+                    <div class="accordion__content">
+                      <label class="field-label" for="surface-color">Background Colour</label>
+                      <input class="colour-box" id="surface-color" type="color" value="#11100c">
+                      <div class="control-inline"><span>Stroke</span><label class="check-row check-row--compact"><input type="checkbox" checked><span>Apply to all sides</span></label></div>
+                      <div class="input-pair"><input class="number-input" id="stroke-width" type="number" min="0" max="12" value="0" aria-label="Stroke width"><select class="text-input" aria-label="Stroke style"><option>Solid</option><option>Dashed</option><option>Dotted</option></select></div>
+                      <div class="control-inline"><span>Rounded Corners</span><label class="check-row check-row--compact"><input type="checkbox" checked><span>Apply to all sides</span></label></div>
+                      <input class="number-input" id="radius-control" type="number" min="0" max="48" value="4" aria-label="Corner radius">
+                      <div class="control-inline"><span>Padding</span><label class="check-row check-row--compact"><input type="checkbox" checked><span>Apply to all sides</span></label></div>
+                      <input class="number-input" id="padding-control" type="number" min="0" max="64" value="16" aria-label="Padding">
+                      <label class="field-label" for="gap-control">Gaps</label>
+                      <input class="number-input" id="gap-control" type="number" min="0" max="64" value="16">
+                      <label class="check-row"><input id="show-dividers" type="checkbox"><span>Show Dividers</span></label>
+                    </div>
+                  </div>
+
+                  <div class="accordion control-block" id="section-style">
+                    <button class="accordion__trigger" type="button" aria-expanded="false"><span><strong>Section Style</strong><small>Inner sections appearance.</small></span><i aria-hidden="true"></i></button>
+                    <div class="accordion__content" hidden>
+                      <label class="field-label" for="section-color">Background Colour</label><input class="colour-box" id="section-color" type="color" value="#171612">
+                      <label class="field-label" for="section-radius">Rounded Corners</label><input class="number-input" id="section-radius" type="number" min="0" max="48" value="8">
+                    </div>
+                  </div>
+
+                  <div class="accordion control-block">
+                    <button class="accordion__trigger" type="button" aria-expanded="false"><span><strong>Widget Loading State</strong><small>The loading page of the widget.</small></span><i aria-hidden="true"></i></button>
+                    <div class="accordion__content" hidden><p class="panel-note">Loading animation, message and background are defined here in the complete workflow. This simulation keeps the state read-only.</p></div>
+                  </div>
+                </section>
+
+                <section class="tab-panel" id="setup-panel" role="tabpanel" aria-labelledby="setup-tab" hidden>
+                  <div class="control-block setup-boundary">
+                    <span class="setup-boundary__status">Deferred checkpoint</span>
+                    <h3>Setup is deliberately separate.</h3>
+                    <p>Domains, authentication, embed instructions and integration details are investigated only after the controls are approved.</p>
+                    <dl><div><dt>Access</dt><dd>Not connected in this public demo</dd></div><div><dt>Domains</dt><dd>No allowlist stored</dd></div><div><dt>Embed</dt><dd>No code generated</dd></div></dl>
+                  </div>
+                </section>
+              </div>
+            </aside>
+          </div>
+          <noscript><p class="noscript-note">JavaScript is required for the configuration simulation. The case-study explanation remains available below.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="shift-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">The shift</span><h2 id="shift-title">From repeatedly inventing controls to reviewing a proposal.</h2></div>
+          <div><p class="section-intro">The hard part was never drawing another checkbox. It was deciding which decisions are safe, who owns the underlying value, how controls should be grouped, and what the runtime must preserve.</p></div>
+        </div>
+        <div class="before-after">
+          <article><span>Before</span><h3>Reconstruct the control model for every feature</h3><ul><li>List possible layouts and display fields</li><li>Re-decide padding, gaps, stroke, dividers, font and themes</li><li>Invent the section hierarchy again</li><li>Discover edge cases late during design or QA</li></ul></article>
+          <div class="before-after__bridge" aria-hidden="true"><span></span></div>
+          <article><span>With the skill</span><h3>Start from a reusable grammar, then guide exceptions</h3><ul><li>Inspect the feature and closest approved widget</li><li>Classify source authority and safe overrides</li><li>Generate one compact control proposal</li><li>Review ambiguities before implementation</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="system" aria-labelledby="system-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">Workflow architecture</span><h2 id="system-title">Automation is useful when it knows where to stop.</h2></div>
+          <div><p class="section-intro">The skill is a set of resumable checkpoints rather than one long autonomous run. A request can begin at discovery, implementation, QA or handoff—and it stops when that requested outcome is complete.</p></div>
+        </div>
+        <ol class="checkpoint-flow">
+          <li><span>01</span><strong>Request routing</strong><small>Start at the requested outcome</small></li>
+          <li><span>02</span><strong>Control discovery</strong><small>Inspect minimum product evidence</small></li>
+          <li><span>03</span><strong>Control review</strong><small>Batch decisions and uncertainties</small></li>
+          <li><span>04</span><strong>Implementation readiness</strong><small>Verify owners, persistence and components</small></li>
+          <li><span>05</span><strong>Implementation</strong><small>Write only to the locked target</small></li>
+          <li><span>06</span><strong>QA</strong><small>Test change-based scenarios</small></li>
+          <li><span>07</span><strong>ClickUp</strong><small>Publish only with explicit approval</small></li>
+          <li><span>08</span><strong>Git completion</strong><small>Path-scoped staging and readback</small></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="judgement-title">
+      <div class="shell split judgement-split">
+        <div class="copy-stack">
+          <span class="section-number">Product decision</span>
+          <h3 id="judgement-title">The skill proposes. The designer still resolves what is unique.</h3>
+          <p>Different features do not become the same form. The reusable structure handles recurring questions—header, layout, visibility, inheritance, surface styling and responsive behavior—while the review step catches feature-specific conditions, operational controls and exceptions.</p>
+          <div class="callout"><span class="callout__label">Why this matters</span><p>A fast wrong control model creates more implementation and QA work. The goal is not one-shot generation; it is to move human judgement onto the genuinely novel decisions.</p></div>
+        </div>
+        <div class="judgement-table" role="table" aria-label="Automation and human judgement">
+          <div role="row"><strong role="columnheader">The skill handles</strong><strong role="columnheader">A human confirms</strong></div>
+          <div role="row"><span role="cell">Canonical section order</span><span role="cell">Whether the feature fits it</span></div>
+          <div role="row"><span role="cell">Authority classification</span><span role="cell">True source ownership</span></div>
+          <div role="row"><span role="cell">Common display controls</span><span role="cell">Conditional and operational exceptions</span></div>
+          <div role="row"><span role="cell">Style vocabulary</span><span role="cell">Brand and accessibility trade-offs</span></div>
+          <div role="row"><span role="cell">Focused QA scenarios</span><span role="cell">Whether the evidence proves behavior</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="guardrails-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-number">Safety by design</span><h2 id="guardrails-title">A workflow for shipping—not just generating.</h2></div>
+          <div><p class="section-intro">The supplied package carries the control grammar alongside durable run state, target locks, evidence requirements and permission-bound publication. Those safeguards make the workflow credible beyond a prompt experiment.</p></div>
+        </div>
+        <div class="evidence-ledger">
+          <article class="ledger-item"><small>Bounded discovery</small><strong>Inspect only what the requested checkpoint needs</strong><p>Product questions are separated from technical discovery to reduce wasted work.</p></article>
+          <article class="ledger-item"><small>Explicit authority</small><strong>Feature truth, inheritable values and widget-only choices</strong><p>The same label can behave differently depending on who owns the value.</p></article>
+          <article class="ledger-item"><small>Fail-closed delivery</small><strong>Fingerprinted approvals and verified target scope</strong><p>Writes, publication and Git operations require current, exact permission.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="next-title">
+      <div class="shell"><span class="section-number">Continue exploring</span><div class="next-links" id="next-title"><a class="next-link" href="widgets.html"><small>Platform case</small><strong>Widget Platform →</strong></a><a class="next-link" href="store.html"><small>Other flagship</small><strong>Store →</strong></a><a class="next-link" href="index.html"><small>Portfolio</small><strong>Return to the workbench →</strong></a></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell"><span>Rui Tong · Product designer · Singapore</span><a href="index.html">Return to the workbench ↑</a></div></footer>
+  <script src="widget-configurator.js" defer></script>
+</body>
+</html>
