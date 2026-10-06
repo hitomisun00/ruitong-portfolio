@@ -73,9 +73,7 @@ html { overflow-x: hidden; overflow-x: clip; }
   transform-origin: center bottom;
   transition: transform 620ms var(--ease), opacity 400ms ease, filter 400ms ease;
 }
-.layer-sheet figcaption { display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 54px; padding: 11px 15px; border-bottom: 1px solid rgba(255,255,255,.09); color: #8d9089; background: #1e1f1b; font-size: .59rem; }
-.layer-sheet figcaption strong { color: #e2e3dc; font-size: .65rem; }
-.layer-sheet__image { height: 314px; overflow: hidden; background: #090a08; }
+.layer-sheet__image { height: 100%; overflow: hidden; background: #090a08; }
 .layer-sheet__image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .layer-sheet__image--rail { display: grid; place-items: start center; background: #25262c; }
 .layer-sheet__image--rail img { width: 48%; height: auto; min-height: 100%; object-fit: cover; object-position: top; }
@@ -113,9 +111,7 @@ html { overflow-x: hidden; overflow-x: clip; }
 .client-panel__story h3 { max-width: 560px; font-size: clamp(1.45rem, 2.4vw, 2.35rem); font-weight: 570; letter-spacing: -.04em; line-height: 1.08; }
 .client-panel__story p { max-width: 540px; color: var(--muted); font-size: .82rem; line-height: 1.65; }
 .client-compare { display: grid; grid-template-columns: minmax(0,1fr) 78px minmax(0,1fr); align-items: center; padding: 22px 30px 42px; }
-.client-compare figure { overflow: hidden; margin: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 16px; background: #11120f; box-shadow: 0 24px 54px rgba(43,38,31,.18); }
-.client-compare figcaption, .proof-visual figcaption { display: flex; justify-content: space-between; gap: 16px; align-items: center; min-height: 48px; padding: 10px 13px; border-bottom: 1px solid rgba(255,255,255,.09); color: #8e9189; background: #1b1c18; font-size: .57rem; }
-.client-compare figcaption strong, .proof-visual figcaption strong { color: #e0e1da; font-size: .61rem; }
+.client-compare figure { overflow: hidden; margin: 0; border: 1px solid rgba(36,34,31,.14); border-radius: 16px; background: #11120f; box-shadow: 0 24px 54px rgba(43,38,31,.15); }
 .client-compare figure > div { overflow: hidden; aspect-ratio: 2.05 / 1; }
 .client-compare img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .client-compare__transfer { display: grid; justify-items: center; gap: 9px; color: var(--faint); text-align: center; font-size: .52rem; }
@@ -158,23 +154,60 @@ html { overflow-x: hidden; overflow-x: clip; }
 .figma-tabs button { min-width: 94px; min-height: 38px; padding: 0 12px; border: 0; border-radius: 8px; color: #8a8d85; background: transparent; font-size: .65rem; font-weight: 650; }
 .figma-tabs button:hover { color: #ecece7; }
 .figma-tabs button[aria-selected="true"] { color: #27271f; background: var(--widget-gold); }
-.figma-studio__body { display: grid; grid-template-columns: 430px minmax(0,1fr); height: min(760px, 72vw); min-height: 650px; }
-.figma-panel { min-width: 0; border-right: 1px solid rgba(255,255,255,.1); background: #20211d; }
+.figma-studio__body { display: grid; grid-template-columns: 430px minmax(0,1fr); align-items: stretch; height: min(760px, 72vw); min-height: 650px; overflow: hidden; }
+.figma-panel { min-width: 0; min-height: 0; height: 100%; overflow: hidden; border-right: 1px solid rgba(255,255,255,.1); background: #20211d; }
 .figma-panel[hidden] { display: none; }
 .figma-panel.is-active { animation: panel-settle 380ms var(--ease) both; }
-.figma-rail { height: 100%; overflow-y: auto; padding: 14px 15px 70px; overscroll-behavior: contain; scrollbar-color: #5e6058 #24251f; scrollbar-width: thin; }
+.figma-rail { box-sizing: border-box; height: 100%; overflow-y: auto; padding: 14px 15px 70px; overscroll-behavior: auto; scrollbar-color: #5e6058 #24251f; scrollbar-width: thin; }
 .figma-rail:focus-visible { outline: 3px solid var(--widget-gold); outline-offset: -5px; }
 .figma-rail section { overflow: hidden; max-width: 437px; margin: 0 auto; border-bottom: 1px solid rgba(255,255,255,.1); background: #25262c; }
 .figma-rail section + section { margin-top: 14px; }
 .figma-rail h3 { position: sticky; top: -14px; z-index: 2; margin: 0; padding: 12px 13px; border-bottom: 1px solid rgba(255,255,255,.08); color: #dddeda; background: rgba(29,30,26,.96); font-size: .62rem; font-weight: 650; backdrop-filter: blur(10px); }
 .figma-rail img { width: 100%; height: auto; }
-.figma-preview { display: grid; grid-template-rows: 52px minmax(0,1fr); min-width: 0; margin: 0; background: #24252a; }
+.figma-preview { display: grid; grid-template-rows: 52px minmax(0,1fr); min-width: 0; min-height: 0; height: 100%; max-height: 100%; overflow: hidden; margin: 0; background: #24252a; }
 .figma-preview figcaption { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 0 18px; border-bottom: 1px solid rgba(255,255,255,.09); color: #8d9088; font-size: .58rem; }
 .figma-preview figcaption strong { color: #dedfd9; font-size: .64rem; }
 .figma-preview > div { display: grid; place-items: center; overflow: hidden; padding: 18px; }
 .figma-preview img { width: 100%; height: 100%; object-fit: contain; object-position: top center; }
 .figma-studio__hint { margin: 0; padding: 11px 18px; border-top: 1px solid rgba(255,255,255,.09); color: #858880; background: #1c1d19; font-size: .57rem; text-align: center; }
 .figma-studio__hint span { margin-right: 7px; color: var(--widget-gold); }
+
+.image-zoom-source { position: relative; }
+.image-zoom-button {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 4;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.26);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(20,21,18,.78);
+  box-shadow: 0 8px 24px rgba(0,0,0,.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.image-zoom-button:hover { background: rgba(20,21,18,.94); }
+.image-zoom-button:focus-visible { outline: 3px solid var(--widget-gold); outline-offset: 3px; }
+.image-zoom-button svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
+
+.image-viewer { width: min(1500px, calc(100% - 32px)); max-width: none; height: min(940px, calc(100svh - 32px)); max-height: none; padding: 0; overflow: hidden; border: 0; border-radius: 22px; color: #f2f2ed; background: #161713; box-shadow: 0 48px 150px rgba(0,0,0,.5); }
+.image-viewer.is-fallback-open { position: fixed; inset: 16px; z-index: 1000; margin: auto; box-shadow: 0 0 0 100vmax rgba(23,22,19,.68), 0 48px 150px rgba(0,0,0,.5); }
+.has-image-viewer { overflow: hidden; }
+.image-viewer::backdrop { background: rgba(23,22,19,.68); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.image-viewer__shell { display: grid; grid-template-rows: 58px minmax(0,1fr); height: 100%; }
+.image-viewer header { display: flex; overflow: hidden; align-items: center; justify-content: space-between; gap: 18px; padding: 8px 10px 8px 18px; border-bottom: 1px solid rgba(255,255,255,.1); background: #1d1e1a; }
+.image-viewer header p { flex: 1; min-width: 0; margin: 0; overflow: hidden; color: #c9cbc5; font-size: .7rem; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+.image-viewer header button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 88px; min-height: 40px; padding: 0 14px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; color: #ecece7; background: rgba(255,255,255,.06); font-size: .64rem; }
+.image-viewer header button:hover { background: rgba(255,255,255,.12); }
+.image-viewer header button:focus-visible { outline: 3px solid var(--widget-gold); outline-offset: 2px; }
+.image-viewer header svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 1.8; }
+.image-viewer__canvas { display: grid; min-width: 0; min-height: 0; overflow: hidden; padding: clamp(12px,2.6vw,34px); place-items: center; }
+.image-viewer__canvas img { display: block; width: auto; max-width: 100%; height: auto; max-height: 100%; margin: 0; object-fit: contain; }
 
 .workflow-story { background: #fbfaf7; }
 .workflow-path { display: grid; grid-template-columns: repeat(4,1fr); margin: 0; padding: 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); list-style: none; }
@@ -236,7 +269,6 @@ html { overflow-x: hidden; overflow-x: clip; }
   .layer-stage { min-height: 530px; }
   .layer-canvas { height: 375px; }
   .layer-sheet { height: 338px; }
-  .layer-sheet__image { height: 284px; }
   .figma-studio__body { grid-template-columns: 380px minmax(0,1fr); }
 }
 
@@ -272,8 +304,7 @@ html { overflow-x: hidden; overflow-x: clip; }
   .layer-tabs button { min-height: 52px; padding: 7px 9px; }
   .layer-canvas { height: 320px; margin-top: 0; }
   .layer-sheet { right: 0; left: 0; height: 306px; opacity: 0 !important; transform: translateY(10px) scale(.985) !important; pointer-events: none; }
-  .layer-stage[data-active-layer="design"] .layer-sheet--design, .layer-stage[data-active-layer="configure"] .layer-sheet--configure, .layer-stage[data-active-layer="experience"] .layer-sheet--experience { opacity: 1 !important; transform: none !important; }
-  .layer-sheet__image { height: 252px; }
+  .layer-stage[data-active-layer="design"] .layer-sheet--design, .layer-stage[data-active-layer="configure"] .layer-sheet--configure, .layer-stage[data-active-layer="experience"] .layer-sheet--experience { opacity: 1 !important; transform: none !important; pointer-events: auto; }
   .layer-stage__hint { display: none; }
   .case-provenance { margin-bottom: 0; }
   .case-section { padding-block: 82px; }
@@ -288,7 +319,7 @@ html { overflow-x: hidden; overflow-x: clip; }
   .system-chain p { grid-column: 2; grid-row: 3; }
   .figma-studio__body { grid-template-columns: 1fr; height: auto; min-height: 0; }
   .figma-panel { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.1); }
-  .figma-rail { height: 580px; }
+  .figma-rail { height: min(580px, 74svh); }
   .figma-preview { height: min(650px, 100vw); }
   .control-index li { flex-basis: 30%; }
   .proof-line { grid-template-columns: 1fr; }
@@ -310,8 +341,6 @@ html { overflow-x: hidden; overflow-x: clip; }
   .layer-tabs small { display: none; }
   .layer-canvas { height: 302px; }
   .layer-sheet { height: 288px; border-radius: 14px; }
-  .layer-sheet figcaption { align-items: flex-start; flex-direction: column; gap: 2px; min-height: 61px; }
-  .layer-sheet__image { height: 227px; }
   .layer-sheet__image--rail img { width: 68%; }
   .case-provenance { width: calc(100% - 24px); padding-inline: 2px; }
   .case-section { padding-block: 72px; }
@@ -319,7 +348,7 @@ html { overflow-x: hidden; overflow-x: clip; }
   .client-tabs { padding: 8px; }
   .client-panel__story h3 { font-size: 1.5rem; }
   .client-compare { padding-inline: 10px; }
-  .client-compare figcaption, .proof-visual figcaption, .figma-preview figcaption { align-items: flex-start; flex-direction: column; gap: 2px; }
+  .figma-preview figcaption { align-items: flex-start; flex-direction: column; gap: 2px; }
   .client-compare figure > div { aspect-ratio: 1.56 / 1; }
   .system-chain li { grid-template-columns: 1fr; }
   .system-chain li::before, .system-chain span, .system-chain strong, .system-chain p { grid-column: 1; grid-row: auto; }
@@ -344,6 +373,9 @@ html { overflow-x: hidden; overflow-x: clip; }
   .prototype-response li { grid-template-columns: 54px 1fr; }
   .configurator-dialog { width: 100%; height: 100svh; border-radius: 0; }
   .configurator-dialog header { padding-top: max(8px, env(safe-area-inset-top)); padding-right: max(10px, env(safe-area-inset-right)); padding-left: max(18px, env(safe-area-inset-left)); }
+  .image-viewer { width: 100%; height: 100svh; border-radius: 0; }
+  .image-viewer header button { min-width: 44px; padding-inline: 12px; }
+  .image-viewer header button span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {

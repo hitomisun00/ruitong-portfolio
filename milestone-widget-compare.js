@@ -68,7 +68,42 @@
     const theme = portal.dataset.theme === 'light' ? 'light' : 'dark';
     if (!widgetId || !container || !status) return;
 
-    const instance = { widgetId, container, status, email, theme };
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'milestone-interaction-toggle';
+    toggle.hidden = true;
+    toggle.setAttribute('aria-pressed', 'false');
+    toggle.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 3 8.5 8.5-4.3 1 2.8 5-2.6 1.5-2.8-5-3.1 3.2L8 3Z"/></svg><span>Interact</span>';
+    portal.append(toggle);
+
+    const setInteraction = active => {
+      const frame = container.querySelector('iframe');
+      portal.classList.toggle('is-interactive', active);
+      toggle.setAttribute('aria-pressed', String(active));
+      toggle.querySelector('span').textContent = active ? 'Resume page scroll' : 'Interact';
+      toggle.setAttribute('aria-label', active ? 'Disable widget interaction and resume page scrolling' : 'Enable widget interaction');
+      if (frame) frame.tabIndex = active ? 0 : -1;
+    };
+
+    const syncFrame = () => {
+      const frame = container.querySelector('iframe');
+      toggle.hidden = !frame;
+      if (frame && !portal.classList.contains('is-interactive')) frame.tabIndex = -1;
+    };
+
+    toggle.addEventListener('click', () => setInteraction(!portal.classList.contains('is-interactive')));
+    portal.addEventListener('mouseleave', () => setInteraction(false));
+    portal.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && portal.classList.contains('is-interactive')) {
+        setInteraction(false);
+        toggle.focus();
+      }
+    });
+
+    const observer = new MutationObserver(syncFrame);
+    observer.observe(container, { childList: true, subtree: true });
+
+    const instance = { widgetId, container, status, email, theme, syncFrame };
     instances.set(container.id, instance);
 
     if (window.location.protocol !== 'https:' || window.location.hostname !== publicHost) {
@@ -93,6 +128,7 @@
 
     if (event.data.type === 'WIDGET_READY') {
       setStatus(instance, 'ready', 'Live and interactive');
+      instance.syncFrame();
       return;
     }
 

@@ -1,10 +1,9 @@
 :root {
-  --milestone-widget-height: clamp(680px, 72svh, 900px);
+  --milestone-widget-height: clamp(620px, 72svh, 780px);
 }
 
 .milestone-compare-story {
   position: relative;
-  overflow: clip;
   background: #eef0e8;
 }
 
@@ -18,164 +17,65 @@
 
 .milestone-compare-head {
   display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(300px, .7fr);
-  gap: clamp(44px, 8vw, 130px);
+  grid-template-columns: minmax(0, .9fr) minmax(320px, .7fr);
+  gap: clamp(32px, 6vw, 92px);
   align-items: end;
-  margin-bottom: clamp(44px, 7vw, 86px);
-}
-
-.milestone-compare-head > div:first-child > p {
-  margin-bottom: 18px;
-  color: var(--widget-sage-ink);
-  font-size: .69rem;
-  font-weight: 720;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  margin-bottom: clamp(28px, 4vw, 48px);
 }
 
 .milestone-compare-head h2 {
-  max-width: 880px;
-  font-size: clamp(3rem, 6.7vw, 6.9rem);
-  line-height: .9;
+  max-width: 680px;
+  font-size: clamp(2.15rem, 3.4vw, 3.4rem);
+  line-height: 1;
+  text-wrap: balance;
 }
 
-.milestone-compare-head > div:last-child > p {
+.milestone-compare-head > p {
+  max-width: 610px;
+  margin: 0;
   color: var(--muted);
-  font-size: .86rem;
-  line-height: 1.7;
+  font-size: .9rem;
+  line-height: 1.6;
+  text-wrap: pretty;
 }
-
-.milestone-compare-head__note {
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(57, 66, 53, .2);
-  font-size: .72rem !important;
-}
-
-.milestone-compare-head__note strong { color: var(--ink); }
 
 .milestone-compare {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 78px minmax(0, 1fr);
-  gap: clamp(12px, 2.2vw, 34px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 34px);
   align-items: start;
 }
 
 .milestone-portal {
+  position: relative;
   min-width: 0;
-  overflow: hidden;
-  border: 1px solid rgba(36, 34, 31, .18);
-  border-radius: 22px;
-  background: #fdfcf8;
-  box-shadow: 0 26px 70px rgba(67, 81, 64, .12), 0 1px 0 rgba(255, 255, 255, .9) inset;
-}
-
-.milestone-portal--one {
-  border-color: rgba(181, 152, 212, .38);
-  transform: rotate(-.35deg);
-}
-
-.milestone-portal--two {
-  border-color: rgba(0, 143, 36, .26);
-  transform: translateY(38px) rotate(.35deg);
-}
-
-.milestone-portal__bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  min-height: 72px;
-  padding: 13px 16px 13px 20px;
-  border-bottom: 1px solid rgba(36, 34, 31, .13);
-  background: rgba(255, 254, 250, .92);
-}
-
-.milestone-portal__bar > div { display: grid; gap: 3px; }
-
-.milestone-portal__bar > div > span {
-  color: var(--faint);
-  font-size: .59rem;
-  font-weight: 720;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.milestone-portal__bar > div > strong {
-  font-size: .82rem;
-  font-weight: 620;
 }
 
 .milestone-portal__state {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  max-width: 180px;
-  color: var(--muted);
-}
-
-.milestone-portal__state i {
-  width: 8px;
-  height: 8px;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: #ae8c43;
-  box-shadow: 0 0 0 4px rgba(174, 140, 67, .13);
-}
-
-.milestone-portal__state b {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
-  font-size: .6rem;
-  font-weight: 640;
-  line-height: 1.3;
-  text-overflow: ellipsis;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   white-space: nowrap;
-}
-
-.milestone-portal__state[data-state="ready"] i {
-  background: #4f8a55;
-  box-shadow: 0 0 0 4px rgba(79, 138, 85, .13);
-}
-
-.milestone-portal__state[data-state="error"] i {
-  background: #b94f43;
-  box-shadow: 0 0 0 4px rgba(185, 79, 67, .13);
-}
-
-.milestone-portal--one .milestone-portal__state i {
-  background: #b598d4;
-  box-shadow: 0 0 0 4px rgba(181, 152, 212, .15);
-}
-
-.milestone-portal--two .milestone-portal__state i {
-  background: #2e8b24;
-  box-shadow: 0 0 0 4px rgba(46, 139, 36, .14);
-}
-
-.milestone-portal .milestone-portal__state[data-state="error"] i {
-  background: #b94f43;
-  box-shadow: 0 0 0 4px rgba(185, 79, 67, .13);
 }
 
 .milestone-widget-viewport {
   height: var(--milestone-widget-height);
-  min-height: 680px;
-  overflow: auto;
-  overscroll-behavior: contain;
-  background: #172029;
-  scrollbar-color: rgba(255, 255, 255, .35) transparent;
-  scrollbar-width: thin;
-}
-
-.milestone-widget-viewport:focus-visible {
-  outline: 3px solid var(--widget-sage-ink);
-  outline-offset: -3px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: transparent;
 }
 
 .milestone-widget-container {
   position: relative;
   width: 100%;
   min-height: var(--milestone-widget-height);
+  overflow: hidden;
+  border-radius: inherit;
   --dark-accent-1: rgb(0, 248, 0);
   --dark-background-5: rgb(15, 24, 32);
   --dark-text-4: rgb(255, 255, 255);
@@ -202,12 +102,49 @@
   --light-text-4: rgb(82, 83, 83);
 }
 
-.milestone-widget-container > iframe {
+.milestone-widget-container iframe {
   display: block;
   width: 100% !important;
   min-height: var(--milestone-widget-height);
   border: 0;
+  border-radius: inherit;
+  pointer-events: none;
 }
+
+.milestone-portal.is-interactive .milestone-widget-container iframe {
+  pointer-events: auto;
+}
+
+.milestone-interaction-toggle {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px;
+  color: #f2f3ef;
+  background: rgba(18,22,19,.82);
+  box-shadow: 0 8px 24px rgba(0,0,0,.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: .62rem;
+  font-weight: 680;
+}
+
+.milestone-interaction-toggle[hidden] { display: none; }
+.milestone-interaction-toggle:hover,
+.milestone-interaction-toggle[aria-pressed="true"] { background: rgba(18,22,19,.96); }
+.milestone-interaction-toggle:focus-visible { outline: 3px solid var(--widget-sage-ink); outline-offset: 3px; }
+.milestone-interaction-toggle svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
+.milestone-portal--one .milestone-interaction-toggle { color: #4f3e5b; border-color: rgba(79,62,91,.2); background: rgba(251,242,252,.9); }
+.milestone-portal--one .milestone-interaction-toggle:hover,
+.milestone-portal--one .milestone-interaction-toggle[aria-pressed="true"] { background: #fbf2fc; }
 
 .milestone-widget-loader {
   position: absolute;
@@ -217,6 +154,7 @@
   place-items: center;
   min-height: var(--milestone-widget-height);
   padding: 24px;
+  border-radius: inherit;
   color: var(--dark-accent-1, #fff);
   background: var(--dark-background-5, #172029);
 }
@@ -249,6 +187,7 @@
   place-content: center;
   min-height: var(--milestone-widget-height);
   padding: 34px;
+  border-radius: inherit;
   color: #eef1eb;
   text-align: center;
   background: radial-gradient(circle at 50% 34%, rgba(118, 141, 107, .2), transparent 36%), #171d1a;
@@ -290,55 +229,13 @@
   background: radial-gradient(circle at 50% 34%, rgba(0, 248, 0, .12), transparent 36%), #0d161a;
 }
 
-.milestone-compare__spine {
-  display: grid;
-  justify-items: center;
-  gap: 11px;
-  padding-top: 102px;
-  color: var(--widget-sage-ink);
-  text-align: center;
-}
-
-.milestone-compare__spine span,
-.milestone-compare__spine b {
-  max-width: 78px;
-  font-size: .56rem;
-  font-weight: 720;
-  line-height: 1.3;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.milestone-compare__spine i {
-  position: relative;
-  width: 1px;
-  height: 96px;
-  background: rgba(72, 91, 69, .42);
-}
-
-.milestone-compare__spine i::before,
-.milestone-compare__spine i::after {
-  position: absolute;
-  left: 50%;
-  width: 7px;
-  height: 7px;
-  border: 1px solid rgba(72, 91, 69, .64);
-  border-radius: 50%;
-  background: #eef0e8;
-  content: "";
-  transform: translate(-50%, -50%);
-}
-
-.milestone-compare__spine i::after { top: 100%; }
-
 .milestone-compare-footnote,
 .milestone-compare-fallback {
-  max-width: 780px;
-  margin: 58px auto 0;
+  max-width: 920px;
+  margin: 22px 0 0;
   color: var(--faint);
   font-size: .7rem;
   line-height: 1.55;
-  text-align: center;
 }
 
 .milestone-compare-fallback {
@@ -349,33 +246,17 @@
 @keyframes milestone-spin { to { transform: rotate(360deg); } }
 
 @media (max-width: 1020px) {
-  .milestone-compare-head { grid-template-columns: 1fr; gap: 26px; }
-  .milestone-compare-head > div:last-child { max-width: 690px; }
-  .milestone-compare { grid-template-columns: 1fr; gap: 24px; }
-  .milestone-portal--one, .milestone-portal--two { transform: none; }
-  .milestone-compare__spine { grid-template-columns: auto minmax(80px, 180px) auto; justify-content: center; align-items: center; padding: 0; }
-  .milestone-compare__spine span, .milestone-compare__spine b { max-width: 110px; }
-  .milestone-compare__spine i { width: 100%; height: 1px; }
-  .milestone-compare__spine i::before { top: 50%; left: 0; }
-  .milestone-compare__spine i::after { top: 50%; left: 100%; }
+  .milestone-compare-head { grid-template-columns: 1fr; gap: 14px; }
+  .milestone-compare-head > p { max-width: 690px; }
+  .milestone-compare { grid-template-columns: 1fr; gap: 32px; }
 }
 
 @media (max-width: 540px) {
-  :root { --milestone-widget-height: 720px; }
-  .milestone-compare-head h2 { font-size: clamp(2.65rem, 13vw, 3.65rem); }
-  .milestone-portal { border-radius: 17px; }
-  .milestone-portal__bar { align-items: flex-start; min-height: 86px; padding: 13px 14px; }
-  .milestone-portal__state { max-width: 116px; padding-top: 2px; }
-  .milestone-portal__state b { white-space: normal; }
-  .milestone-widget-viewport { min-height: 720px; }
-  .milestone-compare__spine { grid-template-columns: 1fr; gap: 7px; }
-  .milestone-compare__spine i { width: 1px; height: 36px; }
-  .milestone-compare__spine i::before { top: 0; left: 50%; }
-  .milestone-compare__spine i::after { top: 100%; left: 50%; }
-  .milestone-compare-footnote { margin-top: 36px; text-align: left; }
+  :root { --milestone-widget-height: 680px; }
+  .milestone-compare-head h2 { font-size: clamp(2.25rem, 11vw, 3rem); }
+  .milestone-widget-viewport { border-radius: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .milestone-portal--one, .milestone-portal--two { transform: none; }
   .milestone-widget-loader__content i { animation: none; }
 }

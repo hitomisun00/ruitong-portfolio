@@ -91,11 +91,7 @@
     panels: Array.from(document.querySelectorAll('[data-figma-panel]')),
     tabKey: 'figmaTab',
     panelKey: 'figmaPanel',
-    queryKey: 'origin',
-    onSelect: () => {
-      const activeRail = document.querySelector('[data-figma-panel]:not([hidden]) .figma-rail');
-      if (activeRail) activeRail.scrollTop = 0;
-    }
+    queryKey: 'origin'
   });
 
   const dialog = document.querySelector('[data-configurator-dialog]');

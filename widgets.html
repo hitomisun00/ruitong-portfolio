@@ -9,8 +9,8 @@
   <link rel="icon" href="data:,">
   <link rel="preconnect" href="https://sgtr-eks-widgets.genesiv.org" crossorigin>
   <link rel="stylesheet" href="case-system.css">
-  <link rel="stylesheet" href="widgets.css">
-  <link rel="stylesheet" href="milestone-widget-compare.css">
+  <link rel="stylesheet" href="widgets.css?v=20261007-4">
+  <link rel="stylesheet" href="milestone-widget-compare.css?v=20261007-2">
 </head>
 <body class="widgets-case">
   <a class="skip-link" href="#content">Skip to case study</a>
@@ -38,15 +38,12 @@
         </div>
         <div class="layer-canvas" aria-live="polite">
           <figure class="layer-sheet layer-sheet--design" id="layer-sheet-design" role="tabpanel" aria-labelledby="layer-tab-design" aria-hidden="true" data-layer-sheet="design">
-            <figcaption><span>Product decision</span><strong>Define what clients can safely change</strong></figcaption>
             <div class="layer-sheet__image layer-sheet__image--rail"><img src="widget-assets/figma-origin/milestones-settings-overview.png" width="437" height="1438" loading="eager" alt="Original Figma control model for the Milestones widget"></div>
           </figure>
           <figure class="layer-sheet layer-sheet--configure" id="layer-sheet-configure" role="tabpanel" aria-labelledby="layer-tab-configure" aria-hidden="true" data-layer-sheet="configure">
-            <figcaption><span>System behavior</span><strong>Configure the widget with a live preview</strong></figcaption>
             <div class="layer-sheet__image"><img src="widget-assets/client-proof/infinox-milestones-config-redacted.jpg" width="1600" height="778" loading="eager" alt="Redacted Milestones widget configuration and live preview in ReturningAI"></div>
           </figure>
           <figure class="layer-sheet layer-sheet--experience" id="layer-sheet-experience" role="tabpanel" aria-labelledby="layer-tab-experience" aria-hidden="false" data-layer-sheet="experience">
-            <figcaption><span>User outcome</span><strong>A native experience inside INFINOX</strong></figcaption>
             <div class="layer-sheet__image"><img src="widget-assets/client-proof/infinox-milestones-portal-redacted.jpg" width="1600" height="784" fetchpriority="high" alt="Redacted Milestones widget embedded inside the INFINOX client portal"></div>
           </figure>
         </div>
@@ -59,30 +56,28 @@
     <section class="case-section milestone-compare-story" id="brand-compare" aria-labelledby="brand-compare-title">
       <div class="shell shell--wide">
         <div class="milestone-compare-head">
-          <div><p>Live client comparison</p><h2 id="brand-compare-title">One Milestones system. Two branded outcomes.</h2></div>
-          <div><p>Both embeds carry the same feature type and interaction grammar. Each client can shape its colour, type, surfaces, information density and layout so the experience belongs inside its own portal.</p><p class="milestone-compare-head__note"><strong>Compare the presentation, not the progress.</strong> Each sandbox frame represents a different configured user, so milestone content and completion state may also differ.</p></div>
+          <h2 id="brand-compare-title">One widget, two brands.</h2>
+          <p>Product logic stays intact. Each client controls the visual language, information density and layout.</p>
         </div>
 
         <div class="milestone-compare" aria-label="Side-by-side live Milestones widget comparison">
           <article class="milestone-portal milestone-portal--one" data-milestone-widget data-widget-id="NmFjNDYzYWIwN2UzYmM0ZmNhNzgwNzI3" data-theme="light" data-demo-email="ruitong@returning.ai">
-            <header class="milestone-portal__bar"><div><span>Client expression 01</span><strong>Milestones widget</strong></div><span class="milestone-portal__state" id="milestone-status-one" data-state="idle" role="status" aria-live="polite"><i aria-hidden="true"></i><b>Preparing live frame</b></span></header>
-            <div class="milestone-widget-viewport" tabindex="0" role="region" aria-label="Scrollable first client Milestones widget">
+            <span class="milestone-portal__state" id="milestone-status-one" data-state="idle" role="status" aria-live="polite"><b>Preparing first live widget</b></span>
+            <div class="milestone-widget-viewport" role="region" aria-label="First client Milestones widget">
               <div class="milestone-widget-container" id="returning-ai-widget-NmFjNDYzYWIwN2UzYmM0ZmNhNzgwNzI3" data-status-id="milestone-status-one"></div>
             </div>
           </article>
 
-          <div class="milestone-compare__spine" aria-hidden="true"><span>Same product logic</span><i></i><b>Brand + layout diverge</b></div>
-
           <article class="milestone-portal milestone-portal--two" data-milestone-widget data-widget-id="NmFjNTE0NjkxODk5ODM2MGI3MTQ3M2E2" data-theme="dark" data-demo-email="ruitong@returning.ai">
-            <header class="milestone-portal__bar"><div><span>Client expression 02</span><strong>Milestones widget</strong></div><span class="milestone-portal__state" id="milestone-status-two" data-state="idle" role="status" aria-live="polite"><i aria-hidden="true"></i><b>Preparing live frame</b></span></header>
-            <div class="milestone-widget-viewport" tabindex="0" role="region" aria-label="Scrollable second client Milestones widget">
+            <span class="milestone-portal__state" id="milestone-status-two" data-state="idle" role="status" aria-live="polite"><b>Preparing second live widget</b></span>
+            <div class="milestone-widget-viewport" role="region" aria-label="Second client Milestones widget">
               <div class="milestone-widget-container" id="returning-ai-widget-NmFjNTE0NjkxODk5ODM2MGI3MTQ3M2E2" data-status-id="milestone-status-two"></div>
             </div>
           </article>
         </div>
 
         <noscript><p class="milestone-compare-fallback">The live comparison requires JavaScript. The surrounding case study still documents how the same Milestones feature becomes two independently branded client experiences.</p></noscript>
-        <p class="milestone-compare-footnote">Live sandbox evidence · The embeds demonstrate configuration and portable delivery. They do not establish adoption, business impact or production usage by either client.</p>
+        <p class="milestone-compare-footnote">Live sandbox preview. Different test users may show different progress; the comparison demonstrates configuration and portable delivery, not adoption or business impact.</p>
       </div>
     </section>
 
@@ -98,17 +93,17 @@
 
         <article class="client-panel" id="client-panel-store" role="tabpanel" aria-labelledby="client-tab-store" data-client-panel="store" hidden>
           <div class="client-panel__story"><div><span>Store</span><h3>Style controls become a branded reward catalogue.</h3></div><p>Operators tune the surface, spacing and structure. Traders receive a catalogue that sits naturally inside INFINOX navigation.</p></div>
-          <div class="client-compare"><figure><figcaption><span>Configured in ReturningAI</span><strong>Style rail + preview</strong></figcaption><div><img src="widget-assets/client-proof/infinox-store-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted Store widget configuration and preview in ReturningAI"></div></figure><span class="client-compare__transfer" aria-hidden="true"><i></i><b>Rendered in the client shell</b></span><figure><figcaption><span>Experienced in INFINOX</span><strong>Reward catalogue</strong></figcaption><div><img src="widget-assets/client-proof/infinox-store-portal-redacted.jpg" width="1600" height="784" loading="lazy" alt="Redacted Store widget embedded inside the INFINOX client portal"></div></figure></div>
+          <div class="client-compare"><figure><div><img src="widget-assets/client-proof/infinox-store-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted Store widget configuration and preview in ReturningAI"></div></figure><span class="client-compare__transfer" aria-hidden="true"><i></i><b>Rendered in the client shell</b></span><figure><div><img src="widget-assets/client-proof/infinox-store-portal-redacted.jpg" width="1600" height="784" loading="lazy" alt="Redacted Store widget embedded inside the INFINOX client portal"></div></figure></div>
         </article>
 
         <article class="client-panel is-active" id="client-panel-milestones" role="tabpanel" aria-labelledby="client-tab-milestones" data-client-panel="milestones">
           <div class="client-panel__story"><div><span>Milestones</span><h3>One surface system carries a dense progression model.</h3></div><p>Widget and section styling adapt to the brand while milestone groups, active stages and reward relationships remain legible.</p></div>
-          <div class="client-compare"><figure><figcaption><span>Configured in ReturningAI</span><strong>Surface hierarchy + preview</strong></figcaption><div><img src="widget-assets/client-proof/infinox-milestones-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted Milestones widget configuration and preview in ReturningAI"></div></figure><span class="client-compare__transfer" aria-hidden="true"><i></i><b>Rendered in the client shell</b></span><figure><figcaption><span>Experienced in INFINOX</span><strong>Progression experience</strong></figcaption><div><img src="widget-assets/client-proof/infinox-milestones-portal-redacted.jpg" width="1600" height="784" loading="lazy" alt="Redacted Milestones widget embedded inside the INFINOX client portal"></div></figure></div>
+          <div class="client-compare"><figure><div><img src="widget-assets/client-proof/infinox-milestones-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted Milestones widget configuration and preview in ReturningAI"></div></figure><span class="client-compare__transfer" aria-hidden="true"><i></i><b>Rendered in the client shell</b></span><figure><div><img src="widget-assets/client-proof/infinox-milestones-portal-redacted.jpg" width="1600" height="784" loading="lazy" alt="Redacted Milestones widget embedded inside the INFINOX client portal"></div></figure></div>
         </article>
 
         <article class="client-panel" id="client-panel-streaks" role="tabpanel" aria-labelledby="client-tab-streaks" data-client-panel="streaks" hidden>
           <div class="client-panel__story"><div><span>Streaks</span><h3>Layout and visibility choices shape the habit loop.</h3></div><p>Operators choose the presentation and details. Traders receive a focused daily-progress experience instead of the configuration behind it.</p></div>
-          <div class="client-compare"><figure><figcaption><span>Configured in ReturningAI</span><strong>Display controls + preview</strong></figcaption><div><img src="widget-assets/client-proof/infinox-streaks-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted Streaks widget configuration and preview in ReturningAI"></div></figure><span class="client-compare__transfer" aria-hidden="true"><i></i><b>Rendered in the client shell</b></span><figure><figcaption><span>Experienced in INFINOX</span><strong>Daily progress</strong></figcaption><div><img src="widget-assets/client-proof/infinox-streaks-portal-redacted.jpg" width="1600" height="780" loading="lazy" alt="Redacted Streaks widget embedded inside the INFINOX client portal"></div></figure></div>
+          <div class="client-compare"><figure><div><img src="widget-assets/client-proof/infinox-streaks-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted Streaks widget configuration and preview in ReturningAI"></div></figure><span class="client-compare__transfer" aria-hidden="true"><i></i><b>Rendered in the client shell</b></span><figure><div><img src="widget-assets/client-proof/infinox-streaks-portal-redacted.jpg" width="1600" height="780" loading="lazy" alt="Redacted Streaks widget embedded inside the INFINOX client portal"></div></figure></div>
         </article>
       </div>
     </div></section>
@@ -129,7 +124,7 @@
           <div class="figma-panel" id="figma-panel-style" role="tabpanel" aria-labelledby="figma-tab-style" data-figma-panel="style" hidden><div class="figma-rail" tabindex="0" role="region" aria-label="Scrollable original Milestones Style design"><section><h3>Theme and main widget surface</h3><img src="widget-assets/figma-origin/milestones-style-theme.png" width="436" height="1109" loading="lazy" alt="Original Figma Style design for theme tokens and the main widget surface"></section><section><h3>Section surface and loading state</h3><img src="widget-assets/figma-origin/milestones-style-sections.png" width="430" height="1185" loading="lazy" alt="Original Figma Style design for section surfaces and the loading state"></section></div></div>
           <figure class="figma-preview"><figcaption><span>Every control resolves here</span><strong>Default Milestones view</strong></figcaption><div><img src="widget-assets/figma-origin/milestones-default-view.png" width="1318" height="1317" loading="lazy" alt="Original Figma default Milestones view with its group, stages, conditions, rewards and progress card"></div></figure>
         </div>
-        <p class="figma-studio__hint"><span aria-hidden="true">↕</span> Scroll the control rail. The preview stays in context.</p>
+        <p class="figma-studio__hint">Scroll the left control rail. Use the corner control to inspect any image.</p>
       </div>
     </div></section>
 
@@ -139,20 +134,21 @@
       <div class="prototype-dock"><div class="prototype-dock__copy"><p>Working local prototype</p><h3>Try the workflow when you want the detail—not before.</h3><p>The public simulation uses a deterministic Spin the Wheel fixture. It sends nothing, saves nothing and makes no external change.</p><div><button type="button" class="primary-action" data-open-configurator>Open the configurator</button><a class="quiet-action" href="widget-configurator.html">Open as a full page</a></div></div><div class="prototype-dock__preview" aria-label="Example Widget Configurator proposal"><div class="prototype-prompt"><span>You</span><p>Turn Spin the Wheel into a configurable widget.</p></div><div class="prototype-response"><span>Widget Configurator</span><strong>Draft ready for review</strong><ul><li><b>Settings</b> content, behavior and visibility</li><li><b>Style</b> theme, surfaces and loading state</li><li><b>Setup</b> delivery and embed requirements</li></ul><small>Human review required for feature-specific exceptions.</small></div></div></div>
     </div></section>
 
-    <section class="case-section proof-story" id="proof" aria-labelledby="proof-title"><div class="shell shell--wide">
-      <div class="section-lead"><h2 id="proof-title">The system became credible when Streaks survived implementation and QA.</h2><p>The preserved implementation slice covers persistence, compatibility, preview behavior and responsive states. The figures below are recorded verification—not a claim about adoption or business impact.</p></div>
-      <dl class="proof-line"><div><dt>Automated suites</dt><dd>12 / 12 passed</dd></div><div><dt>Automated tests</dt><dd>119 / 119 passed</dd></div><div><dt>State checks</dt><dd>30 checked · 0 incorrectly disabled</dd></div></dl>
-      <div class="proof-visual"><figure><figcaption><span>Configured in ReturningAI</span><strong>Streaks display controls</strong></figcaption><img src="widget-assets/client-proof/infinox-streaks-config-redacted.jpg" width="1600" height="778" loading="lazy" alt="Redacted Streaks configuration and preview used as implementation evidence"></figure><figure><figcaption><span>Rendered in INFINOX</span><strong>Responsive client experience</strong></figcaption><img src="widget-assets/client-proof/infinox-streaks-portal-redacted.jpg" width="1600" height="780" loading="lazy" alt="Redacted Streaks widget inside the INFINOX client portal"></figure></div>
-      <p class="proof-limit"><strong>Honest boundary:</strong> the estimated 70–80% reduction in repetitive planning is Rui Tong’s retrospective estimate, not an independently measured result. Production rollout and client impact remain separate verification questions.</p>
-    </div></section>
-
     <section class="case-section case-ending" aria-labelledby="ending-title"><div class="shell"><p>The lasting design</p><h2 id="ending-title">Not one better editor—a way to scale product logic without losing control.</h2><div class="case-ending__links"><a href="widget-configurator.html">Explore the Widget Configurator</a><a href="store.html">Next case: Store</a><a href="index.html">Return to the workbench</a></div></div></section>
   </main>
 
-  <dialog class="configurator-dialog" data-configurator-dialog aria-labelledby="configurator-dialog-title"><div class="configurator-dialog__shell"><header><div><span>Interactive prototype</span><strong id="configurator-dialog-title">Widget Configurator</strong></div><button type="button" aria-label="Close Widget Configurator" data-close-configurator>Close</button></header><iframe data-src="widget-configurator.html?embed=1#lab" title="Interactive Widget Configurator simulation"></iframe></div></dialog>
+  <dialog class="image-viewer" data-image-viewer aria-labelledby="image-viewer-title">
+    <div class="image-viewer__shell">
+      <header><p id="image-viewer-title" data-image-viewer-title>Image detail</p><button type="button" data-close-image-viewer><span>Close</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></header>
+      <div class="image-viewer__canvas"><img data-image-viewer-image alt=""></div>
+    </div>
+  </dialog>
+
+  <dialog class="configurator-dialog" data-configurator-dialog aria-labelledby="configurator-dialog-title"><div class="configurator-dialog__shell"><header><div><span>Interactive prototype</span><strong id="configurator-dialog-title">Widget Configurator</strong></div><button type="button" aria-label="Close Widget Configurator" data-close-configurator>Close</button></header><iframe data-src="widget-configurator.html?embed=1&amp;v=20261007-2#lab" title="Interactive Widget Configurator simulation"></iframe></div></dialog>
 
   <footer class="site-footer"><div class="shell"><span>Rui Tong · Product designer · Singapore</span><a href="index.html">Return to the workbench ↑</a></div></footer>
-  <script src="widgets.js" defer></script>
-  <script src="milestone-widget-compare.js" defer></script>
+  <script src="widgets.js?v=20261007-2" defer></script>
+  <script src="image-viewer.js?v=20261007-2" defer></script>
+  <script src="milestone-widget-compare.js?v=20261007-2" defer></script>
 </body>
 </html>
