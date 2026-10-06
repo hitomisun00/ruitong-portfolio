@@ -6,6 +6,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#fbfaf7">
 <link rel="icon" href="data:,">
+<link rel="stylesheet" href="home-sections.css">
 <title>Rui Tong — Product designer</title>
 <style>html,body{margin:0;min-height:100%;background:#fbfaf7}body{overflow-x:hidden}</style>
 </head>
@@ -1402,10 +1403,10 @@
   </style>
 
   <div class="page">
-    <a class="skip-link" href="#selected-work">Skip to selected work</a>
+    <a class="skip-link" href="#work">Skip to project index</a>
     <nav class="nav" aria-label="Portfolio navigation">
-      <button class="name cursor-interaction" type="button" aria-label="Rui Tong home"><span class="mark" aria-hidden="true"></span><span>Rui Tong</span></button>
-      <div class="nav-links" aria-label="Primary navigation"><span>Work</span><span>Practice</span><span>Archive</span><span>About</span><span>Singapore</span></div>
+      <a class="name cursor-interaction" href="#rt-warm-folder-kv" aria-label="Rui Tong home"><span class="mark" aria-hidden="true"></span><span>Rui Tong</span></a>
+      <div class="nav-links" aria-label="Primary navigation"><a href="#work">Work</a><a href="#practice">Practice</a><a href="#archive">Archive</a><a href="#about">About</a><span class="nav-location">Singapore</span></div>
     </nav>
     <span class="resume-reminder">Pick up a copy<small>Résumé · PDF</small></span>
     <a class="resume-stack cursor-interaction" href="resume-assets/Rui-Tong-Resume.pdf" download="Rui-Tong-Resume.pdf" aria-label="Download Sun Rui Tong's résumé PDF">
@@ -1423,7 +1424,7 @@
         <button class="route cursor-interaction" type="button" data-lens="craft" aria-pressed="true"><span class="route-marker" aria-hidden="true"></span><span class="route-copy"><span class="route-short" aria-hidden="true">Craft</span><strong>Craft &amp; curiosity</strong><small>Interaction, detail and experiments</small></span><span class="route-stack" aria-hidden="true"></span></button>
       </div>
     </div>
-    <main class="hero">
+    <div class="hero">
       <header class="copy">
         <p class="role">Product designer shaping strategy, systems and delivery.</p>
         <h1>I make complexity feel obvious.</h1>
@@ -1436,16 +1437,16 @@
           <span class="folder">
             <span class="back"><span class="back-label">project index / four pages</span></span>
             <span class="gusset gusset-left" aria-hidden="true"></span><span class="gusset gusset-right" aria-hidden="true"></span>
-            <a class="file file-store" href="store.html"><span class="file-tab">Store</span><span class="file-kicker">Returning.AI / commerce system</span><strong class="file-title">Store</strong><span class="file-lines" aria-hidden="true"></span></a>
-            <a class="file file-widget" href="widgets.html"><span class="file-tab">Widget Platform</span><span class="file-kicker">Returning.AI / portable experiences</span><strong class="file-title">Widget Platform</strong><span class="file-lines" aria-hidden="true"></span></a>
-            <a class="file file-decisions" href="product-decisions.html"><span class="file-tab">Product Decisions</span><span class="file-kicker">Returning.AI / supporting work</span><strong class="file-title">Product Decisions</strong><span class="file-lines" aria-hidden="true"></span></a>
-            <a class="file file-craft" href="nus.html"><span class="file-tab">Craft Archive</span><span class="file-kicker">NUS / BrainCare / Engage / Cognify</span><strong class="file-title">Craft Archive</strong><span class="file-lines" aria-hidden="true"></span></a>
+            <a class="file file-store" data-project="store" href="store.html"><span class="file-tab">Store</span><span class="file-kicker">Returning.AI / commerce system</span><strong class="file-title">Store</strong><span class="file-lines" aria-hidden="true"></span></a>
+            <a class="file file-widget" data-project="widget" href="widgets.html"><span class="file-tab">Widget Platform</span><span class="file-kicker">Returning.AI / portable experiences</span><strong class="file-title">Widget Platform</strong><span class="file-lines" aria-hidden="true"></span></a>
+            <a class="file file-decisions" data-project="decisions" href="product-decisions.html"><span class="file-tab">Product Decisions</span><span class="file-kicker">Returning.AI / supporting work</span><strong class="file-title">Product Decisions</strong><span class="file-lines" aria-hidden="true"></span></a>
+            <a class="file file-craft" data-project="craft" href="nus.html"><span class="file-tab">Craft Archive</span><span class="file-kicker">NUS / BrainCare / Engage / Cognify</span><strong class="file-title">Craft Archive</strong><span class="file-lines" aria-hidden="true"></span></a>
             <button class="front front-toggle" type="button" aria-expanded="false" aria-label="Open Rui Tong’s project folder"><span class="top-label">Rui’s workbench</span><span class="stamp"><strong class="folder-message">open when curious</strong><small class="folder-sub">details, experiments and tiny obsessions</small></span><span class="workspace-tags"><span>selected work</span><span>04 pages</span></span></button>
           </span>
         </div>
         <p class="note" aria-live="polite">Hover or tap to preview the clearest route through role fit and flagship proof.</p>
       </section>
-    </main>
+    </div>
     <aside class="portfolio-note" tabindex="0" aria-labelledby="portfolio-note-title" aria-describedby="portfolio-note-summary">
       <h2 id="portfolio-note-title">A note on the work</h2>
       <p id="portfolio-note-summary">This portfolio is still taking shape as I continue to update each case study.</p>
@@ -1473,6 +1474,98 @@
     <span class="pixel-cursor" aria-hidden="true"><span class="pixel-arrow"></span></span>
   </div>
 
+  <main class="portfolio-content" id="portfolio-content">
+    <section class="content-section work-section" id="work" aria-labelledby="work-title">
+      <header class="section-heading">
+        <span class="section-index">01 / Selected work</span>
+        <div>
+          <h2 id="work-title">The work, laid out on the desk.</h2>
+          <p>The folder is the exploratory route. This index is the fast route: four selected bodies of work, each framed by the product relationship it makes visible.</p>
+        </div>
+      </header>
+
+      <div class="project-ledger" aria-label="Selected project index">
+        <a class="project-entry" data-project="store" href="store.html">
+          <span class="project-number">01</span>
+          <span><strong class="project-title">Store system</strong><span class="project-scope">Returning.AI · product system</span></span>
+          <p class="project-description">Turning catalogue rules, access, inheritance and activation into a configurable commerce experience that teams can reason about and implement safely.</p>
+          <span class="project-status"><strong>Flagship case <span class="project-arrow" aria-hidden="true">↗</span></strong><span>Mixed documented, reconstructed and locally verified evidence</span></span>
+        </a>
+        <a class="project-entry" data-project="widget" href="widgets.html">
+          <span class="project-number">02</span>
+          <span><strong class="project-title">Widget Platform</strong><span class="project-scope">Returning.AI · configurable platform</span></span>
+          <p class="project-description">Designing the control plane for portable product experiences—source authority, constrained customisation, runtime states, handoff and QA.</p>
+          <span class="project-status"><strong>Flagship case <span class="project-arrow" aria-hidden="true">↗</span></strong><span>Working local build with preserved delivery evidence</span></span>
+        </a>
+        <a class="project-entry" data-project="decisions" href="product-decisions.html">
+          <span class="project-number">03</span>
+          <span><strong class="project-title">Product Decisions</strong><span class="project-scope">Returning.AI · focused records</span></span>
+          <p class="project-description">Compact records of difficult choices across permissions, scheduling, operational tools and AI-assisted delivery—each with the trade-off kept visible.</p>
+          <span class="project-status"><strong>Supporting work <span class="project-arrow" aria-hidden="true">↗</span></strong><span>Evidence status varies by decision record</span></span>
+        </a>
+        <a class="project-entry" data-project="craft" href="nus.html">
+          <span class="project-number">04</span>
+          <span><strong class="project-title">Healthcare craft archive</strong><span class="project-scope">NUS · BrainCare, Engage, Cognify</span></span>
+          <p class="project-description">Healthcare work across mobile and tablet surfaces, with accessibility, assessment flows, design systems and high-fidelity prototyping as the visible craft layer.</p>
+          <span class="project-status"><strong>Supporting case <span class="project-arrow" aria-hidden="true">↗</span></strong><span>Historical portfolio and résumé evidence; outcomes still being deepened</span></span>
+        </a>
+      </div>
+
+      <section class="archive-block" id="archive" aria-labelledby="archive-title">
+        <span class="archive-meta">Original portfolio · 33-page PDF · 2021–2025</span>
+        <h3 id="archive-title">Earlier work, kept in view.</h3>
+        <p class="archive-summary">The original portfolio holds the projects that have not yet been rebuilt here—including work with Mercedes-Benz / Acentrik, Changi Airport Group and Shopee / ShopeePay.</p>
+        <a class="archive-download" href="portfolio-assets/Rui-Tong-Portfolio-2021-2025.pdf" download="Rui-Tong-Portfolio-2021-2025.pdf" type="application/pdf">
+          <span>Download earlier portfolio</span>
+          <span class="archive-download-meta">PDF · 35.1 MB <span aria-hidden="true">↓</span></span>
+        </a>
+      </section>
+    </section>
+
+    <section class="content-section profile-section" id="about" aria-labelledby="about-title">
+      <div class="profile-layout">
+        <div class="profile-statement">
+          <span class="section-index">02 / About</span>
+          <h2 id="about-title">I ask <em>why</em> before I ask how.</h2>
+          <div class="profile-copy">
+            <p>I’m Rui Tong, a Singapore-based product designer working across strategy, product logic, interaction design, systems, implementation review and QA. I stay with a problem until the rules, states, edge cases and experience fit together.</p>
+            <p>My work has crossed loyalty, fintech, healthcare, blockchain, travel and regional commerce. The common thread is making complex product behaviour legible—to the people using it and to the teams responsible for shipping it.</p>
+          </div>
+        </div>
+        <div class="profile-notes" id="practice" aria-label="How Rui works">
+          <article class="profile-note"><span class="profile-note-label">01 · Frame</span><h3>Clarify the real system</h3><p>Start with actors, constraints, states and evidence before drawing the interface.</p></article>
+          <article class="profile-note"><span class="profile-note-label">02 · Connect</span><h3>Make consequences visible</h3><p>Trace a product decision through system behaviour to the user or operator outcome.</p></article>
+          <article class="profile-note"><span class="profile-note-label">03 · Deliver</span><h3>Carry intent into the build</h3><p>Use specifications, prototypes, implementation review and QA to keep the logic intact.</p></article>
+          <article class="profile-note"><span class="profile-note-label">04 · Learn</span><h3>Use tools with judgment</h3><p>Apply AI and code where they increase clarity or reach—without hiding uncertainty or human review.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="experience-layout">
+        <header class="experience-heading">
+          <span class="section-index">03 / Experience</span>
+          <h2 id="experience-title">A practice built across systems and contexts.</h2>
+          <p>Dates below are grounded in preserved portfolio, résumé and project evidence. “Present” labels from older materials are not treated as current-status claims.</p>
+        </header>
+        <div class="experience-list">
+          <article class="experience-item"><span class="experience-period">2024–2026</span><div><h3>Returning.AI</h3><p class="experience-role">Product Designer · previously UX/UI Designer</p><p class="experience-summary">Product definition, configurable platform logic, interaction design, specifications, working local builds, implementation review and QA across loyalty and trading-adjacent products.</p></div></article>
+          <article class="experience-item"><span class="experience-period">2024–2025 source period</span><div><h3>NUS School of Computing</h3><p class="experience-role">Part-time UI/UX Designer</p><p class="experience-summary">Wireframes, design systems and high-fidelity mobile and tablet prototypes across BrainCare, Engage and Cognify healthcare work.</p></div></article>
+          <article class="experience-item"><span class="experience-period">2023–2024</span><div><h3>Mercedes-Benz / Acentrik</h3><p class="experience-role">Graphic UI/UX Intern</p><p class="experience-summary">Responsive product-site UI, visual systems, brand assets and cross-functional design support for a blockchain product.</p></div></article>
+          <article class="experience-item"><span class="experience-period">2023</span><div><h3>Changi Airport Group</h3><p class="experience-role">UI/UX Design Intern · Changi App</p><p class="experience-summary">End-to-end promotion-flow design, usability research, guerrilla interviews and early baggage-tracking discovery.</p></div></article>
+          <article class="experience-item"><span class="experience-period">2023</span><div><h3>NTU Career &amp; Attachment Office</h3><p class="experience-role">Web Designer</p><p class="experience-summary">Employer internship portal design, competitor research and workflow design for a WordPress-based service.</p></div></article>
+          <article class="experience-item"><span class="experience-period">2022–2023</span><div><h3>Shopee / ShopeePay</h3><p class="experience-role">Graphic Design Intern · Regional Marketing</p><p class="experience-summary">Regional campaign collateral, key visuals, social assets and point-of-sale formats across Southeast Asia.</p></div></article>
+          <article class="experience-item"><span class="experience-period">2021–2022</span><div><h3>Acecom Technologies</h3><p class="experience-role">Graphic Designer</p><p class="experience-summary">Campaign concepts and digital-commerce visual work across online storefronts and brand touchpoints.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="portfolio-footer">
+      <div><span class="section-index">04 / Next conversation</span><h2>There is more context behind the work.</h2></div>
+      <div class="footer-actions"><a class="footer-action footer-action-primary" href="mailto:hitomi.sun00@gmail.com?subject=Portfolio%20walkthrough">Arrange a walkthrough</a><a class="footer-action" href="resume-assets/Rui-Tong-Resume.pdf" download="Rui-Tong-Resume.pdf">Download résumé</a></div>
+    </footer>
+  </main>
+
   <script>
     (() => {
       const root=document.getElementById('rt-warm-folder-kv');
@@ -1483,6 +1576,7 @@
       const canHover=matchMedia('(hover:hover) and (pointer:fine)');
       const note=root.querySelector('.note');
       const files=[...root.querySelectorAll('.file')];
+      const projectEntries=[...root.querySelectorAll('.project-entry[data-project]')];
       const routes=[...root.querySelectorAll('.route')];
       const routeCopy={
         essentials:'Hover or tap to preview the clearest route through role fit and flagship proof.',
@@ -1497,6 +1591,22 @@
       const folderMessage=root.querySelector('.folder-message');
       const folderSub=root.querySelector('.folder-sub');
       let switchTimer;
+      function setPreview(file=null){
+        const project=file?.dataset.project;
+        files.forEach(item=>item.classList.toggle('is-preview',item===file));
+        projectEntries.forEach(item=>item.classList.toggle('is-linked',item.dataset.project===project));
+      }
+      function tabAtPoint(clientX,clientY){
+        const candidates=files.map(file=>{
+          const tab=file.querySelector('.file-tab');
+          const bounds=tab.getBoundingClientRect();
+          const pad=7;
+          const inside=clientX>=bounds.left-pad&&clientX<=bounds.right+pad&&clientY>=bounds.top-pad&&clientY<=bounds.bottom+pad;
+          const distance=Math.hypot(clientX-(bounds.left+bounds.right)/2,clientY-(bounds.top+bounds.bottom)/2);
+          return {file,inside,distance};
+        }).filter(item=>item.inside).sort((a,b)=>a.distance-b.distance);
+        return candidates[0]?.file||null;
+      }
       function saveState(lens,open){
         if(!window.openai?.setWidgetState)return;
         window.openai.setWidgetState({modelContent:{selectedLens:lens,layout:root.dataset.layout||'center'},privateContent:{selectedLens:lens,folderOpen:open,layout:root.dataset.layout||'center'}}).catch(()=>{});
@@ -1506,7 +1616,7 @@
         frontToggle.setAttribute('aria-expanded',String(open));
         frontToggle.setAttribute('aria-label',open?"Close Rui Tong’s project folder":"Open Rui Tong’s project folder");
         root.classList.toggle('is-folder-active',open);
-        if(!open)files.forEach(file=>file.classList.remove('is-preview'));
+        if(!open)setPreview();
         if(save)saveState(root.dataset.lens,open);
       }
       function setLens(lens,save=true){
@@ -1529,9 +1639,29 @@
         files[0].focus({preventScroll:true});
       });
       files.forEach(file=>{
-        file.addEventListener('pointerenter',()=>files.forEach(item=>item.classList.toggle('is-preview',item===file)));
-        file.addEventListener('focus',()=>files.forEach(item=>item.classList.toggle('is-preview',item===file)));
+        file.addEventListener('pointerenter',()=>setPreview(file));
+        file.addEventListener('focus',()=>setPreview(file));
       });
+      projectEntries.forEach(entry=>{
+        const file=files.find(item=>item.dataset.project===entry.dataset.project);
+        entry.addEventListener('pointerenter',()=>setPreview(file));
+        entry.addEventListener('pointerleave',()=>setPreview());
+        entry.addEventListener('focus',()=>setPreview(file));
+        entry.addEventListener('blur',()=>setPreview());
+      });
+      folderButton.addEventListener('pointermove',event=>{
+        const file=tabAtPoint(event.clientX,event.clientY);
+        if(file)setPreview(file);
+      });
+      folderButton.addEventListener('click',event=>{
+        if(event.target.closest('.front-toggle'))return;
+        const file=tabAtPoint(event.clientX,event.clientY);
+        const clickedFile=event.target.closest('.file');
+        if(!file||clickedFile===file)return;
+        event.preventDefault();
+        event.stopPropagation();
+        window.location.assign(file.href);
+      },true);
       if(canHover.matches){
         folderButton.addEventListener('pointermove',event=>{
           if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
@@ -1545,6 +1675,7 @@
         folderButton.addEventListener('pointerleave',()=>{
           folder.style.setProperty('--pointer-x','0deg');
           folder.style.setProperty('--pointer-y','0deg');
+          setPreview();
           if(folderButton.dataset.open!=='true')root.classList.remove('is-folder-active');
         });
       }
@@ -1571,7 +1702,6 @@
       const root=document.getElementById('rt-warm-folder-kv');
       const page=root.querySelector('.page');
       const remix=root.querySelector('.remix');
-      const name=root.querySelector('.name');
       const pixelCursor=root.querySelector('.pixel-cursor');
       const curiosity=root.querySelector('.curiosity');
       const curiosityText=curiosity.querySelector('span');
@@ -1605,7 +1735,6 @@
         setLayout(layouts[(index+1)%layouts.length]);
       }
       remix.addEventListener('click',cycleLayout);
-      name.addEventListener('click',cycleLayout);
 
       function playCuriosity(){
         if(reduceMotion.matches){curiosityText.textContent='curiosity';return;}
