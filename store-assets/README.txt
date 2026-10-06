@@ -1,6 +1,28 @@
 STORE FEATURE — IMAGE MANIFEST
 ==============================
 
+CURRENT CASE-STUDY SOURCE LABELS — USER CONFIRMED 07 OCT 2026
+  ../widget-assets/client-proof/infinox-store-portal-redacted.jpg
+    ACTUAL PRODUCT — redacted Store inside the INFINOX client portal.
+  old-store-home.png, old-product.png, old-checkout.png
+    LOCALHOST — previous Store experience before Rui's redesign.
+  new-product.png, new-checkout.png, order-status.png, store-testing.png
+    LOCALHOST — working implementation and test captures with orange accents.
+  settings-redemption.png
+    FIGMA — physical-delivery configuration detail; design intent only.
+  store-user-front-product-modal.png
+    FIGMA — trader-facing product modal; design intent only, not product proof.
+  store-user-front-purchased-list.png
+    FIGMA — trader-facing purchase-history design; design intent only.
+
+SOURCE RULE
+  Screens carrying the Returning.AI Store branding are Figma design evidence.
+  The earlier Store screens and orange-accent detail screens are localhost
+  implementation evidence. Do not label either group as actual product.
+
+Keep these labels with the assets. Do not use a Figma screen as actual-product
+evidence, and do not describe a local HTML reconstruction as production parity.
+
 The portfolio (returning-ai.html) references these files by name.
 Drop each screenshot into THIS folder using the exact filename below
 (PNG). The page picks them up automatically — no code changes needed.
@@ -17,17 +39,17 @@ THE CHALLENGE (old store)
   old-product.png ........... OLD product description page                    [orig img 6]
   old-checkout.png .......... OLD checkout (Create WooCommerce Account)        [orig img 13]
 
-BUILT & SHIPPED — REAL SCREENS
-  redemption-select.png ..... Product modal: choose a redemption method        [orig img 8]
-  eligibility-check.png ..... Eligibility check result (Eligible / conditions) [orig img 9]
-  permission-limit.png ...... Product w/ full access + purchase limit          [orig img 16]
-  new-checkout.png .......... NEW checkout — required fields                    [orig img 14]
-  purchase-confirmation.png . Confirm Purchase summary                         [orig img 15]
-  order-status.png .......... Order Details status tracker                      [orig img 18]
-  settings-statuses.png ..... Admin: product-status configuration              [orig img 17]
-  order-voucher.png ......... Order detail w/ voucher + redemption option      [orig img 20]
-  store-testing.png ......... Store live in testing (full app frame)           [orig img 19]
-  figma-store-2.png ......... Figma store layout exploration                    [orig img 12]
+REDESIGN EVIDENCE — SOURCE LABEL REQUIRED
+  redemption-select.png ..... FIGMA: choose a redemption method                 [orig img 8]
+  eligibility-check.png ..... FIGMA: eligibility result                         [orig img 9]
+  permission-limit.png ...... FIGMA: access and purchase-limit state            [orig img 16]
+  new-checkout.png .......... LOCALHOST: required redemption fields             [orig img 14]
+  purchase-confirmation.png . LOCALHOST: Confirm Purchase summary               [orig img 15]
+  order-status.png .......... LOCALHOST: Order Details status tracker           [orig img 18]
+  settings-statuses.png ..... FIGMA: product-status configuration               [orig img 17]
+  order-voucher.png ......... LOCALHOST: voucher and redemption option          [orig img 20]
+  store-testing.png ......... LOCALHOST: Store running in testing               [orig img 19]
+  figma-store-2.png ......... FIGMA: Store layout exploration                   [orig img 12]
 
 DESIGN PROCESS
   ai-planning-1.png ......... AI planning / exploration chat                    [orig img 21]

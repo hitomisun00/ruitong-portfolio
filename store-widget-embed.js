@@ -1,10 +1,10 @@
 (() => {
-  const container = document.querySelector('#returning-ai-widget-NjlmMzJiZTk3MjMzMzkwZjVhYzQzNzk1');
+  const container = document.querySelector('#returning-ai-widget-NmFjNDY1MDEwZjZkOTA3MGFmYjkwYjMy');
   const status = document.querySelector('#live-widget-status');
   if (!container || !status) return;
 
   const widgetOrigin = 'https://sgtr-eks-widgets.genesiv.org';
-  const widgetId = 'NjlmMzJiZTk3MjMzMzkwZjVhYzQzNzk1';
+  const widgetId = 'NmFjNDY1MDEwZjZkOTA3MGFmYjkwYjMy';
   const demoEmail = 'pangray2025+t5@gmail.com';
   let observer;
   let frameRetryTimer;

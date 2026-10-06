@@ -6,6 +6,7 @@
   if (!dialog || !viewerImage || !viewerTitle || !closeButton) return;
 
   const sources = Array.from(document.querySelectorAll([
+    '[data-image-zoom]',
     '.layer-sheet__image',
     '.client-compare figure > div',
     '.figma-rail section',
