@@ -5,7 +5,7 @@
 
   const widgetOrigin = 'https://sgtr-eks-widgets.genesiv.org';
   const widgetId = 'NmFjNDY1MDEwZjZkOTA3MGFmYjkwYjMy';
-  const demoEmail = 'pangray2025+t5@gmail.com';
+  const widgetEmail = 'ruitong@returning.ai';
   let observer;
   let frameRetryTimer;
   let sessionRenewalTimer;
@@ -21,7 +21,7 @@
     const label = document.createElement('span');
     label.textContent = 'Public-origin preview';
     const heading = document.createElement('strong');
-    heading.textContent = 'The TR5 Store widget will load here after publication.';
+    heading.textContent = 'The Store widget will load here after publication.';
     const copy = document.createElement('p');
     copy.textContent = 'This boundary is part of the embed contract: the loader accepts only the authorized portfolio domain.';
     originNote.append(label, heading, copy);
@@ -86,8 +86,8 @@
       const iframe = container.querySelector('iframe');
       if (!iframe) return;
 
-      iframe.title = iframe.title || 'TR5 Store widget';
-      setStatus('loading', 'The widget frame is authenticating with the TR5 sandbox…');
+      iframe.title = iframe.title || 'ReturningAI Store widget';
+      setStatus('loading', 'The widget frame is authenticating with ReturningAI…');
       observer.disconnect();
 
       const authenticatedWidgetUrl = iframe.src;
@@ -136,7 +136,7 @@
       clearTimeout(frameRetryTimer);
       const iframe = container.querySelector('iframe');
       if (iframe) scheduleSessionRenewal(iframe);
-      setStatus('ready', 'Connected. The live TR5 Store widget is ready to explore.');
+      setStatus('ready', 'Connected. The live Store widget is ready to explore.');
       return;
     }
 
@@ -147,7 +147,7 @@
         setStatus('loading', 'The widget session was interrupted. Reconnecting…');
         renewIframeSession(iframe);
       } else {
-        setStatus('error', 'The TR5 sandbox did not respond. Refresh this page to try again.');
+        setStatus('error', 'The Store widget did not respond. Refresh this page to try again.');
       }
     }
   });
@@ -161,7 +161,7 @@
   script.dataset.widgetId = widgetId;
   script.dataset.widgetType = 'custom';
   script.dataset.container = container.id;
-  script.dataset.email = demoEmail;
+  script.dataset.email = widgetEmail;
   script.dataset.theme = 'dark';
   script.dataset.width = '100%';
   script.dataset.height = 'clamp(760px, 85svh, 1100px)';
@@ -171,7 +171,7 @@
   script.dataset.debug = 'false';
   script.addEventListener('error', () => {
     observer?.disconnect();
-    setStatus('error', 'The remote TR5 widget loader could not be downloaded.');
+    setStatus('error', 'The remote Store widget loader could not be downloaded.');
   });
   document.body.append(script);
 })();
