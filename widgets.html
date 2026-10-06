@@ -10,14 +10,14 @@
   <link rel="preconnect" href="https://sgtr-eks-widgets.genesiv.org" crossorigin>
   <link rel="stylesheet" href="case-system.css">
   <link rel="stylesheet" href="widgets.css">
-  <link rel="stylesheet" href="store-widget-embed.css">
+  <link rel="stylesheet" href="milestone-widget-compare.css">
 </head>
 <body class="widgets-case">
   <a class="skip-link" href="#content">Skip to case study</a>
 
   <nav class="site-nav" aria-label="Portfolio navigation">
     <a class="site-nav__brand" href="returning-ai.html" aria-label="Returning.AI project index"><span class="site-nav__mark" aria-hidden="true"></span><span>Returning.AI / Widgets</span></a>
-    <div class="site-nav__links"><a href="#client-use">In use</a><a href="#system">System</a><a href="#figma">Figma</a><a href="#workflow">AI workflow</a><a class="back-link" href="index.html">← Portfolio</a></div>
+    <div class="site-nav__links"><a href="#brand-compare">Live compare</a><a href="#client-use">In use</a><a href="#system">System</a><a href="#figma">Figma</a><a href="#workflow">AI workflow</a><a class="back-link" href="index.html">← Portfolio</a></div>
   </nav>
 
   <main id="content">
@@ -26,7 +26,7 @@
         <p class="case-context">Originator · Product design · Working implementation</p>
         <h1>One product feature. Any client portal.</h1>
         <p class="widget-hero__lead">I designed a modular widget platform that turns existing features into configurable, brand-ready experiences without duplicating their logic. Then I built an AI-assisted workflow to draft the next control model.</p>
-        <div class="widget-hero__actions"><a class="primary-action" href="#client-use">See it in use</a><a class="quiet-action" href="#figma">Explore the original design</a></div>
+        <div class="widget-hero__actions"><a class="primary-action" href="#brand-compare">Compare the live widgets</a><a class="quiet-action" href="#figma">Explore the original design</a></div>
       </div>
 
       <div class="layer-stage" data-layer-stack data-active-layer="experience">
@@ -55,6 +55,36 @@
     </header>
 
     <div class="case-provenance shell shell--wide"><span aria-hidden="true"></span><p><strong>Scope and evidence.</strong> I originated the concept, designed the system and built the working local implementation; Wai Yan reviewed the code. The screenshots verify visible product states, not rollout, adoption or business impact. Client-identifying account details have been removed.</p></div>
+
+    <section class="case-section milestone-compare-story" id="brand-compare" aria-labelledby="brand-compare-title">
+      <div class="shell shell--wide">
+        <div class="milestone-compare-head">
+          <div><p>Live client comparison</p><h2 id="brand-compare-title">One Milestones system. Two branded outcomes.</h2></div>
+          <div><p>Both embeds carry the same feature type and interaction grammar. Each client can shape its colour, type, surfaces, information density and layout so the experience belongs inside its own portal.</p><p class="milestone-compare-head__note"><strong>Compare the presentation, not the progress.</strong> Each sandbox frame represents a different configured user, so milestone content and completion state may also differ.</p></div>
+        </div>
+
+        <div class="milestone-compare" aria-label="Side-by-side live Milestones widget comparison">
+          <article class="milestone-portal milestone-portal--one" data-milestone-widget data-widget-id="NmFjNDYzYWIwN2UzYmM0ZmNhNzgwNzI3" data-theme="light" data-demo-email="ruitong@returning.ai">
+            <header class="milestone-portal__bar"><div><span>Client expression 01</span><strong>Milestones widget</strong></div><span class="milestone-portal__state" id="milestone-status-one" data-state="idle" role="status" aria-live="polite"><i aria-hidden="true"></i><b>Preparing live frame</b></span></header>
+            <div class="milestone-widget-viewport" tabindex="0" role="region" aria-label="Scrollable first client Milestones widget">
+              <div class="milestone-widget-container" id="returning-ai-widget-NmFjNDYzYWIwN2UzYmM0ZmNhNzgwNzI3" data-status-id="milestone-status-one"></div>
+            </div>
+          </article>
+
+          <div class="milestone-compare__spine" aria-hidden="true"><span>Same product logic</span><i></i><b>Brand + layout diverge</b></div>
+
+          <article class="milestone-portal milestone-portal--two" data-milestone-widget data-widget-id="NmFjNTE0NjkxODk5ODM2MGI3MTQ3M2E2" data-theme="dark" data-demo-email="ruitong@returning.ai">
+            <header class="milestone-portal__bar"><div><span>Client expression 02</span><strong>Milestones widget</strong></div><span class="milestone-portal__state" id="milestone-status-two" data-state="idle" role="status" aria-live="polite"><i aria-hidden="true"></i><b>Preparing live frame</b></span></header>
+            <div class="milestone-widget-viewport" tabindex="0" role="region" aria-label="Scrollable second client Milestones widget">
+              <div class="milestone-widget-container" id="returning-ai-widget-NmFjNTE0NjkxODk5ODM2MGI3MTQ3M2E2" data-status-id="milestone-status-two"></div>
+            </div>
+          </article>
+        </div>
+
+        <noscript><p class="milestone-compare-fallback">The live comparison requires JavaScript. The surrounding case study still documents how the same Milestones feature becomes two independently branded client experiences.</p></noscript>
+        <p class="milestone-compare-footnote">Live sandbox evidence · The embeds demonstrate configuration and portable delivery. They do not establish adoption, business impact or production usage by either client.</p>
+      </div>
+    </section>
 
     <section class="case-section client-use" id="client-use" aria-labelledby="client-title"><div class="shell shell--wide">
       <div class="section-lead"><h2 id="client-title">Built once. Shaped for the client.</h2><p>The operator sees controls. The client sees a focused feature that belongs in their portal. Compare the two surfaces across Store, Milestones and Streaks.</p></div>
@@ -87,25 +117,6 @@
       <div class="system-story__copy"><p>Platform decision</p><h2 id="system-title">The widget adapts. The feature stays in charge.</h2><p>Clients need flexibility, but copying feature values into every embed would create a second source of truth. I separated product authority from presentation.</p></div>
       <ol class="system-chain" aria-label="Product decision to user outcome"><li><span>Product decision</span><strong>Expose only meaningful choices</strong><p>Selection, visibility, layout and brand-safe styling—not arbitrary CSS or fabricated states.</p></li><li><span>System behavior</span><strong>Inherit live values until an override exists</strong><p>Reset removes the exception and returns the widget to the current feature value.</p></li><li><span>User outcome</span><strong>A client-ready experience without logic drift</strong><p>The portal can look native while eligibility, progress and rewards keep their original meaning.</p></li></ol>
     </div></section>
-
-    <section class="case-section live-widget-story live-widget-section" id="live-store-widget" aria-labelledby="live-widget-title">
-      <div class="shell shell--wide">
-        <div class="section-lead live-widget-section__head">
-          <div><p>Live delivery proof</p><h2 id="live-widget-title">The same Store feature, delivered as a real portable widget.</h2></div>
-          <div><p>This is the TR5 Store Simple Embed previously verified on the public portfolio origin. The loader authenticates the shared sandbox, creates the iframe and keeps the widget session alive inside this page.</p><p><strong>Testing boundary:</strong> the catalogue contains internal test content. It demonstrates the embed contract—not customer data, production adoption or a completed purchase flow.</p></div>
-        </div>
-
-        <div class="live-widget-status" id="live-widget-status" data-state="loading" role="status" aria-live="polite">
-          <span class="live-widget-status__dot" aria-hidden="true"></span>
-          <div><span class="live-widget-status__label">TR5 sandbox · Simple Embed</span><p class="live-widget-status__copy">Connecting to the live Store widget…</p></div>
-        </div>
-
-        <div class="live-widget-frame" aria-label="Embedded TR5 Store widget">
-          <div id="returning-ai-widget-NjlmMzJiZTk3MjMzMzkwZjVhYzQzNzk1"></div>
-        </div>
-        <p class="live-widget-footnote">The sandbox identity is supplied automatically for this prototype. Browsing and form exploration are intended; please do not complete a purchase.</p>
-      </div>
-    </section>
 
     <section class="case-section figma-origin" id="figma" aria-labelledby="figma-title"><div class="shell shell--wide">
       <div class="section-lead section-lead--wide"><h2 id="figma-title">The original design covered every reasonable client request. That was the clue.</h2><p>The Milestones configurator was intentionally granular: choose groups, arrange stages, reveal conditions and rewards, change surfaces, and define the loading state. It solved client variation—but rebuilding that logic for every feature took too long.</p></div>
@@ -142,6 +153,6 @@
 
   <footer class="site-footer"><div class="shell"><span>Rui Tong · Product designer · Singapore</span><a href="index.html">Return to the workbench ↑</a></div></footer>
   <script src="widgets.js" defer></script>
-  <script src="store-widget-embed.js" defer></script>
+  <script src="milestone-widget-compare.js" defer></script>
 </body>
 </html>
