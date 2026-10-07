@@ -62,7 +62,7 @@
       <div class="store-section-lead store-section-lead--wide"><div><p>Before the redesign</p><h2 id="previous-store-title">The Store sold rewards, but it did not model how traders received them.</h2></div><p>The previous experience followed a conventional catalogue and checkout pattern. That structure became the product problem once rewards needed different fulfilment routes, eligibility rules and account data.</p></div>
       <div class="previous-workspace">
         <div class="previous-workspace__bar"><div><span>Localhost build</span><strong>Previous Store experience</strong></div><p>Observed starting point</p></div>
-        <figure class="previous-storefront"><figcaption><span>Catalogue</span><strong>Products, descriptions and one price</strong></figcaption><div data-image-zoom><img src="store-assets/old-store-home.png" width="1600" height="706" loading="lazy" alt="Previous localhost Store catalogue showing product cards with descriptions and a single price"></div></figure>
+        <figure class="previous-storefront"><figcaption><span>Catalogue</span><strong>Products, descriptions and one price</strong></figcaption><div data-image-zoom><img src="store-assets/previous-store-catalogue.png" width="2244" height="1260" loading="lazy" alt="Previous localhost Store catalogue showing the Berry Jerry storefront, product cards, descriptions and one price"></div></figure>
         <div class="previous-details">
           <figure><figcaption><span>Product</span><strong>Generic virtual-product purchase</strong></figcaption><div data-image-zoom><img src="store-assets/old-product.png" width="1235" height="664" loading="lazy" alt="Previous localhost product modal labelled Virtual Product with one Buy Now action"></div></figure>
           <figure><figcaption><span>Checkout</span><strong>WooCommerce account creation</strong></figcaption><div data-image-zoom><img src="store-assets/old-checkout.png" width="1647" height="917" loading="lazy" alt="Previous localhost checkout requiring a separate WooCommerce account and password"></div></figure>
@@ -89,8 +89,12 @@
     <section class="store-section purchase-flow" id="purchase-flow" aria-labelledby="purchase-flow-title"><div class="shell shell--store-wide">
       <div class="store-section-lead"><div><p>Redemption methods</p><h2 id="purchase-flow-title">“Buy” was the wrong first question.</h2></div><p>The clearer question was: <strong>how do you want to receive the value?</strong> The same iPhone can be delivered or converted to trading credit, and the choice changes everything that follows.</p></div>
       <div class="redemption-instrument" data-redemption-instrument data-method="credit">
+        <figure class="redemption-instrument__product">
+          <figcaption aria-live="polite"><span>Figma · route-specific purchase detail</span><strong data-method-visual-caption>Credit to account · eligibility and account fields</strong></figcaption>
+          <div data-image-zoom><img src="store-assets/redemption-credit-account.png" width="993" height="1328" loading="lazy" data-method-visual alt="Credit to Account purchase detail showing passed eligibility conditions and required account information"></div>
+        </figure>
         <div class="redemption-instrument__controls">
-          <p>iPhone 17 · 600 coins</p><h3>Choose a redemption method</h3>
+          <p>Route decision · iPhone 17 · 600 coins</p><h3>Choose a redemption method</h3>
           <div class="method-choices" role="radiogroup" aria-label="Redemption method example">
             <button type="button" role="radio" aria-checked="false" tabindex="-1" data-method-choice="delivery"><span aria-hidden="true">01</span><strong>Physical delivery</strong><small>Receive the product at an address</small></button>
             <button type="button" role="radio" aria-checked="true" tabindex="0" data-method-choice="credit"><span aria-hidden="true">02</span><strong>Credit to account</strong><small>Receive the equivalent value as trading credit</small></button>
@@ -115,24 +119,24 @@
       <div class="figma-studio" aria-label="Original Store redemption method model">
         <div class="figma-studio__bar"><div><span>Redemption method configurator</span><strong>Original Figma model</strong></div><div class="figma-studio__source"><i aria-hidden="true"></i>Figma · design intent</div></div>
         <div class="figma-studio__body">
-          <div class="figma-panel"><div class="figma-rail" tabindex="0" role="region" aria-label="Scrollable Physical Delivery configuration design"><section data-image-zoom><h3>Physical delivery · Content and custom fields</h3><img src="store-assets/settings-redemption.png" width="483" height="791" loading="lazy" alt="Full Figma capture of Physical Delivery settings including title, description, icon and custom-field configuration"></section></div></div>
-          <figure class="figma-preview"><figcaption><span>Every setting resolves here</span><strong>Trader-facing purchase surface</strong></figcaption><div data-image-zoom><img src="store-assets/store-user-front-product-modal.png" width="2229" height="1253" loading="lazy" alt="Full Figma Store product modal showing the product, price, stock and Buy Now action"></div></figure>
+          <div class="figma-panel"><div class="figma-rail" tabindex="0" role="region" aria-label="Scrollable Credit to Account redemption method configuration"><section data-image-zoom><h3>Credit to account · configured method</h3><img src="store-assets/redemption-method-configured.png" width="440" height="3354" loading="lazy" alt="Full Figma frame for a configured Credit to Account redemption method, including content, custom fields, conditions, permissions and testing"></section></div></div>
+          <figure class="figma-preview"><figcaption><span>Configuration resolves here</span><strong>Eligibility and routed fields</strong></figcaption><div data-image-zoom><img src="store-assets/redemption-eligibility.png" width="1853" height="1225" loading="lazy" alt="Trader-facing Credit to Account redemption form showing eligible and not eligible condition results"></div></figure>
         </div>
-        <p class="figma-studio__hint"><span aria-hidden="true">↕</span> Scroll the configuration rail. The resulting purchase surface stays in context.</p>
+        <p class="figma-studio__hint"><span aria-hidden="true">↕</span> Scroll the exact Figma configuration. Its trader-facing eligibility result stays in view.</p>
       </div>
     </div></section>
 
     <section class="store-section access-story" id="access" aria-labelledby="access-title"><div class="shell shell--store-wide">
       <div class="access-copy"><p>Product access</p><h2 id="access-title">Access became an inherited product rule.</h2><p><strong>Cannot view</strong> hides a product. <strong>Can view</strong> lets a role inspect it. <strong>Full access</strong> unlocks purchase limits and role-specific pricing.</p><p class="access-example">Store establishes the baseline; category and product can inherit it or apply a more specific rule.</p></div>
       <figure class="access-proof">
-        <div class="evidence-label evidence-label--dark"><span>Localhost build</span><strong>Role access and purchase limit</strong></div>
-        <div class="access-proof__sheet access-proof__sheet--portrait" data-image-zoom><img src="store-assets/new-product.png" width="616" height="1071" loading="lazy" alt="Localhost product screen showing redemption methods, full-access roles and a monthly purchase limit"></div>
-        <figcaption>The working localhost screen resolves the configuration into a clear trader-facing answer: available methods, eligible roles and remaining purchase limit.</figcaption>
+        <div class="evidence-label evidence-label--dark"><span>Figma</span><strong>Role access and purchase limit</strong></div>
+        <div class="access-proof__sheet" data-image-zoom><img src="store-assets/permission-limit.png" width="1600" height="735" loading="lazy" alt="Store product detail showing Credit to Account selected, full access roles and a monthly purchase limit"></div>
+        <figcaption>The landscape evidence keeps the hierarchy visible without turning one screenshot into a page-length scroll.</figcaption>
       </figure>
     </div></section>
 
     <section class="store-section status-story" id="status" aria-labelledby="status-title"><div class="shell shell--store-wide">
-      <div class="status-story__copy"><p>Purchase lifecycle</p><h2 id="status-title">Confirmation starts the operational story. It does not end it.</h2><p>Each Store can define statuses inside four stable categories. A product or category chooses its default status, and a refund becomes a visible branch of the same lifecycle.</p></div>
+      <div class="store-section-lead status-story__copy"><div><p>Purchase lifecycle</p><h2 id="status-title">Confirmation starts the operational story. It does not end it.</h2></div><p>Each Store can define statuses inside four stable categories. A product or category chooses its default status, and a refund becomes a visible branch of the same lifecycle.</p></div>
       <div class="status-evidence">
         <figure class="status-proof">
           <div class="evidence-label evidence-label--dark"><span>Localhost build</span><strong>Order status tracker</strong></div>
@@ -148,10 +152,9 @@
     </div></section>
 
     <section class="store-section delivery-story" id="delivery" aria-labelledby="delivery-title"><div class="shell shell--store-wide">
-      <div class="store-section-lead"><div><p>From model to implementation</p><h2 id="delivery-title">The design moved through a working artifact.</h2></div><p>I made the purchase model visual in HTML, tested it locally in the product context, then handed that working behavior to engineering for implementation in the application repository.</p></div>
       <div class="delivery-proof">
-        <figure><div class="evidence-label evidence-label--dark"><span>Localhost build</span><strong>Store implementation test</strong></div><div class="delivery-proof__image" data-image-zoom><img src="store-assets/store-testing.png" width="2851" height="1322" loading="lazy" alt="Full localhost Store implementation test inside the platform shell"></div><figcaption>Complete localhost test frame, shown without cropping.</figcaption></figure>
-        <div><p>Why the artifact mattered</p><h3>The handoff carried behavior, not just pixels.</h3><p>Redemption routes, role resolution, required fields and the post-purchase trail were visible together. Engineering could inspect a coherent system instead of reconstructing it from disconnected mockups.</p></div>
+        <div class="delivery-proof__copy"><p>From model to implementation</p><h2 id="delivery-title">The design moved through a working artifact.</h2><p>I made the purchase model visual in HTML, tested it locally in the product context, then handed that working behavior to engineering for implementation in the application repository.</p><h3>The handoff carried behavior, not just pixels.</h3><p>Redemption routes, role resolution, required fields and the post-purchase trail were visible together. Engineering could inspect a coherent system instead of reconstructing it from disconnected mockups.</p></div>
+        <figure><div class="evidence-label evidence-label--dark"><span>Localhost build</span><strong>Store catalogue in the product shell</strong></div><div class="delivery-proof__image" data-image-zoom><img src="store-assets/oanda-store-localhost.png" width="1280" height="720" loading="lazy" alt="Localhost Store catalogue inside the platform shell with product cards, filters and member navigation"></div><figcaption>The preserved localhost Store frame replaces the unrelated themed test capture.</figcaption></figure>
       </div>
     </div></section>
 

@@ -15,6 +15,22 @@ CURRENT CASE-STUDY SOURCE LABELS — USER CONFIRMED 07 OCT 2026
   store-user-front-purchased-list.png
     FIGMA — trader-facing purchase-history design; design intent only.
 
+CURRENT STORE CASE-STUDY REPLACEMENTS — USER SUPPLIED 07 OCT 2026
+  previous-store-catalogue.png
+    LOCALHOST — previous Berry Jerry Store catalogue supplied as image 1.
+  redesigned-product-detail.png
+    FIGMA — redesigned product description and redemption-method choice supplied as image 4.
+  redemption-method-configured.png
+    FIGMA — exact exported frame from Store Settings node 2275:121107; full configured redemption method.
+  redemption-eligibility.png
+    FIGMA — trader-facing Credit to Account eligibility outcomes supplied as image 5.
+  redemption-physical-delivery.png
+    FIGMA — route-specific Physical Delivery purchase details supplied on 08 OCT 2026.
+  redemption-credit-account.png
+    FIGMA — route-specific Credit to Account eligibility and fields supplied on 08 OCT 2026.
+  oanda-store-localhost.png
+    LOCALHOST — preserved 1280x720 Store catalogue capture from output/playwright/store-source-faithful-home.png.
+
 SOURCE RULE
   Screens carrying the Returning.AI Store branding are Figma design evidence.
   The earlier Store screens and orange-accent detail screens are localhost

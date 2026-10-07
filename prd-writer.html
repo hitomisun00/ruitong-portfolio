@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf7">
+  <meta name="description" content="How product designer Rui Tong turned recurring ticket and handoff failures into a governed AI-assisted PRD writing workflow.">
+  <title>Automated PRD Writer — Rui Tong</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="case-system.css">
+  <link rel="stylesheet" href="prd-writer.css?v=20261008-3">
+</head>
+<body class="prd-case" style="--accent: var(--sage)">
+  <a class="skip-link" href="#content">Skip to case study</a>
+  <nav class="site-nav" aria-label="Portfolio navigation">
+    <a class="site-nav__brand" href="index.html" aria-label="Rui Tong portfolio home"><span class="site-nav__mark" aria-hidden="true"></span><span>Product thinking / PRD Writer</span></a>
+    <div class="site-nav__links"><a href="#try">Try it</a><a href="#system">System</a><a class="back-link" href="index.html">← Portfolio</a></div>
+  </nav>
+
+  <main id="content">
+    <header class="prd-hero shell shell--wide">
+      <div class="prd-hero__copy">
+        <p class="eyebrow">AI-assisted product delivery / self-initiated workflow</p>
+        <h1>I designed the rules before I automated the writing.</h1>
+        <p class="prd-hero__lead">I turned recurring handoff failures into a governed writing system—then adapted its logic into a public PRD experiment.</p>
+        <div class="prd-hero__actions"><a class="prd-action prd-action--primary" href="#try">Try the local demo</a><a class="prd-action" href="#system">See the operating model</a></div>
+      </div>
+
+      <div class="artifact-stack" aria-label="A rough request passes through four Ticket Writer rules and becomes a structured PRD for human review">
+        <div class="writer-instrument" aria-hidden="true">
+          <section class="instrument-input">
+            <span>Rough request</span>
+            <p>“Add analytics, exports and a useful admin view.”</p>
+            <div><i>active users?</i><i>export what?</i><i>who can see it?</i></div>
+          </section>
+          <div class="instrument-route instrument-route--in"><span>Unresolved context</span><i></i></div>
+          <section class="instrument-gate">
+            <span>Ticket Writer rules</span>
+            <ol><li><b>01</b> Source</li><li><b>02</b> Scope</li><li><b>03</b> Approval</li><li><b>04</b> Proof</li></ol>
+            <small>Structure without inventing</small>
+          </section>
+          <div class="instrument-route instrument-route--out"><i></i><span>Grounded draft</span></div>
+          <article class="instrument-output">
+            <header><span>PRD · draft 01</span><em>Human review</em></header>
+            <h2>Community analytics</h2>
+            <div class="output-row"><b>Goal</b><i></i></div>
+            <div class="output-row"><b>Requirements</b><i></i><i></i></div>
+            <div class="output-row output-row--criteria"><b>Acceptance</b><small>Given</small><small>When</small><small>Then</small></div>
+            <div class="output-row output-row--open"><b>Open question</b><p>What defines “active”?</p></div>
+          </article>
+          <div class="instrument-legend"><span>Input</span><i></i><span>Rules</span><i></i><span>Reviewable output</span></div>
+        </div>
+      </div>
+
+      <dl class="prd-contract" aria-label="Project details">
+        <div><dt>My role</dt><dd>Creator · product logic · workflow design</dd></div>
+        <div><dt>Original</dt><dd>ClickUp Ticket Writer</dd></div>
+        <div><dt>Evolution</dt><dd>742-line V1 → 84-line core + 3 references</dd></div>
+        <div><dt>Public demo</dt><dd>Local simulation · no external writes</dd></div>
+      </dl>
+    </header>
+
+    <section class="logic-playground" id="system" aria-labelledby="system-title">
+      <div class="shell shell--wide">
+        <header class="logic-playground__lead">
+          <div><span>01 / Trace the safeguard</span><h2 id="system-title">Pick a failure. See what the system does.</h2></div>
+          <p>The writer is not one prompt. It is four safeguards around a ticket. Select one to inspect the consequence.</p>
+        </header>
+
+        <div class="logic-map" data-logic-map data-active="source">
+          <nav class="logic-selector" aria-label="Choose a recurring ticket failure">
+            <p class="selector-prompt"><span>Choose a safeguard</span><strong data-logic-status>Source selected</strong></p>
+            <button type="button" data-logic-key="source" aria-pressed="true"><span>Source</span><em aria-hidden="true">Selected</em><strong>Which input wins?</strong><small>Conflicting context</small></button>
+            <button type="button" data-logic-key="scope" aria-pressed="false"><span>Scope</span><em aria-hidden="true">Selected</em><strong>What must survive?</strong><small>Additive updates</small></button>
+            <button type="button" data-logic-key="approval" aria-pressed="false"><span>Approval</span><em aria-hidden="true">Selected</em><strong>When may it act?</strong><small>Live-task authority</small></button>
+            <button type="button" data-logic-key="proof" aria-pressed="false"><span>Proof</span><em aria-hidden="true">Selected</em><strong>Did it really publish?</strong><small>Visual verification</small></button>
+          </nav>
+
+          <div class="ticket-machine" aria-hidden="true">
+            <div class="machine-shadow"></div>
+            <div class="machine-layer machine-layer--proof" data-machine-layer="proof"><span>Proof</span><i></i><i></i><i></i></div>
+            <div class="machine-layer machine-layer--approval" data-machine-layer="approval"><span>Approval</span><i></i><i></i><i></i></div>
+            <div class="machine-layer machine-layer--scope" data-machine-layer="scope"><span>Scope</span><i></i><i></i><i></i></div>
+            <div class="machine-layer machine-layer--source" data-machine-layer="source"><span>Source authority</span><strong>Ticket writer</strong><i></i><i></i><i></i></div>
+            <div class="machine-pin"><span></span></div>
+          </div>
+
+          <div class="logic-outcomes" aria-live="polite">
+            <article class="logic-detail" data-logic-detail="source">
+              <small>Product decision</small><h3>Define authority before drafting.</h3>
+              <div class="mini-flow" aria-label="Source safeguard flow"><span>Explicit correction</span><i>→</i><span>Approved scope</span><i>→</i><span>Design / PRD</span></div>
+              <p><b>Outcome</b> Conflicts surface instead of becoming invented requirements.</p>
+            </article>
+            <article class="logic-detail" data-logic-detail="scope">
+              <small>Product decision</small><h3>Make every update additive.</h3>
+              <div class="mini-flow" aria-label="Scope safeguard flow"><span>Read existing</span><i>→</i><span>Protect metadata</span><i>→</i><span>Add Part B</span></div>
+              <p><b>Outcome</b> New work does not silently erase an approved Part A.</p>
+            </article>
+            <article class="logic-detail" data-logic-detail="approval">
+              <small>Product decision</small><h3>Separate drafting from permission.</h3>
+              <div class="mini-flow" aria-label="Approval safeguard flow"><span>Draft</span><i>→</i><span>Human approval</span><i>→</i><span>One live write</span></div>
+              <p><b>Outcome</b> Speed increases without giving the agent extra authority.</p>
+            </article>
+            <article class="logic-detail" data-logic-detail="proof">
+              <small>Product decision</small><h3>Treat publication as a transaction.</h3>
+              <div class="mini-flow" aria-label="Proof safeguard flow"><span>Read</span><i>→</i><span>Write</span><i>→</i><span>Read back</span></div>
+              <p><b>Outcome</b> A successful upload is not mistaken for readable live evidence.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="try" aria-labelledby="try-title">
+      <div class="shell shell--wide">
+        <header class="demo-section__lead"><div><span>02 / Try the generalized version</span><h2 id="try-title">Turn a rough request into a reviewable first draft.</h2></div><div><p>Local simulation. Nothing is sent, stored or published.</p><p class="demo-caution">Do not enter confidential or proprietary information.</p></div></header>
+
+        <div class="prd-lab" data-prd-lab data-trace="all">
+          <section class="brief-panel" aria-labelledby="brief-title">
+            <div class="panel-kicker"><span>Input / rough brief</span><span class="local-badge">Local only</span></div>
+            <h3 id="brief-title">What should the product do?</h3>
+            <p id="prd-brief-help">Describe an idea. The demo separates supplied facts, safe structure and missing decisions.</p>
+            <div class="example-chips" aria-label="Load an example brief">
+              <button type="button" data-example="analytics">Analytics dashboard</button>
+              <button type="button" data-example="approval">Approval workflow</button>
+              <button type="button" data-example="settings">Settings redesign</button>
+            </div>
+            <label for="prd-brief">Rough product request</label>
+            <textarea id="prd-brief" name="product-brief" data-brief rows="8" maxlength="1200" autocomplete="off" aria-describedby="prd-brief-help prd-brief-error">I want a dashboard where community admins can see active channel users, filter by time range, compare activity, and export a report. I am not sure how “active” should be defined yet.</textarea>
+            <div class="brief-meta"><span data-count>181 / 1,200</span><span>⌘ / Ctrl + Enter</span></div>
+            <p class="input-error" id="prd-brief-error" data-input-error aria-live="polite" hidden></p>
+            <button class="generate-button" type="button" data-generate>Structure the PRD <span aria-hidden="true">→</span></button>
+            <p class="simulation-note">This is a transparent rules-based simulation, not a live AI service. The intended production concept uses a server-side model and the same grounding contract.</p>
+          </section>
+
+          <section class="document-panel" aria-labelledby="document-title" aria-live="polite" aria-busy="false">
+            <header class="document-toolbar">
+              <div><span>First-draft PRD</span><strong data-document-status>Ready for human review</strong></div>
+              <div class="trace-filters" aria-label="Filter statements by provenance">
+                <button type="button" data-trace-filter="provided" aria-pressed="false"><i></i>Provided</button>
+                <button type="button" data-trace-filter="derived" aria-pressed="false"><i></i>Derived</button>
+                <button type="button" data-trace-filter="question" aria-pressed="false"><i></i>Needs clarification</button>
+              </div>
+            </header>
+            <article class="prd-document" data-document>
+              <div class="document-title"><span>Product requirements document · draft 01</span><h3 id="document-title" data-title>Community activity dashboard</h3><p data-summary>A dashboard for community admins to inspect, compare and export channel activity while the definition of “active” remains an explicit open decision.</p></div>
+              <div class="document-grid">
+                <section><h4>Problem &amp; user</h4><button class="trace-item" type="button" data-provenance="provided" data-source="community admins can see active channel users" data-reason="This user and need were stated directly in the brief."><span>Provided</span><p data-problem>Community admins need a way to understand activity across channels.</p></button></section>
+                <section><h4>Goals</h4><div data-goals><button class="trace-item" type="button" data-provenance="provided" data-source="filter by time range, compare activity, and export a report" data-reason="These actions were explicitly requested."><span>Provided</span><p>Inspect active users, filter by time, compare activity and export a report.</p></button></div></section>
+                <section><h4>Non-goals</h4><div data-non-goals><button class="trace-item" type="button" data-provenance="derived" data-source="The brief asks for inspection and export only." data-reason="The draft names adjacent capabilities that were not requested so they do not enter scope silently."><span>Derived</span><p>No automated recommendations, alerting, or changes to community activity are included.</p></button></div></section>
+                <section><h4>Assumptions</h4><div data-assumptions><button class="trace-item" type="button" data-provenance="question" data-source="No activity data source was supplied." data-reason="Data availability must be confirmed before delivery; the writer cannot invent it."><span>Needs clarification</span><p>Activity events and channel access are available to the dashboard.</p></button></div></section>
+                <section class="document-wide"><h4>Core flow</h4><div class="flow-strip" data-flows><button class="trace-item trace-item--flow" type="button" data-provenance="provided" data-source="filter by time range, compare activity, and export a report" data-reason="The requested actions are ordered into a reviewable user flow without choosing missing product rules."><span>Provided</span><p><b>01</b> Select range</p><i>→</i><p><b>02</b> Compare channels</p><i>→</i><p><b>03</b> Export report</p></button></div></section>
+                <section class="document-wide"><h4>Functional requirements</h4><div data-requirements><button class="trace-item" type="button" data-provenance="provided" data-source="filter by time range" data-reason="The control is directly grounded in the brief."><span>Provided</span><p>FR-01 · Let an admin select a time range before comparing channel activity.</p></button><button class="trace-item" type="button" data-provenance="provided" data-source="compare activity" data-reason="Comparison is explicitly requested; the shared basis must remain visible to prevent misleading interpretation."><span>Provided</span><p>FR-02 · Apply the same visible range and activity definition to every compared channel.</p></button><button class="trace-item" type="button" data-provenance="provided" data-source="export a report" data-reason="Export is supplied, while format and field decisions remain open."><span>Provided</span><p>FR-03 · Export the currently filtered view and report completion or failure.</p></button></div></section>
+                <section class="document-wide"><h4>System &amp; quality requirements</h4><div data-nfr><button class="trace-item" type="button" data-provenance="derived" data-source="An interactive dashboard must communicate system state." data-reason="Loading, empty, partial and unavailable states are safe delivery requirements; exact timing and copy remain review decisions."><span>Derived</span><p>NFR-01 · Preserve the selected range through loading, empty, partial-data and retry states.</p></button><button class="trace-item" type="button" data-provenance="derived" data-source="The feature is for community administrators." data-reason="Role-aware access and usable keyboard focus are necessary quality boundaries, not invented business rules."><span>Derived</span><p>NFR-02 · Keep administrative data role-restricted and all controls keyboard operable.</p></button></div></section>
+                <section class="document-wide"><h4>Acceptance criteria — staging verification</h4><div data-criteria><button class="trace-item trace-item--criterion" type="button" data-provenance="derived" data-source="filter by time range, compare activity" data-reason="The requested actions were converted into observable preconditions, actions and results."><span>Derived</span><div><strong>AC-01 · A shared time range governs every comparison</strong><dl><div><dt>Given</dt><dd>Activity data exists for two channels</dd></div><div><dt>When</dt><dd>The admin changes the time range</dd></div><div><dt>Then</dt><dd>Every comparison updates and the range remains visible</dd></div></dl></div></button><button class="trace-item trace-item--criterion" type="button" data-provenance="derived" data-source="export a report" data-reason="The supplied export action is tested through both completion and recoverable failure."><span>Derived</span><div><strong>AC-02 · Export reflects the reviewed state</strong><dl><div><dt>Given</dt><dd>Filters are applied</dd></div><div><dt>When</dt><dd>The admin exports</dd></div><div><dt>Then</dt><dd>The output uses that scope and shows completion or a retry path</dd></div></dl></div></button></div></section>
+                <section class="document-wide"><h4>Risks &amp; dependencies</h4><div data-risks><button class="trace-item" type="button" data-provenance="question" data-source="I am not sure how “active” should be defined yet." data-reason="The unresolved definition affects comparison validity and must be owned before release."><span>Needs clarification</span><p>Risk · Different activity definitions could make channel comparisons misleading.</p></button><button class="trace-item" type="button" data-provenance="question" data-source="No data source, freshness, or export permission was supplied." data-reason="These dependencies cannot be inferred from the interface request."><span>Needs clarification</span><p>Dependencies · Event source, refresh cadence, administrator permissions, and export policy.</p></button></div></section>
+                <section class="document-wide"><h4>Open questions</h4><div data-questions><button class="trace-item" type="button" data-provenance="question" data-source="I am not sure how “active” should be defined yet." data-reason="The brief explicitly withholds this decision, so the writer must not choose a definition."><span>Needs clarification</span><p>What event and time threshold define an “active” channel user?</p></button><button class="trace-item" type="button" data-provenance="question" data-source="export a report" data-reason="Export was requested, but its format and contents were not supplied."><span>Needs clarification</span><p>Which export format, fields, and permission rules are required?</p></button></div></section>
+              </div>
+            </article>
+            <aside class="trace-inspector" data-trace-inspector aria-live="polite">
+              <div><span>Why this is here</span><strong data-trace-label>Select any statement to inspect its source.</strong></div>
+              <blockquote data-trace-source>Provided facts, safe derivations and unresolved questions stay visibly different.</blockquote>
+              <p data-trace-reason>This trace is the core interaction: the output is useful, but its authority remains inspectable.</p>
+            </aside>
+          </section>
+        </div>
+
+        <noscript><p class="no-js-note"><strong>Static mode:</strong> The complete community-dashboard example above remains available. Enable JavaScript only to load another example or generate a local rule-based draft.</p></noscript>
+      </div>
+    </section>
+
+    <section class="version-section" aria-labelledby="evolution-title">
+      <div class="shell shell--wide">
+        <header class="version-section__lead"><div><span>03 / V1 → V2</span><h2 id="evolution-title">The second version changed behavior—not just file size.</h2></div><p>Choose one refactor. The diagram shows the old logic, the intervention, and the resulting workflow.</p></header>
+
+        <div class="version-workbench" data-version-workbench data-focus="architecture">
+          <div class="version-layout">
+            <div class="version-controls">
+              <div class="version-controls__header"><span>Choose a change</span><strong data-version-status>Architecture selected</strong></div>
+              <div class="version-deltas" role="group" aria-label="Changes from version one to version two">
+                <button type="button" data-version-focus="architecture" aria-pressed="true" data-caption="Only relevant guidance is loaded; the core is easier to maintain."><span>Architecture</span><em aria-hidden="true">Viewing</em><small>Context loading</small></button>
+                <button type="button" data-version-focus="destination" aria-pressed="false" data-caption="The workflow cannot hunt for a sprint, infer a destination or create a task."><span>Destination</span><em aria-hidden="true">Viewing</em><small>Routing authority</small></button>
+                <button type="button" data-version-focus="approval" aria-pressed="false" data-caption="One explicit gate reduces interruptions while keeping the live write human-controlled."><span>Approval</span><em aria-hidden="true">Viewing</em><small>Human control</small></button>
+                <button type="button" data-version-focus="verification" aria-pressed="false" data-caption="Detailed staging checks and focused production-like risks no longer compete in one checklist."><span>Verification</span><em aria-hidden="true">Viewing</em><small>Test ownership</small></button>
+                <button type="button" data-version-focus="evaluation" aria-pressed="false" data-caption="Future revisions are checked by side effects and judgment, not exact wording."><span>Evaluation</span><em aria-hidden="true">Viewing</em><small>Regression safety</small></button>
+              </div>
+            </div>
+
+            <div class="version-explainer" aria-live="polite">
+              <article class="version-scene" data-version-scene="architecture">
+                <section class="version-state version-state--before"><header><span>V1</span><strong>Everything loaded together</strong></header><div class="logic-chain logic-chain--monolith"><b>Core</b><i></i><b>Templates</b><i></i><b>Images</b><i></i><b>UAT</b></div><p>Every task carried all 742 lines, whether the guidance was relevant or not.</p></section>
+                <div class="version-intervention"><span>Refactor</span><strong>Separate conditional guidance</strong><i aria-hidden="true"></i></div>
+                <section class="version-state version-state--after"><header><span>V2</span><strong>Load only what the task needs</strong></header><div class="reference-map"><b>84-line core</b><i></i><span>Ticket templates</span><i></i><span>Images + publication</span><i></i><span>Acceptance + UAT</span></div><p>Outcome: less irrelevant context and a smaller core to maintain.</p></section>
+              </article>
+              <article class="version-scene" data-version-scene="destination" hidden>
+                <section class="version-state version-state--before"><header><span>V1</span><strong>The writer could choose a destination</strong></header><div class="branch-map"><b>Request</b><i></i><span>Find sprint</span><span>Infer task</span><span>Create task</span></div><p>Routing logic sat inside the writing workflow.</p></section>
+                <div class="version-intervention"><span>Remove authority</span><strong>Accept one supplied task</strong><i aria-hidden="true"></i></div>
+                <section class="version-state version-state--after"><header><span>V2</span><strong>The destination is fixed before writing</strong></header><div class="logic-chain"><b>Supplied task</b><i></i><b>Read</b><i></i><b>Draft</b></div><p>Outcome: no sprint hunting, inferred routing, or surprise task creation.</p></section>
+              </article>
+              <article class="version-scene" data-version-scene="approval" hidden>
+                <section class="version-state version-state--before"><header><span>V1</span><strong>Permission checks interrupted the flow</strong></header><div class="logic-chain"><b>Inspect</b><i></i><span>Ask</span><i></i><b>Repair</b><i></i><span>Ask</span><i></i><b>Publish</b></div><p>Repeated gates added friction without making the final write safer.</p></section>
+                <div class="version-intervention"><span>Simplify</span><strong>One explicit publication gate</strong><i aria-hidden="true"></i></div>
+                <section class="version-state version-state--after"><header><span>V2</span><strong>Draft freely; approve the live write once</strong></header><div class="logic-chain"><b>Inspect</b><i></i><b>Draft</b><i></i><span>Approve once</span><i></i><b>Write</b></div><p>Outcome: fewer interruptions with the same human authority.</p></section>
+              </article>
+              <article class="version-scene" data-version-scene="verification" hidden>
+                <section class="version-state version-state--before"><header><span>V1</span><strong>One checklist mixed two jobs</strong></header><div class="mixed-checks"><span>Functional</span><span>Visual</span><span>Transition</span><span>Production risk</span></div><p>Detailed UI checks and production-like risks competed in the same list.</p></section>
+                <div class="version-intervention"><span>Clarify ownership</span><strong>Split staging from UAT</strong><i aria-hidden="true"></i></div>
+                <section class="version-state version-state--after"><header><span>V2</span><strong>Each environment answers a different question</strong></header><div class="test-lanes"><span><b>Staging</b>Behavior · UI · error states</span><span><b>UAT</b>Transitions · production-like risk</span></div><p>Outcome: deeper checks without duplicating the same test.</p></section>
+              </article>
+              <article class="version-scene" data-version-scene="evaluation" hidden>
+                <section class="version-state version-state--before"><header><span>V1</span><strong>Examples rewarded exact output</strong></header><div class="eval-map eval-map--before"><b>4 examples</b><span>expected wording</span><span>expected wording</span><span>expected wording</span><span>expected wording</span></div><p>A phrasing change could look like a regression even when behavior improved.</p></section>
+                <div class="version-intervention"><span>Change the test</span><strong>Evaluate side effects and judgment</strong><i aria-hidden="true"></i></div>
+                <section class="version-state version-state--after"><header><span>V2</span><strong>Scenarios protect the operating contract</strong></header><div class="eval-map eval-map--after"><b>7 scenarios</b><span>authority</span><span>scope</span><span>approval</span><span>proof</span><span>recovery</span><span>ambiguity</span><span>no side effect</span></div><p>Outcome: wording can evolve without weakening safeguards.</p></section>
+              </article>
+              <p class="version-caption" data-version-caption>Only relevant guidance is loaded; the core is easier to maintain.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="prd-ending" aria-labelledby="ending-title"><div class="shell shell--wide"><p>What this project changed for me</p><h2 id="ending-title">AI output became more useful when I designed the authority around it.</h2><div><a href="product-decisions.html">Explore more product decisions</a><a href="widgets.html">Next flagship: Widget Platform</a><a href="index.html">Return to the workbench</a></div></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="shell"><span>Rui Tong · Product designer · Singapore</span><a href="index.html">Return to the workbench ↑</a></div></footer>
+  <script src="prd-writer.js?v=20261008-3" defer></script>
+</body>
+</html>

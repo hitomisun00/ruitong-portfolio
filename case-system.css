@@ -247,6 +247,7 @@ main { min-height: 70vh; }
 .copy-stack h3 { font-size: clamp(1.45rem, 2.7vw, 2.25rem); letter-spacing: -.035em; line-height: 1.16; }
 .copy-stack p { color: var(--muted); }
 .copy-stack strong { color: var(--ink); }
+.inline-case-link { justify-self: start; color: var(--ink); font-size: .84rem; font-weight: 700; text-underline-offset: 5px; }
 .callout {
   padding: 22px 24px;
   border-left: 4px solid var(--accent, var(--yellow));
