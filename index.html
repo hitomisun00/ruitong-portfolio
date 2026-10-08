@@ -277,8 +277,8 @@
       linear-gradient(var(--mark-b),var(--mark-b)) 0 13px/72% 7px no-repeat,
       linear-gradient(var(--mark-b),var(--mark-b)) 0 26px/88% 6px no-repeat;
     }
-    #rt-warm-folder-kv[data-lens="craft"] .file-decisions { z-index:11; --file-y:57px; --open-x:16px; --open-y:-4px; --open-z:60px; --open-r:2deg; }
-    #rt-warm-folder-kv[data-lens="craft"] .file-store { z-index:10; --file-y:62px; --open-x:-38px; --open-y:-46px; --open-z:50px; --open-r:-5deg; }
+    #rt-warm-folder-kv[data-lens="craft"] .file-store { z-index:11; --file-y:57px; --open-x:16px; --open-y:-4px; --open-z:60px; --open-r:2deg; }
+    #rt-warm-folder-kv[data-lens="craft"] .file-decisions { z-index:10; --file-y:62px; --open-x:-38px; --open-y:-46px; --open-z:50px; --open-r:-5deg; }
     #rt-warm-folder-kv[data-lens="craft"] .file-widget { z-index:9; --file-y:67px; --open-x:36px; --open-y:-88px; --open-z:40px; --open-r:5deg; }
     #rt-warm-folder-kv[data-lens="craft"] .file-craft { z-index:8; --file-y:71px; --open-x:-25px; --open-y:-130px; --open-z:30px; --open-r:-4deg; }
     #rt-warm-folder-kv[data-lens="craft"] .file-tab { border-radius:16px 16px 0 0; }
@@ -1437,10 +1437,10 @@
           <span class="folder">
             <span class="back"><span class="back-label">project index / four pages</span></span>
             <span class="gusset gusset-left" aria-hidden="true"></span><span class="gusset gusset-right" aria-hidden="true"></span>
-            <a class="file file-store" data-project="store" href="store.html"><span class="file-tab">Store</span><span class="file-kicker">Returning.AI / commerce system</span><strong class="file-title">Store</strong><span class="file-lines" aria-hidden="true"></span></a>
-            <a class="file file-widget" data-project="widget" href="widgets.html"><span class="file-tab">Widget Platform</span><span class="file-kicker">Returning.AI / portable experiences</span><strong class="file-title">Widget Platform</strong><span class="file-lines" aria-hidden="true"></span></a>
-            <a class="file file-decisions" data-project="decisions" href="product-decisions.html"><span class="file-tab">Product Decisions</span><span class="file-kicker">Returning.AI / supporting work</span><strong class="file-title">Product Decisions</strong><span class="file-lines" aria-hidden="true"></span></a>
-            <a class="file file-craft" data-project="craft" href="nus.html"><span class="file-tab">Craft Archive</span><span class="file-kicker">NUS / BrainCare / Engage / Cognify</span><strong class="file-title">Craft Archive</strong><span class="file-lines" aria-hidden="true"></span></a>
+            <a class="file file-store" data-slot="store" data-project="store" href="store.html"><span class="file-tab">Store</span><span class="file-kicker">Returning.AI / commerce system</span><strong class="file-title">Store</strong><span class="file-lines" aria-hidden="true"></span></a>
+            <a class="file file-decisions" data-slot="decisions" data-project="games" href="product-decisions.html#games-title"><span class="file-tab">Mini Games</span><span class="file-kicker">Returning.AI / engagement games</span><strong class="file-title">Mini Games Platform</strong><span class="file-lines" aria-hidden="true"></span></a>
+            <a class="file file-widget" data-slot="widget" data-project="widget" href="widgets.html"><span class="file-tab">Widget Platform</span><span class="file-kicker">Returning.AI / portable experiences</span><strong class="file-title">Widget Platform</strong><span class="file-lines" aria-hidden="true"></span></a>
+            <a class="file file-craft" data-slot="craft" data-project="milestones" href="widgets.html#brand-compare"><span class="file-tab">Milestones</span><span class="file-kicker">Returning.AI / progression system</span><strong class="file-title">Milestones</strong><span class="file-lines" aria-hidden="true"></span></a>
             <button class="front front-toggle" type="button" aria-expanded="false" aria-label="Open Rui Tong’s project folder"><span class="top-label">Rui’s workbench</span><span class="stamp"><strong class="folder-message">open when curious</strong><small class="folder-sub">details, experiments and tiny obsessions</small></span><span class="workspace-tags"><span>selected work</span><span>04 pages</span></span></button>
           </span>
         </div>
@@ -1594,9 +1594,54 @@
         product:{message:'how things work',sub:'decisions, systems and consequences'},
         craft:{message:'open when curious',sub:'details, experiments and tiny obsessions'}
       };
+      const routeProjects={
+        essentials:{
+          order:['store','widget','decisions','craft'],
+          sheets:{
+            store:{project:'store',href:'store.html',tab:'Store',kicker:'Returning.AI / commerce system',title:'Store'},
+            widget:{project:'widget',href:'widgets.html',tab:'Widget Platform',kicker:'Returning.AI / portable experiences',title:'Widget Platform'},
+            decisions:{project:'decisions',href:'product-decisions.html',tab:'Product Decisions',kicker:'Returning.AI / supporting work',title:'Product Decisions'},
+            craft:{project:'craft',href:'nus.html',tab:'Craft Archive',kicker:'NUS / BrainCare / Engage / Cognify',title:'Craft Archive'}
+          }
+        },
+        product:{
+          order:['decisions','widget','store','craft'],
+          sheets:{
+            store:{project:'store',href:'store.html',tab:'Store',kicker:'Returning.AI / commerce system',title:'Store'},
+            widget:{project:'widget',href:'widgets.html',tab:'Widget Platform',kicker:'Returning.AI / portable experiences',title:'Widget Platform'},
+            decisions:{project:'decisions',href:'product-decisions.html',tab:'Product Decisions',kicker:'Returning.AI / supporting work',title:'Product Decisions'},
+            craft:{project:'prd',href:'prd-writer.html',tab:'Ticket Writer',kicker:'AI-assisted / governed drafting',title:'PRD Writer'}
+          }
+        },
+        craft:{
+          order:['store','decisions','widget','craft'],
+          sheets:{
+            store:{project:'store',href:'store.html',tab:'Store',kicker:'Returning.AI / commerce system',title:'Store'},
+            decisions:{project:'games',href:'product-decisions.html#games-title',tab:'Mini Games',kicker:'Returning.AI / engagement games',title:'Mini Games Platform'},
+            widget:{project:'widget',href:'widgets.html',tab:'Widget Platform',kicker:'Returning.AI / portable experiences',title:'Widget Platform'},
+            craft:{project:'milestones',href:'widgets.html#brand-compare',tab:'Milestones',kicker:'Returning.AI / progression system',title:'Milestones'}
+          }
+        }
+      };
       const folderMessage=root.querySelector('.folder-message');
       const folderSub=root.querySelector('.folder-sub');
       let switchTimer;
+      function applyRouteProjects(lens){
+        const route=routeProjects[lens];
+        if(!route)return;
+        setPreview();
+        route.order.forEach(slot=>{
+          const file=files.find(item=>item.dataset.slot===slot);
+          const project=route.sheets[slot];
+          if(!file||!project)return;
+          file.dataset.project=project.project;
+          file.href=project.href;
+          file.querySelector('.file-tab').textContent=project.tab;
+          file.querySelector('.file-kicker').textContent=project.kicker;
+          file.querySelector('.file-title').textContent=project.title;
+          folder.insertBefore(file,folder.querySelector('.front'));
+        });
+      }
       function setPreview(file=null){
         const project=file?.dataset.project;
         files.forEach(item=>item.classList.toggle('is-preview',item===file));
@@ -1632,6 +1677,7 @@
         note.textContent=routeCopy[lens];
         switchTimer=setTimeout(()=>{
           root.dataset.lens=lens;
+          applyRouteProjects(lens);
           folderMessage.textContent=folderCopy[lens].message;
           folderSub.textContent=folderCopy[lens].sub;
           folderButton.classList.remove('is-switching');
@@ -1642,17 +1688,17 @@
       frontToggle.addEventListener('click',()=>setOpen(folderButton.dataset.open!=='true'));
       primaryAction.addEventListener('click',()=>{
         setOpen(true);
-        files[0].focus({preventScroll:true});
+        folder.querySelector('.file').focus({preventScroll:true});
       });
       files.forEach(file=>{
         file.addEventListener('pointerenter',()=>setPreview(file));
         file.addEventListener('focus',()=>setPreview(file));
       });
       projectEntries.forEach(entry=>{
-        const file=files.find(item=>item.dataset.project===entry.dataset.project);
-        entry.addEventListener('pointerenter',()=>setPreview(file));
+        const matchingFile=()=>files.find(item=>item.dataset.project===entry.dataset.project);
+        entry.addEventListener('pointerenter',()=>setPreview(matchingFile()));
         entry.addEventListener('pointerleave',()=>setPreview());
-        entry.addEventListener('focus',()=>setPreview(file));
+        entry.addEventListener('focus',()=>setPreview(matchingFile()));
         entry.addEventListener('blur',()=>setPreview());
       });
       folderButton.addEventListener('pointermove',event=>{
@@ -1692,6 +1738,7 @@
       const savedLens=window.openai?.widgetState?.privateContent?.selectedLens;
       const initialLens=routeCopy[savedLens]?savedLens:'craft';
       root.dataset.lens=initialLens;
+      applyRouteProjects(initialLens);
       routes.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lens===initialLens)));
       note.textContent=routeCopy[initialLens];
       folderMessage.textContent=folderCopy[initialLens].message;
