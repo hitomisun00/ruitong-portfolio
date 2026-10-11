@@ -49,7 +49,9 @@ Inspected saved CatTrader widgets:
 
 The saved Playroom contains Purrfect Spin and Cats Cup Match Prediction; it does not include Raffles. The Socials widget group has no saved widget.
 
-`feature-widget-embed.js` uses the observed official loader at `https://sgtr-eks-widgets.genesiv.org/widget-loader.js`. Localhost is outside every saved policy, so no remote loader or identity is sent from this review build. The captured preview remains visible. On a permitted HTTPS origin, the exact widget can be connected using a session-supplied registered sandbox identity. It is not persisted or copied from the Store integration. The integration validates message origin/source and retains the capture on errors/timeouts. Live loading is checked separately on the public alias after deployment; localhost keeps the captured fallback.
+`feature-widget-embed.js` uses the observed official loader at `https://sgtr-eks-widgets.genesiv.org/widget-loader.js`. On the saved public portfolio origin, it connects automatically with the registered CatTrader sample member already verified for each exact widget. This follows the Store entry behavior: no visitor email form and no screenshot inside the live embed area. The sample account identifier is public demonstration configuration; authentication tokens remain runtime-only. Origin/source validation, session renewal, retry and back/forward restoration are included. Localhost and previews remain outside the saved domain policy and provide a direct link to the public widget. No-JavaScript readers retain the static feature flow and evidence.
+
+The five pages containing live widgets use three saved widget IDs: Milestones, the shared Playroom (Mini Games, Spin the Wheel and Match Prediction), and Streaks. The Match Prediction page identifies its game as the second item in the saved family widget. No dedicated game widget or automatic game-selection capability is fabricated.
 
 On explicit approval, the public portfolio domain was added to The Cat Playroom and Your Paw-sitive Streak and persisted after reload. Development mode and all selected users/roles were retained. No INFINOX, Markemics or other client portal was changed.
 
@@ -66,7 +68,7 @@ Browser results and screenshots are saved in the parent workspace under `output/
 - Coarse-pointer mobile context: all replay controls respond to tap, and all eight routes remain 390px wide.
 - All 49 distinct local link targets return HTTP 200. The settled mobile run produced no console errors. Two transient localhost image connection errors occurred during rapid repeated QA navigation; the affected Streaks image subsequently loaded and decoded in the complete-page checks.
 - With feature images intentionally blocked, Milestones still exposes its full flow and source links.
-- Localhost sends no widget identity or loader because it remains outside the saved policy. Public beta authentication is verified separately at the allowed production origin.
+- Localhost sends no widget identity or loader because it remains outside the saved policy. The public page automatically supplies the verified sample member for beta authentication.
 
 Asset checksums are recorded in `feature-assets/SHA256SUMS`; run verification from that directory.
 
@@ -78,4 +80,10 @@ The authored ideas are feature-specific: staged completion, earned-spin eligibil
 
 The highest risk of a generic pattern is the shared case-study hero. Family-wide navigation and material language are intentional; the Mini Games overview, raffle evidence, large match headline and Streaks lifecycle proof vary their proportions. No decorative reveal sequence or continuous animation was added.
 
-Accessibility paths were exercised with keyboard, touch, reduced motion, no JavaScript and image failure. This is not a full assistive-technology certification. Browser zoom/enlarged-text testing is not recorded. All decorative rotations were removed; screenshots and cards remain straight. The source gaps and unavailable localhost live widgets are explicitly disclosed rather than represented as completed integrations.
+Accessibility paths were exercised with keyboard, touch, reduced motion, no JavaScript and image failure. This is not a full assistive-technology certification. Browser zoom/enlarged-text testing is not recorded. All decorative rotations on feature screenshots and cards were removed. The source gaps and public-origin widget boundary remain explicit.
+
+## Navigation and SEO — 12 October 2026
+
+Product mode links to Store, Widget Platform, Feature Collection and PRD Writer. Craft mode links directly to Store, Mini Games, Widget Platform and Milestones. Essentials retains the flagship reading path. All seven individual feature links are present in the static homepage index, and the feature collection links each leaf page. Shared footer navigation connects all public case studies with Home, Returning.AI and the feature collection.
+
+All fifteen public pages have a unique self-canonical URL, descriptive title/description, Open Graph tags and WebPage/CollectionPage plus BreadcrumbList JSON-LD. The collection declares its seven child pages. `sitemap.xml` lists individual canonical URLs; `robots.txt` advertises it. The embedded Widget Configurator has `noindex,follow`. Search indexing/ranking is not represented as a verified outcome.
