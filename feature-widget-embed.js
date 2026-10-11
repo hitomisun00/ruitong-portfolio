@@ -66,6 +66,8 @@
     loader?.remove();
     stopped = false;
     retry.hidden = true;
+    container.style.position = 'relative';
+    container.style.minHeight = '600px';
     container.innerHTML = '<div class="feature-widget-loader"><span class="feature-widget-spinner" aria-hidden="true"></span><span>Loading the live widget…</span></div>';
     setStatus('loading', 'Connecting the official CatTrader widget…');
     observer = new MutationObserver(() => {
@@ -105,6 +107,7 @@
     const type = typeof event.data === 'string' ? event.data : event.data?.type;
     if (type === 'WIDGET_READY') {
       clearTimers();
+      container.querySelector('.feature-widget-loader')?.remove();
       recoveries = 0;
       retry.hidden = true;
       setStatus('ready', 'Connected · official CatTrader widget');
